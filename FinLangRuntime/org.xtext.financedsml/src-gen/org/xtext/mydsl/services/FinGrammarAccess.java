@@ -6,6 +6,7 @@ package org.xtext.mydsl.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.EnumLiteralDeclaration;
@@ -45,13 +46,16 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cPortfolioParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cTransactionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cActionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Action cElementAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final RuleCall cConditionalStatementParserRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
 		
 		//Element:
-		//    Portfolio | Transaction | Action
+		//    Portfolio | Transaction | Action | {Element} ConditionalStatement
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Portfolio | Transaction | Action
+		//Portfolio | Transaction | Action | {Element} ConditionalStatement
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Portfolio
@@ -62,6 +66,15 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//Action
 		public RuleCall getActionParserRuleCall_2() { return cActionParserRuleCall_2; }
+		
+		//{Element} ConditionalStatement
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//{Element}
+		public Action getElementAction_3_0() { return cElementAction_3_0; }
+		
+		//ConditionalStatement
+		public RuleCall getConditionalStatementParserRuleCall_3_1() { return cConditionalStatementParserRuleCall_3_1; }
 	}
 	public class AssetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.Asset");
@@ -117,16 +130,61 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	public class ActionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.Action");
-		private final RuleCall cDisplayParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final RuleCall cViewParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//// TODO: Thinking to add more actions
 		//Action:
-		//    Display
+		//    View
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Display
-		public RuleCall getDisplayParserRuleCall() { return cDisplayParserRuleCall; }
+		//View
+		public RuleCall getViewParserRuleCall() { return cViewParserRuleCall; }
+	}
+	public class ConditionalStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.ConditionalStatement");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIfStatementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cForStatementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//// TODO: Implement this
+		//ConditionalStatement:
+		//    IfStatement | ForStatement
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//IfStatement | ForStatement
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//IfStatement
+		public RuleCall getIfStatementParserRuleCall_0() { return cIfStatementParserRuleCall_0; }
+		
+		//ForStatement
+		public RuleCall getForStatementParserRuleCall_1() { return cForStatementParserRuleCall_1; }
+	}
+	public class IfStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.IfStatement");
+		private final Keyword cIfKeyword = (Keyword)rule.eContents().get(1);
+		
+		//IfStatement:
+		//    "If"
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"If"
+		public Keyword getIfKeyword() { return cIfKeyword; }
+	}
+	public class ForStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.ForStatement");
+		private final Keyword cForKeyword = (Keyword)rule.eContents().get(1);
+		
+		//ForStatement:
+		//    "For"
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"For"
+		public Keyword getForKeyword() { return cForKeyword; }
 	}
 	public class PortfolioElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.Portfolio");
@@ -576,32 +634,40 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//FLOAT
 		public RuleCall getAmountFLOATParserRuleCall_1_0() { return cAmountFLOATParserRuleCall_1_0; }
 	}
-	public class DisplayElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.Display");
+	public class ViewElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.View");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDisplayKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cDisplayTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cDisplayTypeDisplayTypeParserRuleCall_1_0 = (RuleCall)cDisplayTypeAssignment_1.eContents().get(0);
+		private final Keyword cViewKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cViewTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cViewTypeViewTypeParserRuleCall_1_0 = (RuleCall)cViewTypeAssignment_1.eContents().get(0);
+		private final Assignment cTimeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTimeTimeParserRuleCall_2_0 = (RuleCall)cTimeAssignment_2.eContents().get(0);
 		
-		//Display:
-		//    'Display' (displayType=DisplayType)
+		//View:
+		//    'View' (viewType=ViewType) (time=Time)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Display' (displayType=DisplayType)
+		//'View' (viewType=ViewType) (time=Time)
 		public Group getGroup() { return cGroup; }
 		
-		//'Display'
-		public Keyword getDisplayKeyword_0() { return cDisplayKeyword_0; }
+		//'View'
+		public Keyword getViewKeyword_0() { return cViewKeyword_0; }
 		
-		//(displayType=DisplayType)
-		public Assignment getDisplayTypeAssignment_1() { return cDisplayTypeAssignment_1; }
+		//(viewType=ViewType)
+		public Assignment getViewTypeAssignment_1() { return cViewTypeAssignment_1; }
 		
-		//DisplayType
-		public RuleCall getDisplayTypeDisplayTypeParserRuleCall_1_0() { return cDisplayTypeDisplayTypeParserRuleCall_1_0; }
+		//ViewType
+		public RuleCall getViewTypeViewTypeParserRuleCall_1_0() { return cViewTypeViewTypeParserRuleCall_1_0; }
+		
+		//(time=Time)
+		public Assignment getTimeAssignment_2() { return cTimeAssignment_2; }
+		
+		//Time
+		public RuleCall getTimeTimeParserRuleCall_2_0() { return cTimeTimeParserRuleCall_2_0; }
 	}
-	public class DisplayTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.DisplayType");
+	public class ViewTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.ViewType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cPorfolioKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cBondKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
@@ -609,7 +675,7 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Keyword cCashKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
 		private final Keyword cAllKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
 		
-		//DisplayType:
+		//ViewType:
 		//    'Porfolio' | 'Bond' | 'Option' | 'Cash' | 'All'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -631,6 +697,35 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//'All'
 		public Keyword getAllKeyword_4() { return cAllKeyword_4; }
+	}
+	public class TimeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.Time");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cNowKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cNextMonthKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cNextQuarterKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cNextYearKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		
+		//// Plus 1 month, 3 months or 12 months, using model to calculate the price at that time.
+		//Time:
+		//    'Now' | 'NextMonth' | 'NextQuarter' | 'NextYear'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Now' | 'NextMonth' | 'NextQuarter' | 'NextYear'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'Now'
+		public Keyword getNowKeyword_0() { return cNowKeyword_0; }
+		
+		//'NextMonth'
+		public Keyword getNextMonthKeyword_1() { return cNextMonthKeyword_1; }
+		
+		//'NextQuarter'
+		public Keyword getNextQuarterKeyword_2() { return cNextQuarterKeyword_2; }
+		
+		//'NextYear'
+		public Keyword getNextYearKeyword_3() { return cNextYearKeyword_3; }
 	}
 	public class FLOATElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.FLOAT");
@@ -689,6 +784,9 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final AssetElements pAsset;
 	private final TransactionElements pTransaction;
 	private final ActionElements pAction;
+	private final ConditionalStatementElements pConditionalStatement;
+	private final IfStatementElements pIfStatement;
+	private final ForStatementElements pForStatement;
 	private final PortfolioElements pPortfolio;
 	private final BondElements pBond;
 	private final OptionElements pOption;
@@ -697,8 +795,9 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final SellElements pSell;
 	private final DepositElements pDeposit;
 	private final WithdrawalElements pWithdrawal;
-	private final DisplayElements pDisplay;
-	private final DisplayTypeElements pDisplayType;
+	private final ViewElements pView;
+	private final ViewTypeElements pViewType;
+	private final TimeElements pTime;
 	private final OptionTypeElements eOptionType;
 	private final FLOATElements pFLOAT;
 	
@@ -716,6 +815,9 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.pAsset = new AssetElements();
 		this.pTransaction = new TransactionElements();
 		this.pAction = new ActionElements();
+		this.pConditionalStatement = new ConditionalStatementElements();
+		this.pIfStatement = new IfStatementElements();
+		this.pForStatement = new ForStatementElements();
 		this.pPortfolio = new PortfolioElements();
 		this.pBond = new BondElements();
 		this.pOption = new OptionElements();
@@ -724,8 +826,9 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.pSell = new SellElements();
 		this.pDeposit = new DepositElements();
 		this.pWithdrawal = new WithdrawalElements();
-		this.pDisplay = new DisplayElements();
-		this.pDisplayType = new DisplayTypeElements();
+		this.pView = new ViewElements();
+		this.pViewType = new ViewTypeElements();
+		this.pTime = new TimeElements();
 		this.eOptionType = new OptionTypeElements();
 		this.pFLOAT = new FLOATElements();
 	}
@@ -768,7 +871,7 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//Element:
-	//    Portfolio | Transaction | Action
+	//    Portfolio | Transaction | Action | {Element} ConditionalStatement
 	//;
 	public ElementElements getElementAccess() {
 		return pElement;
@@ -802,7 +905,7 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	//// TODO: Thinking to add more actions
 	//Action:
-	//    Display
+	//    View
 	//;
 	public ActionElements getActionAccess() {
 		return pAction;
@@ -810,6 +913,40 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	public ParserRule getActionRule() {
 		return getActionAccess().getRule();
+	}
+	
+	//// TODO: Implement this
+	//ConditionalStatement:
+	//    IfStatement | ForStatement
+	//;
+	public ConditionalStatementElements getConditionalStatementAccess() {
+		return pConditionalStatement;
+	}
+	
+	public ParserRule getConditionalStatementRule() {
+		return getConditionalStatementAccess().getRule();
+	}
+	
+	//IfStatement:
+	//    "If"
+	//;
+	public IfStatementElements getIfStatementAccess() {
+		return pIfStatement;
+	}
+	
+	public ParserRule getIfStatementRule() {
+		return getIfStatementAccess().getRule();
+	}
+	
+	//ForStatement:
+	//    "For"
+	//;
+	public ForStatementElements getForStatementAccess() {
+		return pForStatement;
+	}
+	
+	public ParserRule getForStatementRule() {
+		return getForStatementAccess().getRule();
 	}
 	
 	//// Use portfolio to initialise a profile
@@ -922,26 +1059,38 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getWithdrawalAccess().getRule();
 	}
 	
-	//Display:
-	//    'Display' (displayType=DisplayType)
+	//View:
+	//    'View' (viewType=ViewType) (time=Time)
 	//;
-	public DisplayElements getDisplayAccess() {
-		return pDisplay;
+	public ViewElements getViewAccess() {
+		return pView;
 	}
 	
-	public ParserRule getDisplayRule() {
-		return getDisplayAccess().getRule();
+	public ParserRule getViewRule() {
+		return getViewAccess().getRule();
 	}
 	
-	//DisplayType:
+	//ViewType:
 	//    'Porfolio' | 'Bond' | 'Option' | 'Cash' | 'All'
 	//;
-	public DisplayTypeElements getDisplayTypeAccess() {
-		return pDisplayType;
+	public ViewTypeElements getViewTypeAccess() {
+		return pViewType;
 	}
 	
-	public ParserRule getDisplayTypeRule() {
-		return getDisplayTypeAccess().getRule();
+	public ParserRule getViewTypeRule() {
+		return getViewTypeAccess().getRule();
+	}
+	
+	//// Plus 1 month, 3 months or 12 months, using model to calculate the price at that time.
+	//Time:
+	//    'Now' | 'NextMonth' | 'NextQuarter' | 'NextYear'
+	//;
+	public TimeElements getTimeAccess() {
+		return pTime;
+	}
+	
+	public ParserRule getTimeRule() {
+		return getTimeAccess().getRule();
 	}
 	
 	//enum OptionType:

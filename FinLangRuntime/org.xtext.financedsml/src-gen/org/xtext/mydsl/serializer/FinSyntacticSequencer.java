@@ -26,9 +26,21 @@ public class FinSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (ruleCall.getRule() == grammarAccess.getConditionalStatementRule())
+			return getConditionalStatementToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
+	/**
+	 * ConditionalStatement:
+	 * 	IfStatement | ForStatement
+	 * ;
+	 */
+	protected String getConditionalStatementToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "If";
+	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {

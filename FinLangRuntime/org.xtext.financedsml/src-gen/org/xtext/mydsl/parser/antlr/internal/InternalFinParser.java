@@ -22,33 +22,18 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalFinParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Portfolio'", "'{'", "'}'", "'Bond'", "'faceValue'", "'couponRate'", "'maturity'", "'yieldRate'", "'Option'", "'type'", "'underlyingPrice'", "'strikePrice'", "'timeToExpiration'", "'riskFreeRate'", "'volatility'", "'dividendYield'", "'Cash'", "'amount'", "'Buy'", "'Sell'", "'assetName'", "'Deposit'", "'Withdrawal'", "'Display'", "'Porfolio'", "'All'", "'.'", "'Call'", "'Put'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'If'", "'For'", "'Portfolio'", "'{'", "'}'", "'Bond'", "'faceValue'", "'couponRate'", "'maturity'", "'yieldRate'", "'Option'", "'type'", "'underlyingPrice'", "'strikePrice'", "'timeToExpiration'", "'riskFreeRate'", "'volatility'", "'dividendYield'", "'Cash'", "'amount'", "'Buy'", "'Sell'", "'assetName'", "'Deposit'", "'Withdrawal'", "'View'", "'Porfolio'", "'All'", "'Now'", "'NextMonth'", "'NextQuarter'", "'NextYear'", "'.'", "'Call'", "'Put'"
     };
-    public static final int RULE_STRING=6;
-    public static final int RULE_SL_COMMENT=8;
     public static final int T__19=19;
     public static final int T__15=15;
-    public static final int T__37=37;
     public static final int T__16=16;
-    public static final int T__38=38;
     public static final int T__17=17;
-    public static final int T__39=39;
     public static final int T__18=18;
     public static final int T__11=11;
-    public static final int T__33=33;
     public static final int T__12=12;
-    public static final int T__34=34;
     public static final int T__13=13;
-    public static final int T__35=35;
     public static final int T__14=14;
-    public static final int T__36=36;
-    public static final int EOF=-1;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
     public static final int RULE_ID=4;
-    public static final int RULE_WS=9;
-    public static final int RULE_ANY_OTHER=10;
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
@@ -61,6 +46,27 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
     public static final int T__25=25;
     public static final int T__20=20;
     public static final int T__21=21;
+    public static final int RULE_STRING=6;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
+    public static final int T__33=33;
+    public static final int T__34=34;
+    public static final int T__35=35;
+    public static final int T__36=36;
+    public static final int EOF=-1;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int RULE_WS=9;
+    public static final int RULE_ANY_OTHER=10;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -158,7 +164,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==11||(LA1_0>=29 && LA1_0<=30)||(LA1_0>=32 && LA1_0<=34)) ) {
+                if ( ((LA1_0>=11 && LA1_0<=13)||(LA1_0>=31 && LA1_0<=32)||(LA1_0>=34 && LA1_0<=36)) ) {
                     alt1=1;
                 }
 
@@ -257,7 +263,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleElement"
-    // InternalFin.g:108:1: ruleElement returns [EObject current=null] : (this_Portfolio_0= rulePortfolio | this_Transaction_1= ruleTransaction | this_Action_2= ruleAction ) ;
+    // InternalFin.g:108:1: ruleElement returns [EObject current=null] : (this_Portfolio_0= rulePortfolio | this_Transaction_1= ruleTransaction | this_Action_2= ruleAction | ( () ruleConditionalStatement ) ) ;
     public final EObject ruleElement() throws RecognitionException {
         EObject current = null;
 
@@ -272,28 +278,34 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:114:2: ( (this_Portfolio_0= rulePortfolio | this_Transaction_1= ruleTransaction | this_Action_2= ruleAction ) )
-            // InternalFin.g:115:2: (this_Portfolio_0= rulePortfolio | this_Transaction_1= ruleTransaction | this_Action_2= ruleAction )
+            // InternalFin.g:114:2: ( (this_Portfolio_0= rulePortfolio | this_Transaction_1= ruleTransaction | this_Action_2= ruleAction | ( () ruleConditionalStatement ) ) )
+            // InternalFin.g:115:2: (this_Portfolio_0= rulePortfolio | this_Transaction_1= ruleTransaction | this_Action_2= ruleAction | ( () ruleConditionalStatement ) )
             {
-            // InternalFin.g:115:2: (this_Portfolio_0= rulePortfolio | this_Transaction_1= ruleTransaction | this_Action_2= ruleAction )
-            int alt2=3;
+            // InternalFin.g:115:2: (this_Portfolio_0= rulePortfolio | this_Transaction_1= ruleTransaction | this_Action_2= ruleAction | ( () ruleConditionalStatement ) )
+            int alt2=4;
             switch ( input.LA(1) ) {
-            case 11:
+            case 13:
                 {
                 alt2=1;
                 }
                 break;
-            case 29:
-            case 30:
+            case 31:
             case 32:
-            case 33:
+            case 34:
+            case 35:
                 {
                 alt2=2;
                 }
                 break;
-            case 34:
+            case 36:
                 {
                 alt2=3;
+                }
+                break;
+            case 11:
+            case 12:
+                {
+                alt2=4;
                 }
                 break;
             default:
@@ -358,6 +370,40 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 4 :
+                    // InternalFin.g:143:3: ( () ruleConditionalStatement )
+                    {
+                    // InternalFin.g:143:3: ( () ruleConditionalStatement )
+                    // InternalFin.g:144:4: () ruleConditionalStatement
+                    {
+                    // InternalFin.g:144:4: ()
+                    // InternalFin.g:145:5: 
+                    {
+
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getElementAccess().getElementAction_3_0(),
+                    						current);
+                    				
+
+                    }
+
+
+                    				newCompositeNode(grammarAccess.getElementAccess().getConditionalStatementParserRuleCall_3_1());
+                    			
+                    pushFollow(FOLLOW_2);
+                    ruleConditionalStatement();
+
+                    state._fsp--;
+
+
+                    				afterParserOrEnumRuleCall();
+                    			
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -381,7 +427,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAsset"
-    // InternalFin.g:146:1: entryRuleAsset returns [EObject current=null] : iv_ruleAsset= ruleAsset EOF ;
+    // InternalFin.g:163:1: entryRuleAsset returns [EObject current=null] : iv_ruleAsset= ruleAsset EOF ;
     public final EObject entryRuleAsset() throws RecognitionException {
         EObject current = null;
 
@@ -389,8 +435,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:146:46: (iv_ruleAsset= ruleAsset EOF )
-            // InternalFin.g:147:2: iv_ruleAsset= ruleAsset EOF
+            // InternalFin.g:163:46: (iv_ruleAsset= ruleAsset EOF )
+            // InternalFin.g:164:2: iv_ruleAsset= ruleAsset EOF
             {
              newCompositeNode(grammarAccess.getAssetRule()); 
             pushFollow(FOLLOW_1);
@@ -417,7 +463,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAsset"
-    // InternalFin.g:153:1: ruleAsset returns [EObject current=null] : (this_Bond_0= ruleBond | this_Option_1= ruleOption | this_Cash_2= ruleCash ) ;
+    // InternalFin.g:170:1: ruleAsset returns [EObject current=null] : (this_Bond_0= ruleBond | this_Option_1= ruleOption | this_Cash_2= ruleCash ) ;
     public final EObject ruleAsset() throws RecognitionException {
         EObject current = null;
 
@@ -432,23 +478,23 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:159:2: ( (this_Bond_0= ruleBond | this_Option_1= ruleOption | this_Cash_2= ruleCash ) )
-            // InternalFin.g:160:2: (this_Bond_0= ruleBond | this_Option_1= ruleOption | this_Cash_2= ruleCash )
+            // InternalFin.g:176:2: ( (this_Bond_0= ruleBond | this_Option_1= ruleOption | this_Cash_2= ruleCash ) )
+            // InternalFin.g:177:2: (this_Bond_0= ruleBond | this_Option_1= ruleOption | this_Cash_2= ruleCash )
             {
-            // InternalFin.g:160:2: (this_Bond_0= ruleBond | this_Option_1= ruleOption | this_Cash_2= ruleCash )
+            // InternalFin.g:177:2: (this_Bond_0= ruleBond | this_Option_1= ruleOption | this_Cash_2= ruleCash )
             int alt3=3;
             switch ( input.LA(1) ) {
-            case 14:
+            case 16:
                 {
                 alt3=1;
                 }
                 break;
-            case 19:
+            case 21:
                 {
                 alt3=2;
                 }
                 break;
-            case 27:
+            case 29:
                 {
                 alt3=3;
                 }
@@ -462,7 +508,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             switch (alt3) {
                 case 1 :
-                    // InternalFin.g:161:3: this_Bond_0= ruleBond
+                    // InternalFin.g:178:3: this_Bond_0= ruleBond
                     {
 
                     			newCompositeNode(grammarAccess.getAssetAccess().getBondParserRuleCall_0());
@@ -480,7 +526,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalFin.g:170:3: this_Option_1= ruleOption
+                    // InternalFin.g:187:3: this_Option_1= ruleOption
                     {
 
                     			newCompositeNode(grammarAccess.getAssetAccess().getOptionParserRuleCall_1());
@@ -498,7 +544,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalFin.g:179:3: this_Cash_2= ruleCash
+                    // InternalFin.g:196:3: this_Cash_2= ruleCash
                     {
 
                     			newCompositeNode(grammarAccess.getAssetAccess().getCashParserRuleCall_2());
@@ -538,7 +584,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTransaction"
-    // InternalFin.g:191:1: entryRuleTransaction returns [EObject current=null] : iv_ruleTransaction= ruleTransaction EOF ;
+    // InternalFin.g:208:1: entryRuleTransaction returns [EObject current=null] : iv_ruleTransaction= ruleTransaction EOF ;
     public final EObject entryRuleTransaction() throws RecognitionException {
         EObject current = null;
 
@@ -546,8 +592,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:191:52: (iv_ruleTransaction= ruleTransaction EOF )
-            // InternalFin.g:192:2: iv_ruleTransaction= ruleTransaction EOF
+            // InternalFin.g:208:52: (iv_ruleTransaction= ruleTransaction EOF )
+            // InternalFin.g:209:2: iv_ruleTransaction= ruleTransaction EOF
             {
              newCompositeNode(grammarAccess.getTransactionRule()); 
             pushFollow(FOLLOW_1);
@@ -574,7 +620,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTransaction"
-    // InternalFin.g:198:1: ruleTransaction returns [EObject current=null] : (this_Buy_0= ruleBuy | this_Sell_1= ruleSell | this_Deposit_2= ruleDeposit | this_Withdrawal_3= ruleWithdrawal ) ;
+    // InternalFin.g:215:1: ruleTransaction returns [EObject current=null] : (this_Buy_0= ruleBuy | this_Sell_1= ruleSell | this_Deposit_2= ruleDeposit | this_Withdrawal_3= ruleWithdrawal ) ;
     public final EObject ruleTransaction() throws RecognitionException {
         EObject current = null;
 
@@ -591,28 +637,28 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:204:2: ( (this_Buy_0= ruleBuy | this_Sell_1= ruleSell | this_Deposit_2= ruleDeposit | this_Withdrawal_3= ruleWithdrawal ) )
-            // InternalFin.g:205:2: (this_Buy_0= ruleBuy | this_Sell_1= ruleSell | this_Deposit_2= ruleDeposit | this_Withdrawal_3= ruleWithdrawal )
+            // InternalFin.g:221:2: ( (this_Buy_0= ruleBuy | this_Sell_1= ruleSell | this_Deposit_2= ruleDeposit | this_Withdrawal_3= ruleWithdrawal ) )
+            // InternalFin.g:222:2: (this_Buy_0= ruleBuy | this_Sell_1= ruleSell | this_Deposit_2= ruleDeposit | this_Withdrawal_3= ruleWithdrawal )
             {
-            // InternalFin.g:205:2: (this_Buy_0= ruleBuy | this_Sell_1= ruleSell | this_Deposit_2= ruleDeposit | this_Withdrawal_3= ruleWithdrawal )
+            // InternalFin.g:222:2: (this_Buy_0= ruleBuy | this_Sell_1= ruleSell | this_Deposit_2= ruleDeposit | this_Withdrawal_3= ruleWithdrawal )
             int alt4=4;
             switch ( input.LA(1) ) {
-            case 29:
+            case 31:
                 {
                 alt4=1;
                 }
                 break;
-            case 30:
+            case 32:
                 {
                 alt4=2;
                 }
                 break;
-            case 32:
+            case 34:
                 {
                 alt4=3;
                 }
                 break;
-            case 33:
+            case 35:
                 {
                 alt4=4;
                 }
@@ -626,7 +672,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             switch (alt4) {
                 case 1 :
-                    // InternalFin.g:206:3: this_Buy_0= ruleBuy
+                    // InternalFin.g:223:3: this_Buy_0= ruleBuy
                     {
 
                     			newCompositeNode(grammarAccess.getTransactionAccess().getBuyParserRuleCall_0());
@@ -644,7 +690,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalFin.g:215:3: this_Sell_1= ruleSell
+                    // InternalFin.g:232:3: this_Sell_1= ruleSell
                     {
 
                     			newCompositeNode(grammarAccess.getTransactionAccess().getSellParserRuleCall_1());
@@ -662,7 +708,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalFin.g:224:3: this_Deposit_2= ruleDeposit
+                    // InternalFin.g:241:3: this_Deposit_2= ruleDeposit
                     {
 
                     			newCompositeNode(grammarAccess.getTransactionAccess().getDepositParserRuleCall_2());
@@ -680,7 +726,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalFin.g:233:3: this_Withdrawal_3= ruleWithdrawal
+                    // InternalFin.g:250:3: this_Withdrawal_3= ruleWithdrawal
                     {
 
                     			newCompositeNode(grammarAccess.getTransactionAccess().getWithdrawalParserRuleCall_3());
@@ -720,7 +766,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAction"
-    // InternalFin.g:245:1: entryRuleAction returns [EObject current=null] : iv_ruleAction= ruleAction EOF ;
+    // InternalFin.g:262:1: entryRuleAction returns [EObject current=null] : iv_ruleAction= ruleAction EOF ;
     public final EObject entryRuleAction() throws RecognitionException {
         EObject current = null;
 
@@ -728,8 +774,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:245:47: (iv_ruleAction= ruleAction EOF )
-            // InternalFin.g:246:2: iv_ruleAction= ruleAction EOF
+            // InternalFin.g:262:47: (iv_ruleAction= ruleAction EOF )
+            // InternalFin.g:263:2: iv_ruleAction= ruleAction EOF
             {
              newCompositeNode(grammarAccess.getActionRule()); 
             pushFollow(FOLLOW_1);
@@ -756,30 +802,30 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAction"
-    // InternalFin.g:252:1: ruleAction returns [EObject current=null] : this_Display_0= ruleDisplay ;
+    // InternalFin.g:269:1: ruleAction returns [EObject current=null] : this_View_0= ruleView ;
     public final EObject ruleAction() throws RecognitionException {
         EObject current = null;
 
-        EObject this_Display_0 = null;
+        EObject this_View_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalFin.g:258:2: (this_Display_0= ruleDisplay )
-            // InternalFin.g:259:2: this_Display_0= ruleDisplay
+            // InternalFin.g:275:2: (this_View_0= ruleView )
+            // InternalFin.g:276:2: this_View_0= ruleView
             {
 
-            		newCompositeNode(grammarAccess.getActionAccess().getDisplayParserRuleCall());
+            		newCompositeNode(grammarAccess.getActionAccess().getViewParserRuleCall());
             	
             pushFollow(FOLLOW_2);
-            this_Display_0=ruleDisplay();
+            this_View_0=ruleView();
 
             state._fsp--;
 
 
-            		current = this_Display_0;
+            		current = this_View_0;
             		afterParserOrEnumRuleCall();
             	
 
@@ -801,8 +847,288 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleAction"
 
 
+    // $ANTLR start "entryRuleConditionalStatement"
+    // InternalFin.g:287:1: entryRuleConditionalStatement returns [String current=null] : iv_ruleConditionalStatement= ruleConditionalStatement EOF ;
+    public final String entryRuleConditionalStatement() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleConditionalStatement = null;
+
+
+        try {
+            // InternalFin.g:287:60: (iv_ruleConditionalStatement= ruleConditionalStatement EOF )
+            // InternalFin.g:288:2: iv_ruleConditionalStatement= ruleConditionalStatement EOF
+            {
+             newCompositeNode(grammarAccess.getConditionalStatementRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleConditionalStatement=ruleConditionalStatement();
+
+            state._fsp--;
+
+             current =iv_ruleConditionalStatement.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleConditionalStatement"
+
+
+    // $ANTLR start "ruleConditionalStatement"
+    // InternalFin.g:294:1: ruleConditionalStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_IfStatement_0= ruleIfStatement | this_ForStatement_1= ruleForStatement ) ;
+    public final AntlrDatatypeRuleToken ruleConditionalStatement() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        AntlrDatatypeRuleToken this_IfStatement_0 = null;
+
+        AntlrDatatypeRuleToken this_ForStatement_1 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalFin.g:300:2: ( (this_IfStatement_0= ruleIfStatement | this_ForStatement_1= ruleForStatement ) )
+            // InternalFin.g:301:2: (this_IfStatement_0= ruleIfStatement | this_ForStatement_1= ruleForStatement )
+            {
+            // InternalFin.g:301:2: (this_IfStatement_0= ruleIfStatement | this_ForStatement_1= ruleForStatement )
+            int alt5=2;
+            int LA5_0 = input.LA(1);
+
+            if ( (LA5_0==11) ) {
+                alt5=1;
+            }
+            else if ( (LA5_0==12) ) {
+                alt5=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 5, 0, input);
+
+                throw nvae;
+            }
+            switch (alt5) {
+                case 1 :
+                    // InternalFin.g:302:3: this_IfStatement_0= ruleIfStatement
+                    {
+
+                    			newCompositeNode(grammarAccess.getConditionalStatementAccess().getIfStatementParserRuleCall_0());
+                    		
+                    pushFollow(FOLLOW_2);
+                    this_IfStatement_0=ruleIfStatement();
+
+                    state._fsp--;
+
+
+                    			current.merge(this_IfStatement_0);
+                    		
+
+                    			afterParserOrEnumRuleCall();
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalFin.g:313:3: this_ForStatement_1= ruleForStatement
+                    {
+
+                    			newCompositeNode(grammarAccess.getConditionalStatementAccess().getForStatementParserRuleCall_1());
+                    		
+                    pushFollow(FOLLOW_2);
+                    this_ForStatement_1=ruleForStatement();
+
+                    state._fsp--;
+
+
+                    			current.merge(this_ForStatement_1);
+                    		
+
+                    			afterParserOrEnumRuleCall();
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleConditionalStatement"
+
+
+    // $ANTLR start "entryRuleIfStatement"
+    // InternalFin.g:327:1: entryRuleIfStatement returns [String current=null] : iv_ruleIfStatement= ruleIfStatement EOF ;
+    public final String entryRuleIfStatement() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleIfStatement = null;
+
+
+        try {
+            // InternalFin.g:327:51: (iv_ruleIfStatement= ruleIfStatement EOF )
+            // InternalFin.g:328:2: iv_ruleIfStatement= ruleIfStatement EOF
+            {
+             newCompositeNode(grammarAccess.getIfStatementRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleIfStatement=ruleIfStatement();
+
+            state._fsp--;
+
+             current =iv_ruleIfStatement.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleIfStatement"
+
+
+    // $ANTLR start "ruleIfStatement"
+    // InternalFin.g:334:1: ruleIfStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'If' ;
+    public final AntlrDatatypeRuleToken ruleIfStatement() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalFin.g:340:2: (kw= 'If' )
+            // InternalFin.g:341:2: kw= 'If'
+            {
+            kw=(Token)match(input,11,FOLLOW_2); 
+
+            		current.merge(kw);
+            		newLeafNode(kw, grammarAccess.getIfStatementAccess().getIfKeyword());
+            	
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleIfStatement"
+
+
+    // $ANTLR start "entryRuleForStatement"
+    // InternalFin.g:349:1: entryRuleForStatement returns [String current=null] : iv_ruleForStatement= ruleForStatement EOF ;
+    public final String entryRuleForStatement() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleForStatement = null;
+
+
+        try {
+            // InternalFin.g:349:52: (iv_ruleForStatement= ruleForStatement EOF )
+            // InternalFin.g:350:2: iv_ruleForStatement= ruleForStatement EOF
+            {
+             newCompositeNode(grammarAccess.getForStatementRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleForStatement=ruleForStatement();
+
+            state._fsp--;
+
+             current =iv_ruleForStatement.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleForStatement"
+
+
+    // $ANTLR start "ruleForStatement"
+    // InternalFin.g:356:1: ruleForStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'For' ;
+    public final AntlrDatatypeRuleToken ruleForStatement() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalFin.g:362:2: (kw= 'For' )
+            // InternalFin.g:363:2: kw= 'For'
+            {
+            kw=(Token)match(input,12,FOLLOW_2); 
+
+            		current.merge(kw);
+            		newLeafNode(kw, grammarAccess.getForStatementAccess().getForKeyword());
+            	
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleForStatement"
+
+
     // $ANTLR start "entryRulePortfolio"
-    // InternalFin.g:270:1: entryRulePortfolio returns [EObject current=null] : iv_rulePortfolio= rulePortfolio EOF ;
+    // InternalFin.g:371:1: entryRulePortfolio returns [EObject current=null] : iv_rulePortfolio= rulePortfolio EOF ;
     public final EObject entryRulePortfolio() throws RecognitionException {
         EObject current = null;
 
@@ -810,8 +1136,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:270:50: (iv_rulePortfolio= rulePortfolio EOF )
-            // InternalFin.g:271:2: iv_rulePortfolio= rulePortfolio EOF
+            // InternalFin.g:371:50: (iv_rulePortfolio= rulePortfolio EOF )
+            // InternalFin.g:372:2: iv_rulePortfolio= rulePortfolio EOF
             {
              newCompositeNode(grammarAccess.getPortfolioRule()); 
             pushFollow(FOLLOW_1);
@@ -838,7 +1164,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePortfolio"
-    // InternalFin.g:277:1: rulePortfolio returns [EObject current=null] : (otherlv_0= 'Portfolio' otherlv_1= '{' ( (lv_asset_2_0= ruleAsset ) )+ otherlv_3= '}' ) ;
+    // InternalFin.g:378:1: rulePortfolio returns [EObject current=null] : (otherlv_0= 'Portfolio' otherlv_1= '{' ( (lv_asset_2_0= ruleAsset ) )+ otherlv_3= '}' ) ;
     public final EObject rulePortfolio() throws RecognitionException {
         EObject current = null;
 
@@ -852,38 +1178,38 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:283:2: ( (otherlv_0= 'Portfolio' otherlv_1= '{' ( (lv_asset_2_0= ruleAsset ) )+ otherlv_3= '}' ) )
-            // InternalFin.g:284:2: (otherlv_0= 'Portfolio' otherlv_1= '{' ( (lv_asset_2_0= ruleAsset ) )+ otherlv_3= '}' )
+            // InternalFin.g:384:2: ( (otherlv_0= 'Portfolio' otherlv_1= '{' ( (lv_asset_2_0= ruleAsset ) )+ otherlv_3= '}' ) )
+            // InternalFin.g:385:2: (otherlv_0= 'Portfolio' otherlv_1= '{' ( (lv_asset_2_0= ruleAsset ) )+ otherlv_3= '}' )
             {
-            // InternalFin.g:284:2: (otherlv_0= 'Portfolio' otherlv_1= '{' ( (lv_asset_2_0= ruleAsset ) )+ otherlv_3= '}' )
-            // InternalFin.g:285:3: otherlv_0= 'Portfolio' otherlv_1= '{' ( (lv_asset_2_0= ruleAsset ) )+ otherlv_3= '}'
+            // InternalFin.g:385:2: (otherlv_0= 'Portfolio' otherlv_1= '{' ( (lv_asset_2_0= ruleAsset ) )+ otherlv_3= '}' )
+            // InternalFin.g:386:3: otherlv_0= 'Portfolio' otherlv_1= '{' ( (lv_asset_2_0= ruleAsset ) )+ otherlv_3= '}'
             {
-            otherlv_0=(Token)match(input,11,FOLLOW_4); 
+            otherlv_0=(Token)match(input,13,FOLLOW_4); 
 
             			newLeafNode(otherlv_0, grammarAccess.getPortfolioAccess().getPortfolioKeyword_0());
             		
-            otherlv_1=(Token)match(input,12,FOLLOW_5); 
+            otherlv_1=(Token)match(input,14,FOLLOW_5); 
 
             			newLeafNode(otherlv_1, grammarAccess.getPortfolioAccess().getLeftCurlyBracketKeyword_1());
             		
-            // InternalFin.g:293:3: ( (lv_asset_2_0= ruleAsset ) )+
-            int cnt5=0;
-            loop5:
+            // InternalFin.g:394:3: ( (lv_asset_2_0= ruleAsset ) )+
+            int cnt6=0;
+            loop6:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( (LA5_0==14||LA5_0==19||LA5_0==27) ) {
-                    alt5=1;
+                if ( (LA6_0==16||LA6_0==21||LA6_0==29) ) {
+                    alt6=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt6) {
             	case 1 :
-            	    // InternalFin.g:294:4: (lv_asset_2_0= ruleAsset )
+            	    // InternalFin.g:395:4: (lv_asset_2_0= ruleAsset )
             	    {
-            	    // InternalFin.g:294:4: (lv_asset_2_0= ruleAsset )
-            	    // InternalFin.g:295:5: lv_asset_2_0= ruleAsset
+            	    // InternalFin.g:395:4: (lv_asset_2_0= ruleAsset )
+            	    // InternalFin.g:396:5: lv_asset_2_0= ruleAsset
             	    {
 
             	    					newCompositeNode(grammarAccess.getPortfolioAccess().getAssetAssetParserRuleCall_2_0());
@@ -912,15 +1238,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt5 >= 1 ) break loop5;
+            	    if ( cnt6 >= 1 ) break loop6;
                         EarlyExitException eee =
-                            new EarlyExitException(5, input);
+                            new EarlyExitException(6, input);
                         throw eee;
                 }
-                cnt5++;
+                cnt6++;
             } while (true);
 
-            otherlv_3=(Token)match(input,13,FOLLOW_2); 
+            otherlv_3=(Token)match(input,15,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getPortfolioAccess().getRightCurlyBracketKeyword_3());
             		
@@ -947,7 +1273,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBond"
-    // InternalFin.g:320:1: entryRuleBond returns [EObject current=null] : iv_ruleBond= ruleBond EOF ;
+    // InternalFin.g:421:1: entryRuleBond returns [EObject current=null] : iv_ruleBond= ruleBond EOF ;
     public final EObject entryRuleBond() throws RecognitionException {
         EObject current = null;
 
@@ -955,8 +1281,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:320:45: (iv_ruleBond= ruleBond EOF )
-            // InternalFin.g:321:2: iv_ruleBond= ruleBond EOF
+            // InternalFin.g:421:45: (iv_ruleBond= ruleBond EOF )
+            // InternalFin.g:422:2: iv_ruleBond= ruleBond EOF
             {
              newCompositeNode(grammarAccess.getBondRule()); 
             pushFollow(FOLLOW_1);
@@ -983,7 +1309,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBond"
-    // InternalFin.g:327:1: ruleBond returns [EObject current=null] : (otherlv_0= 'Bond' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'faceValue' ( (lv_faceValue_4_0= ruleFLOAT ) ) otherlv_5= 'couponRate' ( (lv_couponRate_6_0= ruleFLOAT ) ) otherlv_7= 'maturity' ( (lv_maturity_8_0= RULE_INT ) ) otherlv_9= 'yieldRate' ( (lv_yieldRate_10_0= ruleFLOAT ) ) otherlv_11= '}' ) ;
+    // InternalFin.g:428:1: ruleBond returns [EObject current=null] : (otherlv_0= 'Bond' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'faceValue' ( (lv_faceValue_4_0= ruleFLOAT ) ) otherlv_5= 'couponRate' ( (lv_couponRate_6_0= ruleFLOAT ) ) otherlv_7= 'maturity' ( (lv_maturity_8_0= RULE_INT ) ) otherlv_9= 'yieldRate' ( (lv_yieldRate_10_0= ruleFLOAT ) ) otherlv_11= '}' ) ;
     public final EObject ruleBond() throws RecognitionException {
         EObject current = null;
 
@@ -1007,21 +1333,21 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:333:2: ( (otherlv_0= 'Bond' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'faceValue' ( (lv_faceValue_4_0= ruleFLOAT ) ) otherlv_5= 'couponRate' ( (lv_couponRate_6_0= ruleFLOAT ) ) otherlv_7= 'maturity' ( (lv_maturity_8_0= RULE_INT ) ) otherlv_9= 'yieldRate' ( (lv_yieldRate_10_0= ruleFLOAT ) ) otherlv_11= '}' ) )
-            // InternalFin.g:334:2: (otherlv_0= 'Bond' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'faceValue' ( (lv_faceValue_4_0= ruleFLOAT ) ) otherlv_5= 'couponRate' ( (lv_couponRate_6_0= ruleFLOAT ) ) otherlv_7= 'maturity' ( (lv_maturity_8_0= RULE_INT ) ) otherlv_9= 'yieldRate' ( (lv_yieldRate_10_0= ruleFLOAT ) ) otherlv_11= '}' )
+            // InternalFin.g:434:2: ( (otherlv_0= 'Bond' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'faceValue' ( (lv_faceValue_4_0= ruleFLOAT ) ) otherlv_5= 'couponRate' ( (lv_couponRate_6_0= ruleFLOAT ) ) otherlv_7= 'maturity' ( (lv_maturity_8_0= RULE_INT ) ) otherlv_9= 'yieldRate' ( (lv_yieldRate_10_0= ruleFLOAT ) ) otherlv_11= '}' ) )
+            // InternalFin.g:435:2: (otherlv_0= 'Bond' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'faceValue' ( (lv_faceValue_4_0= ruleFLOAT ) ) otherlv_5= 'couponRate' ( (lv_couponRate_6_0= ruleFLOAT ) ) otherlv_7= 'maturity' ( (lv_maturity_8_0= RULE_INT ) ) otherlv_9= 'yieldRate' ( (lv_yieldRate_10_0= ruleFLOAT ) ) otherlv_11= '}' )
             {
-            // InternalFin.g:334:2: (otherlv_0= 'Bond' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'faceValue' ( (lv_faceValue_4_0= ruleFLOAT ) ) otherlv_5= 'couponRate' ( (lv_couponRate_6_0= ruleFLOAT ) ) otherlv_7= 'maturity' ( (lv_maturity_8_0= RULE_INT ) ) otherlv_9= 'yieldRate' ( (lv_yieldRate_10_0= ruleFLOAT ) ) otherlv_11= '}' )
-            // InternalFin.g:335:3: otherlv_0= 'Bond' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'faceValue' ( (lv_faceValue_4_0= ruleFLOAT ) ) otherlv_5= 'couponRate' ( (lv_couponRate_6_0= ruleFLOAT ) ) otherlv_7= 'maturity' ( (lv_maturity_8_0= RULE_INT ) ) otherlv_9= 'yieldRate' ( (lv_yieldRate_10_0= ruleFLOAT ) ) otherlv_11= '}'
+            // InternalFin.g:435:2: (otherlv_0= 'Bond' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'faceValue' ( (lv_faceValue_4_0= ruleFLOAT ) ) otherlv_5= 'couponRate' ( (lv_couponRate_6_0= ruleFLOAT ) ) otherlv_7= 'maturity' ( (lv_maturity_8_0= RULE_INT ) ) otherlv_9= 'yieldRate' ( (lv_yieldRate_10_0= ruleFLOAT ) ) otherlv_11= '}' )
+            // InternalFin.g:436:3: otherlv_0= 'Bond' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'faceValue' ( (lv_faceValue_4_0= ruleFLOAT ) ) otherlv_5= 'couponRate' ( (lv_couponRate_6_0= ruleFLOAT ) ) otherlv_7= 'maturity' ( (lv_maturity_8_0= RULE_INT ) ) otherlv_9= 'yieldRate' ( (lv_yieldRate_10_0= ruleFLOAT ) ) otherlv_11= '}'
             {
-            otherlv_0=(Token)match(input,14,FOLLOW_7); 
+            otherlv_0=(Token)match(input,16,FOLLOW_7); 
 
             			newLeafNode(otherlv_0, grammarAccess.getBondAccess().getBondKeyword_0());
             		
-            // InternalFin.g:339:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalFin.g:340:4: (lv_name_1_0= RULE_ID )
+            // InternalFin.g:440:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalFin.g:441:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalFin.g:340:4: (lv_name_1_0= RULE_ID )
-            // InternalFin.g:341:5: lv_name_1_0= RULE_ID
+            // InternalFin.g:441:4: (lv_name_1_0= RULE_ID )
+            // InternalFin.g:442:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_4); 
 
@@ -1043,19 +1369,19 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,12,FOLLOW_8); 
+            otherlv_2=(Token)match(input,14,FOLLOW_8); 
 
             			newLeafNode(otherlv_2, grammarAccess.getBondAccess().getLeftCurlyBracketKeyword_2());
             		
-            otherlv_3=(Token)match(input,15,FOLLOW_9); 
+            otherlv_3=(Token)match(input,17,FOLLOW_9); 
 
             			newLeafNode(otherlv_3, grammarAccess.getBondAccess().getFaceValueKeyword_3());
             		
-            // InternalFin.g:365:3: ( (lv_faceValue_4_0= ruleFLOAT ) )
-            // InternalFin.g:366:4: (lv_faceValue_4_0= ruleFLOAT )
+            // InternalFin.g:466:3: ( (lv_faceValue_4_0= ruleFLOAT ) )
+            // InternalFin.g:467:4: (lv_faceValue_4_0= ruleFLOAT )
             {
-            // InternalFin.g:366:4: (lv_faceValue_4_0= ruleFLOAT )
-            // InternalFin.g:367:5: lv_faceValue_4_0= ruleFLOAT
+            // InternalFin.g:467:4: (lv_faceValue_4_0= ruleFLOAT )
+            // InternalFin.g:468:5: lv_faceValue_4_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getBondAccess().getFaceValueFLOATParserRuleCall_4_0());
@@ -1082,15 +1408,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,16,FOLLOW_9); 
+            otherlv_5=(Token)match(input,18,FOLLOW_9); 
 
             			newLeafNode(otherlv_5, grammarAccess.getBondAccess().getCouponRateKeyword_5());
             		
-            // InternalFin.g:388:3: ( (lv_couponRate_6_0= ruleFLOAT ) )
-            // InternalFin.g:389:4: (lv_couponRate_6_0= ruleFLOAT )
+            // InternalFin.g:489:3: ( (lv_couponRate_6_0= ruleFLOAT ) )
+            // InternalFin.g:490:4: (lv_couponRate_6_0= ruleFLOAT )
             {
-            // InternalFin.g:389:4: (lv_couponRate_6_0= ruleFLOAT )
-            // InternalFin.g:390:5: lv_couponRate_6_0= ruleFLOAT
+            // InternalFin.g:490:4: (lv_couponRate_6_0= ruleFLOAT )
+            // InternalFin.g:491:5: lv_couponRate_6_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getBondAccess().getCouponRateFLOATParserRuleCall_6_0());
@@ -1117,15 +1443,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,17,FOLLOW_12); 
+            otherlv_7=(Token)match(input,19,FOLLOW_12); 
 
             			newLeafNode(otherlv_7, grammarAccess.getBondAccess().getMaturityKeyword_7());
             		
-            // InternalFin.g:411:3: ( (lv_maturity_8_0= RULE_INT ) )
-            // InternalFin.g:412:4: (lv_maturity_8_0= RULE_INT )
+            // InternalFin.g:512:3: ( (lv_maturity_8_0= RULE_INT ) )
+            // InternalFin.g:513:4: (lv_maturity_8_0= RULE_INT )
             {
-            // InternalFin.g:412:4: (lv_maturity_8_0= RULE_INT )
-            // InternalFin.g:413:5: lv_maturity_8_0= RULE_INT
+            // InternalFin.g:513:4: (lv_maturity_8_0= RULE_INT )
+            // InternalFin.g:514:5: lv_maturity_8_0= RULE_INT
             {
             lv_maturity_8_0=(Token)match(input,RULE_INT,FOLLOW_13); 
 
@@ -1147,15 +1473,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,18,FOLLOW_9); 
+            otherlv_9=(Token)match(input,20,FOLLOW_9); 
 
             			newLeafNode(otherlv_9, grammarAccess.getBondAccess().getYieldRateKeyword_9());
             		
-            // InternalFin.g:433:3: ( (lv_yieldRate_10_0= ruleFLOAT ) )
-            // InternalFin.g:434:4: (lv_yieldRate_10_0= ruleFLOAT )
+            // InternalFin.g:534:3: ( (lv_yieldRate_10_0= ruleFLOAT ) )
+            // InternalFin.g:535:4: (lv_yieldRate_10_0= ruleFLOAT )
             {
-            // InternalFin.g:434:4: (lv_yieldRate_10_0= ruleFLOAT )
-            // InternalFin.g:435:5: lv_yieldRate_10_0= ruleFLOAT
+            // InternalFin.g:535:4: (lv_yieldRate_10_0= ruleFLOAT )
+            // InternalFin.g:536:5: lv_yieldRate_10_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getBondAccess().getYieldRateFLOATParserRuleCall_10_0());
@@ -1182,7 +1508,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_11=(Token)match(input,13,FOLLOW_2); 
+            otherlv_11=(Token)match(input,15,FOLLOW_2); 
 
             			newLeafNode(otherlv_11, grammarAccess.getBondAccess().getRightCurlyBracketKeyword_11());
             		
@@ -1209,7 +1535,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOption"
-    // InternalFin.g:460:1: entryRuleOption returns [EObject current=null] : iv_ruleOption= ruleOption EOF ;
+    // InternalFin.g:561:1: entryRuleOption returns [EObject current=null] : iv_ruleOption= ruleOption EOF ;
     public final EObject entryRuleOption() throws RecognitionException {
         EObject current = null;
 
@@ -1217,8 +1543,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:460:47: (iv_ruleOption= ruleOption EOF )
-            // InternalFin.g:461:2: iv_ruleOption= ruleOption EOF
+            // InternalFin.g:561:47: (iv_ruleOption= ruleOption EOF )
+            // InternalFin.g:562:2: iv_ruleOption= ruleOption EOF
             {
              newCompositeNode(grammarAccess.getOptionRule()); 
             pushFollow(FOLLOW_1);
@@ -1245,7 +1571,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOption"
-    // InternalFin.g:467:1: ruleOption returns [EObject current=null] : (otherlv_0= 'Option' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'type' ( (lv_type_4_0= ruleOptionType ) ) otherlv_5= 'underlyingPrice' ( (lv_underlyingPrice_6_0= ruleFLOAT ) ) otherlv_7= 'strikePrice' ( (lv_strikePrice_8_0= ruleFLOAT ) ) otherlv_9= 'timeToExpiration' ( (lv_timeToExpiration_10_0= ruleFLOAT ) ) otherlv_11= 'riskFreeRate' ( (lv_riskFreeRate_12_0= ruleFLOAT ) ) otherlv_13= 'volatility' ( (lv_volatility_14_0= ruleFLOAT ) ) otherlv_15= 'dividendYield' ( (lv_dividendYield_16_0= ruleFLOAT ) ) otherlv_17= '}' ) ;
+    // InternalFin.g:568:1: ruleOption returns [EObject current=null] : (otherlv_0= 'Option' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'type' ( (lv_type_4_0= ruleOptionType ) ) otherlv_5= 'underlyingPrice' ( (lv_underlyingPrice_6_0= ruleFLOAT ) ) otherlv_7= 'strikePrice' ( (lv_strikePrice_8_0= ruleFLOAT ) ) otherlv_9= 'timeToExpiration' ( (lv_timeToExpiration_10_0= ruleFLOAT ) ) otherlv_11= 'riskFreeRate' ( (lv_riskFreeRate_12_0= ruleFLOAT ) ) otherlv_13= 'volatility' ( (lv_volatility_14_0= ruleFLOAT ) ) otherlv_15= 'dividendYield' ( (lv_dividendYield_16_0= ruleFLOAT ) ) otherlv_17= '}' ) ;
     public final EObject ruleOption() throws RecognitionException {
         EObject current = null;
 
@@ -1279,21 +1605,21 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:473:2: ( (otherlv_0= 'Option' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'type' ( (lv_type_4_0= ruleOptionType ) ) otherlv_5= 'underlyingPrice' ( (lv_underlyingPrice_6_0= ruleFLOAT ) ) otherlv_7= 'strikePrice' ( (lv_strikePrice_8_0= ruleFLOAT ) ) otherlv_9= 'timeToExpiration' ( (lv_timeToExpiration_10_0= ruleFLOAT ) ) otherlv_11= 'riskFreeRate' ( (lv_riskFreeRate_12_0= ruleFLOAT ) ) otherlv_13= 'volatility' ( (lv_volatility_14_0= ruleFLOAT ) ) otherlv_15= 'dividendYield' ( (lv_dividendYield_16_0= ruleFLOAT ) ) otherlv_17= '}' ) )
-            // InternalFin.g:474:2: (otherlv_0= 'Option' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'type' ( (lv_type_4_0= ruleOptionType ) ) otherlv_5= 'underlyingPrice' ( (lv_underlyingPrice_6_0= ruleFLOAT ) ) otherlv_7= 'strikePrice' ( (lv_strikePrice_8_0= ruleFLOAT ) ) otherlv_9= 'timeToExpiration' ( (lv_timeToExpiration_10_0= ruleFLOAT ) ) otherlv_11= 'riskFreeRate' ( (lv_riskFreeRate_12_0= ruleFLOAT ) ) otherlv_13= 'volatility' ( (lv_volatility_14_0= ruleFLOAT ) ) otherlv_15= 'dividendYield' ( (lv_dividendYield_16_0= ruleFLOAT ) ) otherlv_17= '}' )
+            // InternalFin.g:574:2: ( (otherlv_0= 'Option' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'type' ( (lv_type_4_0= ruleOptionType ) ) otherlv_5= 'underlyingPrice' ( (lv_underlyingPrice_6_0= ruleFLOAT ) ) otherlv_7= 'strikePrice' ( (lv_strikePrice_8_0= ruleFLOAT ) ) otherlv_9= 'timeToExpiration' ( (lv_timeToExpiration_10_0= ruleFLOAT ) ) otherlv_11= 'riskFreeRate' ( (lv_riskFreeRate_12_0= ruleFLOAT ) ) otherlv_13= 'volatility' ( (lv_volatility_14_0= ruleFLOAT ) ) otherlv_15= 'dividendYield' ( (lv_dividendYield_16_0= ruleFLOAT ) ) otherlv_17= '}' ) )
+            // InternalFin.g:575:2: (otherlv_0= 'Option' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'type' ( (lv_type_4_0= ruleOptionType ) ) otherlv_5= 'underlyingPrice' ( (lv_underlyingPrice_6_0= ruleFLOAT ) ) otherlv_7= 'strikePrice' ( (lv_strikePrice_8_0= ruleFLOAT ) ) otherlv_9= 'timeToExpiration' ( (lv_timeToExpiration_10_0= ruleFLOAT ) ) otherlv_11= 'riskFreeRate' ( (lv_riskFreeRate_12_0= ruleFLOAT ) ) otherlv_13= 'volatility' ( (lv_volatility_14_0= ruleFLOAT ) ) otherlv_15= 'dividendYield' ( (lv_dividendYield_16_0= ruleFLOAT ) ) otherlv_17= '}' )
             {
-            // InternalFin.g:474:2: (otherlv_0= 'Option' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'type' ( (lv_type_4_0= ruleOptionType ) ) otherlv_5= 'underlyingPrice' ( (lv_underlyingPrice_6_0= ruleFLOAT ) ) otherlv_7= 'strikePrice' ( (lv_strikePrice_8_0= ruleFLOAT ) ) otherlv_9= 'timeToExpiration' ( (lv_timeToExpiration_10_0= ruleFLOAT ) ) otherlv_11= 'riskFreeRate' ( (lv_riskFreeRate_12_0= ruleFLOAT ) ) otherlv_13= 'volatility' ( (lv_volatility_14_0= ruleFLOAT ) ) otherlv_15= 'dividendYield' ( (lv_dividendYield_16_0= ruleFLOAT ) ) otherlv_17= '}' )
-            // InternalFin.g:475:3: otherlv_0= 'Option' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'type' ( (lv_type_4_0= ruleOptionType ) ) otherlv_5= 'underlyingPrice' ( (lv_underlyingPrice_6_0= ruleFLOAT ) ) otherlv_7= 'strikePrice' ( (lv_strikePrice_8_0= ruleFLOAT ) ) otherlv_9= 'timeToExpiration' ( (lv_timeToExpiration_10_0= ruleFLOAT ) ) otherlv_11= 'riskFreeRate' ( (lv_riskFreeRate_12_0= ruleFLOAT ) ) otherlv_13= 'volatility' ( (lv_volatility_14_0= ruleFLOAT ) ) otherlv_15= 'dividendYield' ( (lv_dividendYield_16_0= ruleFLOAT ) ) otherlv_17= '}'
+            // InternalFin.g:575:2: (otherlv_0= 'Option' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'type' ( (lv_type_4_0= ruleOptionType ) ) otherlv_5= 'underlyingPrice' ( (lv_underlyingPrice_6_0= ruleFLOAT ) ) otherlv_7= 'strikePrice' ( (lv_strikePrice_8_0= ruleFLOAT ) ) otherlv_9= 'timeToExpiration' ( (lv_timeToExpiration_10_0= ruleFLOAT ) ) otherlv_11= 'riskFreeRate' ( (lv_riskFreeRate_12_0= ruleFLOAT ) ) otherlv_13= 'volatility' ( (lv_volatility_14_0= ruleFLOAT ) ) otherlv_15= 'dividendYield' ( (lv_dividendYield_16_0= ruleFLOAT ) ) otherlv_17= '}' )
+            // InternalFin.g:576:3: otherlv_0= 'Option' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'type' ( (lv_type_4_0= ruleOptionType ) ) otherlv_5= 'underlyingPrice' ( (lv_underlyingPrice_6_0= ruleFLOAT ) ) otherlv_7= 'strikePrice' ( (lv_strikePrice_8_0= ruleFLOAT ) ) otherlv_9= 'timeToExpiration' ( (lv_timeToExpiration_10_0= ruleFLOAT ) ) otherlv_11= 'riskFreeRate' ( (lv_riskFreeRate_12_0= ruleFLOAT ) ) otherlv_13= 'volatility' ( (lv_volatility_14_0= ruleFLOAT ) ) otherlv_15= 'dividendYield' ( (lv_dividendYield_16_0= ruleFLOAT ) ) otherlv_17= '}'
             {
-            otherlv_0=(Token)match(input,19,FOLLOW_7); 
+            otherlv_0=(Token)match(input,21,FOLLOW_7); 
 
             			newLeafNode(otherlv_0, grammarAccess.getOptionAccess().getOptionKeyword_0());
             		
-            // InternalFin.g:479:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalFin.g:480:4: (lv_name_1_0= RULE_ID )
+            // InternalFin.g:580:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalFin.g:581:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalFin.g:480:4: (lv_name_1_0= RULE_ID )
-            // InternalFin.g:481:5: lv_name_1_0= RULE_ID
+            // InternalFin.g:581:4: (lv_name_1_0= RULE_ID )
+            // InternalFin.g:582:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_4); 
 
@@ -1315,19 +1641,19 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,12,FOLLOW_15); 
+            otherlv_2=(Token)match(input,14,FOLLOW_15); 
 
             			newLeafNode(otherlv_2, grammarAccess.getOptionAccess().getLeftCurlyBracketKeyword_2());
             		
-            otherlv_3=(Token)match(input,20,FOLLOW_16); 
+            otherlv_3=(Token)match(input,22,FOLLOW_16); 
 
             			newLeafNode(otherlv_3, grammarAccess.getOptionAccess().getTypeKeyword_3());
             		
-            // InternalFin.g:505:3: ( (lv_type_4_0= ruleOptionType ) )
-            // InternalFin.g:506:4: (lv_type_4_0= ruleOptionType )
+            // InternalFin.g:606:3: ( (lv_type_4_0= ruleOptionType ) )
+            // InternalFin.g:607:4: (lv_type_4_0= ruleOptionType )
             {
-            // InternalFin.g:506:4: (lv_type_4_0= ruleOptionType )
-            // InternalFin.g:507:5: lv_type_4_0= ruleOptionType
+            // InternalFin.g:607:4: (lv_type_4_0= ruleOptionType )
+            // InternalFin.g:608:5: lv_type_4_0= ruleOptionType
             {
 
             					newCompositeNode(grammarAccess.getOptionAccess().getTypeOptionTypeEnumRuleCall_4_0());
@@ -1354,15 +1680,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,21,FOLLOW_9); 
+            otherlv_5=(Token)match(input,23,FOLLOW_9); 
 
             			newLeafNode(otherlv_5, grammarAccess.getOptionAccess().getUnderlyingPriceKeyword_5());
             		
-            // InternalFin.g:528:3: ( (lv_underlyingPrice_6_0= ruleFLOAT ) )
-            // InternalFin.g:529:4: (lv_underlyingPrice_6_0= ruleFLOAT )
+            // InternalFin.g:629:3: ( (lv_underlyingPrice_6_0= ruleFLOAT ) )
+            // InternalFin.g:630:4: (lv_underlyingPrice_6_0= ruleFLOAT )
             {
-            // InternalFin.g:529:4: (lv_underlyingPrice_6_0= ruleFLOAT )
-            // InternalFin.g:530:5: lv_underlyingPrice_6_0= ruleFLOAT
+            // InternalFin.g:630:4: (lv_underlyingPrice_6_0= ruleFLOAT )
+            // InternalFin.g:631:5: lv_underlyingPrice_6_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getOptionAccess().getUnderlyingPriceFLOATParserRuleCall_6_0());
@@ -1389,15 +1715,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,22,FOLLOW_9); 
+            otherlv_7=(Token)match(input,24,FOLLOW_9); 
 
             			newLeafNode(otherlv_7, grammarAccess.getOptionAccess().getStrikePriceKeyword_7());
             		
-            // InternalFin.g:551:3: ( (lv_strikePrice_8_0= ruleFLOAT ) )
-            // InternalFin.g:552:4: (lv_strikePrice_8_0= ruleFLOAT )
+            // InternalFin.g:652:3: ( (lv_strikePrice_8_0= ruleFLOAT ) )
+            // InternalFin.g:653:4: (lv_strikePrice_8_0= ruleFLOAT )
             {
-            // InternalFin.g:552:4: (lv_strikePrice_8_0= ruleFLOAT )
-            // InternalFin.g:553:5: lv_strikePrice_8_0= ruleFLOAT
+            // InternalFin.g:653:4: (lv_strikePrice_8_0= ruleFLOAT )
+            // InternalFin.g:654:5: lv_strikePrice_8_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getOptionAccess().getStrikePriceFLOATParserRuleCall_8_0());
@@ -1424,15 +1750,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,23,FOLLOW_9); 
+            otherlv_9=(Token)match(input,25,FOLLOW_9); 
 
             			newLeafNode(otherlv_9, grammarAccess.getOptionAccess().getTimeToExpirationKeyword_9());
             		
-            // InternalFin.g:574:3: ( (lv_timeToExpiration_10_0= ruleFLOAT ) )
-            // InternalFin.g:575:4: (lv_timeToExpiration_10_0= ruleFLOAT )
+            // InternalFin.g:675:3: ( (lv_timeToExpiration_10_0= ruleFLOAT ) )
+            // InternalFin.g:676:4: (lv_timeToExpiration_10_0= ruleFLOAT )
             {
-            // InternalFin.g:575:4: (lv_timeToExpiration_10_0= ruleFLOAT )
-            // InternalFin.g:576:5: lv_timeToExpiration_10_0= ruleFLOAT
+            // InternalFin.g:676:4: (lv_timeToExpiration_10_0= ruleFLOAT )
+            // InternalFin.g:677:5: lv_timeToExpiration_10_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getOptionAccess().getTimeToExpirationFLOATParserRuleCall_10_0());
@@ -1459,15 +1785,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_11=(Token)match(input,24,FOLLOW_9); 
+            otherlv_11=(Token)match(input,26,FOLLOW_9); 
 
             			newLeafNode(otherlv_11, grammarAccess.getOptionAccess().getRiskFreeRateKeyword_11());
             		
-            // InternalFin.g:597:3: ( (lv_riskFreeRate_12_0= ruleFLOAT ) )
-            // InternalFin.g:598:4: (lv_riskFreeRate_12_0= ruleFLOAT )
+            // InternalFin.g:698:3: ( (lv_riskFreeRate_12_0= ruleFLOAT ) )
+            // InternalFin.g:699:4: (lv_riskFreeRate_12_0= ruleFLOAT )
             {
-            // InternalFin.g:598:4: (lv_riskFreeRate_12_0= ruleFLOAT )
-            // InternalFin.g:599:5: lv_riskFreeRate_12_0= ruleFLOAT
+            // InternalFin.g:699:4: (lv_riskFreeRate_12_0= ruleFLOAT )
+            // InternalFin.g:700:5: lv_riskFreeRate_12_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getOptionAccess().getRiskFreeRateFLOATParserRuleCall_12_0());
@@ -1494,15 +1820,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_13=(Token)match(input,25,FOLLOW_9); 
+            otherlv_13=(Token)match(input,27,FOLLOW_9); 
 
             			newLeafNode(otherlv_13, grammarAccess.getOptionAccess().getVolatilityKeyword_13());
             		
-            // InternalFin.g:620:3: ( (lv_volatility_14_0= ruleFLOAT ) )
-            // InternalFin.g:621:4: (lv_volatility_14_0= ruleFLOAT )
+            // InternalFin.g:721:3: ( (lv_volatility_14_0= ruleFLOAT ) )
+            // InternalFin.g:722:4: (lv_volatility_14_0= ruleFLOAT )
             {
-            // InternalFin.g:621:4: (lv_volatility_14_0= ruleFLOAT )
-            // InternalFin.g:622:5: lv_volatility_14_0= ruleFLOAT
+            // InternalFin.g:722:4: (lv_volatility_14_0= ruleFLOAT )
+            // InternalFin.g:723:5: lv_volatility_14_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getOptionAccess().getVolatilityFLOATParserRuleCall_14_0());
@@ -1529,15 +1855,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_15=(Token)match(input,26,FOLLOW_9); 
+            otherlv_15=(Token)match(input,28,FOLLOW_9); 
 
             			newLeafNode(otherlv_15, grammarAccess.getOptionAccess().getDividendYieldKeyword_15());
             		
-            // InternalFin.g:643:3: ( (lv_dividendYield_16_0= ruleFLOAT ) )
-            // InternalFin.g:644:4: (lv_dividendYield_16_0= ruleFLOAT )
+            // InternalFin.g:744:3: ( (lv_dividendYield_16_0= ruleFLOAT ) )
+            // InternalFin.g:745:4: (lv_dividendYield_16_0= ruleFLOAT )
             {
-            // InternalFin.g:644:4: (lv_dividendYield_16_0= ruleFLOAT )
-            // InternalFin.g:645:5: lv_dividendYield_16_0= ruleFLOAT
+            // InternalFin.g:745:4: (lv_dividendYield_16_0= ruleFLOAT )
+            // InternalFin.g:746:5: lv_dividendYield_16_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getOptionAccess().getDividendYieldFLOATParserRuleCall_16_0());
@@ -1564,7 +1890,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_17=(Token)match(input,13,FOLLOW_2); 
+            otherlv_17=(Token)match(input,15,FOLLOW_2); 
 
             			newLeafNode(otherlv_17, grammarAccess.getOptionAccess().getRightCurlyBracketKeyword_17());
             		
@@ -1591,7 +1917,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCash"
-    // InternalFin.g:670:1: entryRuleCash returns [EObject current=null] : iv_ruleCash= ruleCash EOF ;
+    // InternalFin.g:771:1: entryRuleCash returns [EObject current=null] : iv_ruleCash= ruleCash EOF ;
     public final EObject entryRuleCash() throws RecognitionException {
         EObject current = null;
 
@@ -1599,8 +1925,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:670:45: (iv_ruleCash= ruleCash EOF )
-            // InternalFin.g:671:2: iv_ruleCash= ruleCash EOF
+            // InternalFin.g:771:45: (iv_ruleCash= ruleCash EOF )
+            // InternalFin.g:772:2: iv_ruleCash= ruleCash EOF
             {
              newCompositeNode(grammarAccess.getCashRule()); 
             pushFollow(FOLLOW_1);
@@ -1627,7 +1953,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCash"
-    // InternalFin.g:677:1: ruleCash returns [EObject current=null] : (otherlv_0= 'Cash' otherlv_1= '{' otherlv_2= 'amount' ( (lv_amount_3_0= ruleFLOAT ) ) otherlv_4= '}' ) ;
+    // InternalFin.g:778:1: ruleCash returns [EObject current=null] : (otherlv_0= 'Cash' otherlv_1= '{' otherlv_2= 'amount' ( (lv_amount_3_0= ruleFLOAT ) ) otherlv_4= '}' ) ;
     public final EObject ruleCash() throws RecognitionException {
         EObject current = null;
 
@@ -1642,29 +1968,29 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:683:2: ( (otherlv_0= 'Cash' otherlv_1= '{' otherlv_2= 'amount' ( (lv_amount_3_0= ruleFLOAT ) ) otherlv_4= '}' ) )
-            // InternalFin.g:684:2: (otherlv_0= 'Cash' otherlv_1= '{' otherlv_2= 'amount' ( (lv_amount_3_0= ruleFLOAT ) ) otherlv_4= '}' )
+            // InternalFin.g:784:2: ( (otherlv_0= 'Cash' otherlv_1= '{' otherlv_2= 'amount' ( (lv_amount_3_0= ruleFLOAT ) ) otherlv_4= '}' ) )
+            // InternalFin.g:785:2: (otherlv_0= 'Cash' otherlv_1= '{' otherlv_2= 'amount' ( (lv_amount_3_0= ruleFLOAT ) ) otherlv_4= '}' )
             {
-            // InternalFin.g:684:2: (otherlv_0= 'Cash' otherlv_1= '{' otherlv_2= 'amount' ( (lv_amount_3_0= ruleFLOAT ) ) otherlv_4= '}' )
-            // InternalFin.g:685:3: otherlv_0= 'Cash' otherlv_1= '{' otherlv_2= 'amount' ( (lv_amount_3_0= ruleFLOAT ) ) otherlv_4= '}'
+            // InternalFin.g:785:2: (otherlv_0= 'Cash' otherlv_1= '{' otherlv_2= 'amount' ( (lv_amount_3_0= ruleFLOAT ) ) otherlv_4= '}' )
+            // InternalFin.g:786:3: otherlv_0= 'Cash' otherlv_1= '{' otherlv_2= 'amount' ( (lv_amount_3_0= ruleFLOAT ) ) otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,27,FOLLOW_4); 
+            otherlv_0=(Token)match(input,29,FOLLOW_4); 
 
             			newLeafNode(otherlv_0, grammarAccess.getCashAccess().getCashKeyword_0());
             		
-            otherlv_1=(Token)match(input,12,FOLLOW_23); 
+            otherlv_1=(Token)match(input,14,FOLLOW_23); 
 
             			newLeafNode(otherlv_1, grammarAccess.getCashAccess().getLeftCurlyBracketKeyword_1());
             		
-            otherlv_2=(Token)match(input,28,FOLLOW_9); 
+            otherlv_2=(Token)match(input,30,FOLLOW_9); 
 
             			newLeafNode(otherlv_2, grammarAccess.getCashAccess().getAmountKeyword_2());
             		
-            // InternalFin.g:697:3: ( (lv_amount_3_0= ruleFLOAT ) )
-            // InternalFin.g:698:4: (lv_amount_3_0= ruleFLOAT )
+            // InternalFin.g:798:3: ( (lv_amount_3_0= ruleFLOAT ) )
+            // InternalFin.g:799:4: (lv_amount_3_0= ruleFLOAT )
             {
-            // InternalFin.g:698:4: (lv_amount_3_0= ruleFLOAT )
-            // InternalFin.g:699:5: lv_amount_3_0= ruleFLOAT
+            // InternalFin.g:799:4: (lv_amount_3_0= ruleFLOAT )
+            // InternalFin.g:800:5: lv_amount_3_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getCashAccess().getAmountFLOATParserRuleCall_3_0());
@@ -1691,7 +2017,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,13,FOLLOW_2); 
+            otherlv_4=(Token)match(input,15,FOLLOW_2); 
 
             			newLeafNode(otherlv_4, grammarAccess.getCashAccess().getRightCurlyBracketKeyword_4());
             		
@@ -1718,7 +2044,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBuy"
-    // InternalFin.g:724:1: entryRuleBuy returns [EObject current=null] : iv_ruleBuy= ruleBuy EOF ;
+    // InternalFin.g:825:1: entryRuleBuy returns [EObject current=null] : iv_ruleBuy= ruleBuy EOF ;
     public final EObject entryRuleBuy() throws RecognitionException {
         EObject current = null;
 
@@ -1726,8 +2052,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:724:44: (iv_ruleBuy= ruleBuy EOF )
-            // InternalFin.g:725:2: iv_ruleBuy= ruleBuy EOF
+            // InternalFin.g:825:44: (iv_ruleBuy= ruleBuy EOF )
+            // InternalFin.g:826:2: iv_ruleBuy= ruleBuy EOF
             {
              newCompositeNode(grammarAccess.getBuyRule()); 
             pushFollow(FOLLOW_1);
@@ -1754,7 +2080,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBuy"
-    // InternalFin.g:731:1: ruleBuy returns [EObject current=null] : (otherlv_0= 'Buy' otherlv_1= '{' ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) ) otherlv_4= '}' ) ;
+    // InternalFin.g:832:1: ruleBuy returns [EObject current=null] : (otherlv_0= 'Buy' otherlv_1= '{' ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) ) otherlv_4= '}' ) ;
     public final EObject ruleBuy() throws RecognitionException {
         EObject current = null;
 
@@ -1770,45 +2096,45 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:737:2: ( (otherlv_0= 'Buy' otherlv_1= '{' ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) ) otherlv_4= '}' ) )
-            // InternalFin.g:738:2: (otherlv_0= 'Buy' otherlv_1= '{' ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) ) otherlv_4= '}' )
+            // InternalFin.g:838:2: ( (otherlv_0= 'Buy' otherlv_1= '{' ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) ) otherlv_4= '}' ) )
+            // InternalFin.g:839:2: (otherlv_0= 'Buy' otherlv_1= '{' ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) ) otherlv_4= '}' )
             {
-            // InternalFin.g:738:2: (otherlv_0= 'Buy' otherlv_1= '{' ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) ) otherlv_4= '}' )
-            // InternalFin.g:739:3: otherlv_0= 'Buy' otherlv_1= '{' ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) ) otherlv_4= '}'
+            // InternalFin.g:839:2: (otherlv_0= 'Buy' otherlv_1= '{' ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) ) otherlv_4= '}' )
+            // InternalFin.g:840:3: otherlv_0= 'Buy' otherlv_1= '{' ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) ) otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,29,FOLLOW_4); 
+            otherlv_0=(Token)match(input,31,FOLLOW_4); 
 
             			newLeafNode(otherlv_0, grammarAccess.getBuyAccess().getBuyKeyword_0());
             		
-            otherlv_1=(Token)match(input,12,FOLLOW_24); 
+            otherlv_1=(Token)match(input,14,FOLLOW_24); 
 
             			newLeafNode(otherlv_1, grammarAccess.getBuyAccess().getLeftCurlyBracketKeyword_1());
             		
-            // InternalFin.g:747:3: ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) )
-            int alt6=2;
-            int LA6_0 = input.LA(1);
+            // InternalFin.g:848:3: ( ( (lv_bond_2_0= ruleBond ) ) | ( (lv_option_3_0= ruleOption ) ) )
+            int alt7=2;
+            int LA7_0 = input.LA(1);
 
-            if ( (LA6_0==14) ) {
-                alt6=1;
+            if ( (LA7_0==16) ) {
+                alt7=1;
             }
-            else if ( (LA6_0==19) ) {
-                alt6=2;
+            else if ( (LA7_0==21) ) {
+                alt7=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
+                    new NoViableAltException("", 7, 0, input);
 
                 throw nvae;
             }
-            switch (alt6) {
+            switch (alt7) {
                 case 1 :
-                    // InternalFin.g:748:4: ( (lv_bond_2_0= ruleBond ) )
+                    // InternalFin.g:849:4: ( (lv_bond_2_0= ruleBond ) )
                     {
-                    // InternalFin.g:748:4: ( (lv_bond_2_0= ruleBond ) )
-                    // InternalFin.g:749:5: (lv_bond_2_0= ruleBond )
+                    // InternalFin.g:849:4: ( (lv_bond_2_0= ruleBond ) )
+                    // InternalFin.g:850:5: (lv_bond_2_0= ruleBond )
                     {
-                    // InternalFin.g:749:5: (lv_bond_2_0= ruleBond )
-                    // InternalFin.g:750:6: lv_bond_2_0= ruleBond
+                    // InternalFin.g:850:5: (lv_bond_2_0= ruleBond )
+                    // InternalFin.g:851:6: lv_bond_2_0= ruleBond
                     {
 
                     						newCompositeNode(grammarAccess.getBuyAccess().getBondBondParserRuleCall_2_0_0());
@@ -1839,13 +2165,13 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalFin.g:768:4: ( (lv_option_3_0= ruleOption ) )
+                    // InternalFin.g:869:4: ( (lv_option_3_0= ruleOption ) )
                     {
-                    // InternalFin.g:768:4: ( (lv_option_3_0= ruleOption ) )
-                    // InternalFin.g:769:5: (lv_option_3_0= ruleOption )
+                    // InternalFin.g:869:4: ( (lv_option_3_0= ruleOption ) )
+                    // InternalFin.g:870:5: (lv_option_3_0= ruleOption )
                     {
-                    // InternalFin.g:769:5: (lv_option_3_0= ruleOption )
-                    // InternalFin.g:770:6: lv_option_3_0= ruleOption
+                    // InternalFin.g:870:5: (lv_option_3_0= ruleOption )
+                    // InternalFin.g:871:6: lv_option_3_0= ruleOption
                     {
 
                     						newCompositeNode(grammarAccess.getBuyAccess().getOptionOptionParserRuleCall_2_1_0());
@@ -1878,7 +2204,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,13,FOLLOW_2); 
+            otherlv_4=(Token)match(input,15,FOLLOW_2); 
 
             			newLeafNode(otherlv_4, grammarAccess.getBuyAccess().getRightCurlyBracketKeyword_3());
             		
@@ -1905,7 +2231,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSell"
-    // InternalFin.g:796:1: entryRuleSell returns [EObject current=null] : iv_ruleSell= ruleSell EOF ;
+    // InternalFin.g:897:1: entryRuleSell returns [EObject current=null] : iv_ruleSell= ruleSell EOF ;
     public final EObject entryRuleSell() throws RecognitionException {
         EObject current = null;
 
@@ -1913,8 +2239,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:796:45: (iv_ruleSell= ruleSell EOF )
-            // InternalFin.g:797:2: iv_ruleSell= ruleSell EOF
+            // InternalFin.g:897:45: (iv_ruleSell= ruleSell EOF )
+            // InternalFin.g:898:2: iv_ruleSell= ruleSell EOF
             {
              newCompositeNode(grammarAccess.getSellRule()); 
             pushFollow(FOLLOW_1);
@@ -1941,7 +2267,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSell"
-    // InternalFin.g:803:1: ruleSell returns [EObject current=null] : (otherlv_0= 'Sell' otherlv_1= '{' otherlv_2= 'assetName' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'amount' ( (lv_amount_5_0= ruleFLOAT ) ) otherlv_6= '}' ) ;
+    // InternalFin.g:904:1: ruleSell returns [EObject current=null] : (otherlv_0= 'Sell' otherlv_1= '{' otherlv_2= 'assetName' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'amount' ( (lv_amount_5_0= ruleFLOAT ) ) otherlv_6= '}' ) ;
     public final EObject ruleSell() throws RecognitionException {
         EObject current = null;
 
@@ -1958,29 +2284,29 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:809:2: ( (otherlv_0= 'Sell' otherlv_1= '{' otherlv_2= 'assetName' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'amount' ( (lv_amount_5_0= ruleFLOAT ) ) otherlv_6= '}' ) )
-            // InternalFin.g:810:2: (otherlv_0= 'Sell' otherlv_1= '{' otherlv_2= 'assetName' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'amount' ( (lv_amount_5_0= ruleFLOAT ) ) otherlv_6= '}' )
+            // InternalFin.g:910:2: ( (otherlv_0= 'Sell' otherlv_1= '{' otherlv_2= 'assetName' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'amount' ( (lv_amount_5_0= ruleFLOAT ) ) otherlv_6= '}' ) )
+            // InternalFin.g:911:2: (otherlv_0= 'Sell' otherlv_1= '{' otherlv_2= 'assetName' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'amount' ( (lv_amount_5_0= ruleFLOAT ) ) otherlv_6= '}' )
             {
-            // InternalFin.g:810:2: (otherlv_0= 'Sell' otherlv_1= '{' otherlv_2= 'assetName' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'amount' ( (lv_amount_5_0= ruleFLOAT ) ) otherlv_6= '}' )
-            // InternalFin.g:811:3: otherlv_0= 'Sell' otherlv_1= '{' otherlv_2= 'assetName' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'amount' ( (lv_amount_5_0= ruleFLOAT ) ) otherlv_6= '}'
+            // InternalFin.g:911:2: (otherlv_0= 'Sell' otherlv_1= '{' otherlv_2= 'assetName' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'amount' ( (lv_amount_5_0= ruleFLOAT ) ) otherlv_6= '}' )
+            // InternalFin.g:912:3: otherlv_0= 'Sell' otherlv_1= '{' otherlv_2= 'assetName' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'amount' ( (lv_amount_5_0= ruleFLOAT ) ) otherlv_6= '}'
             {
-            otherlv_0=(Token)match(input,30,FOLLOW_4); 
+            otherlv_0=(Token)match(input,32,FOLLOW_4); 
 
             			newLeafNode(otherlv_0, grammarAccess.getSellAccess().getSellKeyword_0());
             		
-            otherlv_1=(Token)match(input,12,FOLLOW_25); 
+            otherlv_1=(Token)match(input,14,FOLLOW_25); 
 
             			newLeafNode(otherlv_1, grammarAccess.getSellAccess().getLeftCurlyBracketKeyword_1());
             		
-            otherlv_2=(Token)match(input,31,FOLLOW_7); 
+            otherlv_2=(Token)match(input,33,FOLLOW_7); 
 
             			newLeafNode(otherlv_2, grammarAccess.getSellAccess().getAssetNameKeyword_2());
             		
-            // InternalFin.g:823:3: ( (lv_name_3_0= RULE_ID ) )
-            // InternalFin.g:824:4: (lv_name_3_0= RULE_ID )
+            // InternalFin.g:924:3: ( (lv_name_3_0= RULE_ID ) )
+            // InternalFin.g:925:4: (lv_name_3_0= RULE_ID )
             {
-            // InternalFin.g:824:4: (lv_name_3_0= RULE_ID )
-            // InternalFin.g:825:5: lv_name_3_0= RULE_ID
+            // InternalFin.g:925:4: (lv_name_3_0= RULE_ID )
+            // InternalFin.g:926:5: lv_name_3_0= RULE_ID
             {
             lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_23); 
 
@@ -2002,15 +2328,15 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,28,FOLLOW_9); 
+            otherlv_4=(Token)match(input,30,FOLLOW_9); 
 
             			newLeafNode(otherlv_4, grammarAccess.getSellAccess().getAmountKeyword_4());
             		
-            // InternalFin.g:845:3: ( (lv_amount_5_0= ruleFLOAT ) )
-            // InternalFin.g:846:4: (lv_amount_5_0= ruleFLOAT )
+            // InternalFin.g:946:3: ( (lv_amount_5_0= ruleFLOAT ) )
+            // InternalFin.g:947:4: (lv_amount_5_0= ruleFLOAT )
             {
-            // InternalFin.g:846:4: (lv_amount_5_0= ruleFLOAT )
-            // InternalFin.g:847:5: lv_amount_5_0= ruleFLOAT
+            // InternalFin.g:947:4: (lv_amount_5_0= ruleFLOAT )
+            // InternalFin.g:948:5: lv_amount_5_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getSellAccess().getAmountFLOATParserRuleCall_5_0());
@@ -2037,7 +2363,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,13,FOLLOW_2); 
+            otherlv_6=(Token)match(input,15,FOLLOW_2); 
 
             			newLeafNode(otherlv_6, grammarAccess.getSellAccess().getRightCurlyBracketKeyword_6());
             		
@@ -2064,7 +2390,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDeposit"
-    // InternalFin.g:872:1: entryRuleDeposit returns [EObject current=null] : iv_ruleDeposit= ruleDeposit EOF ;
+    // InternalFin.g:973:1: entryRuleDeposit returns [EObject current=null] : iv_ruleDeposit= ruleDeposit EOF ;
     public final EObject entryRuleDeposit() throws RecognitionException {
         EObject current = null;
 
@@ -2072,8 +2398,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:872:48: (iv_ruleDeposit= ruleDeposit EOF )
-            // InternalFin.g:873:2: iv_ruleDeposit= ruleDeposit EOF
+            // InternalFin.g:973:48: (iv_ruleDeposit= ruleDeposit EOF )
+            // InternalFin.g:974:2: iv_ruleDeposit= ruleDeposit EOF
             {
              newCompositeNode(grammarAccess.getDepositRule()); 
             pushFollow(FOLLOW_1);
@@ -2100,7 +2426,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDeposit"
-    // InternalFin.g:879:1: ruleDeposit returns [EObject current=null] : (otherlv_0= 'Deposit' ( (lv_amount_1_0= ruleFLOAT ) ) ) ;
+    // InternalFin.g:980:1: ruleDeposit returns [EObject current=null] : (otherlv_0= 'Deposit' ( (lv_amount_1_0= ruleFLOAT ) ) ) ;
     public final EObject ruleDeposit() throws RecognitionException {
         EObject current = null;
 
@@ -2112,21 +2438,21 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:885:2: ( (otherlv_0= 'Deposit' ( (lv_amount_1_0= ruleFLOAT ) ) ) )
-            // InternalFin.g:886:2: (otherlv_0= 'Deposit' ( (lv_amount_1_0= ruleFLOAT ) ) )
+            // InternalFin.g:986:2: ( (otherlv_0= 'Deposit' ( (lv_amount_1_0= ruleFLOAT ) ) ) )
+            // InternalFin.g:987:2: (otherlv_0= 'Deposit' ( (lv_amount_1_0= ruleFLOAT ) ) )
             {
-            // InternalFin.g:886:2: (otherlv_0= 'Deposit' ( (lv_amount_1_0= ruleFLOAT ) ) )
-            // InternalFin.g:887:3: otherlv_0= 'Deposit' ( (lv_amount_1_0= ruleFLOAT ) )
+            // InternalFin.g:987:2: (otherlv_0= 'Deposit' ( (lv_amount_1_0= ruleFLOAT ) ) )
+            // InternalFin.g:988:3: otherlv_0= 'Deposit' ( (lv_amount_1_0= ruleFLOAT ) )
             {
-            otherlv_0=(Token)match(input,32,FOLLOW_9); 
+            otherlv_0=(Token)match(input,34,FOLLOW_9); 
 
             			newLeafNode(otherlv_0, grammarAccess.getDepositAccess().getDepositKeyword_0());
             		
-            // InternalFin.g:891:3: ( (lv_amount_1_0= ruleFLOAT ) )
-            // InternalFin.g:892:4: (lv_amount_1_0= ruleFLOAT )
+            // InternalFin.g:992:3: ( (lv_amount_1_0= ruleFLOAT ) )
+            // InternalFin.g:993:4: (lv_amount_1_0= ruleFLOAT )
             {
-            // InternalFin.g:892:4: (lv_amount_1_0= ruleFLOAT )
-            // InternalFin.g:893:5: lv_amount_1_0= ruleFLOAT
+            // InternalFin.g:993:4: (lv_amount_1_0= ruleFLOAT )
+            // InternalFin.g:994:5: lv_amount_1_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getDepositAccess().getAmountFLOATParserRuleCall_1_0());
@@ -2176,7 +2502,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleWithdrawal"
-    // InternalFin.g:914:1: entryRuleWithdrawal returns [EObject current=null] : iv_ruleWithdrawal= ruleWithdrawal EOF ;
+    // InternalFin.g:1015:1: entryRuleWithdrawal returns [EObject current=null] : iv_ruleWithdrawal= ruleWithdrawal EOF ;
     public final EObject entryRuleWithdrawal() throws RecognitionException {
         EObject current = null;
 
@@ -2184,8 +2510,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFin.g:914:51: (iv_ruleWithdrawal= ruleWithdrawal EOF )
-            // InternalFin.g:915:2: iv_ruleWithdrawal= ruleWithdrawal EOF
+            // InternalFin.g:1015:51: (iv_ruleWithdrawal= ruleWithdrawal EOF )
+            // InternalFin.g:1016:2: iv_ruleWithdrawal= ruleWithdrawal EOF
             {
              newCompositeNode(grammarAccess.getWithdrawalRule()); 
             pushFollow(FOLLOW_1);
@@ -2212,7 +2538,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleWithdrawal"
-    // InternalFin.g:921:1: ruleWithdrawal returns [EObject current=null] : (otherlv_0= 'Withdrawal' ( (lv_amount_1_0= ruleFLOAT ) ) ) ;
+    // InternalFin.g:1022:1: ruleWithdrawal returns [EObject current=null] : (otherlv_0= 'Withdrawal' ( (lv_amount_1_0= ruleFLOAT ) ) ) ;
     public final EObject ruleWithdrawal() throws RecognitionException {
         EObject current = null;
 
@@ -2224,21 +2550,21 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:927:2: ( (otherlv_0= 'Withdrawal' ( (lv_amount_1_0= ruleFLOAT ) ) ) )
-            // InternalFin.g:928:2: (otherlv_0= 'Withdrawal' ( (lv_amount_1_0= ruleFLOAT ) ) )
+            // InternalFin.g:1028:2: ( (otherlv_0= 'Withdrawal' ( (lv_amount_1_0= ruleFLOAT ) ) ) )
+            // InternalFin.g:1029:2: (otherlv_0= 'Withdrawal' ( (lv_amount_1_0= ruleFLOAT ) ) )
             {
-            // InternalFin.g:928:2: (otherlv_0= 'Withdrawal' ( (lv_amount_1_0= ruleFLOAT ) ) )
-            // InternalFin.g:929:3: otherlv_0= 'Withdrawal' ( (lv_amount_1_0= ruleFLOAT ) )
+            // InternalFin.g:1029:2: (otherlv_0= 'Withdrawal' ( (lv_amount_1_0= ruleFLOAT ) ) )
+            // InternalFin.g:1030:3: otherlv_0= 'Withdrawal' ( (lv_amount_1_0= ruleFLOAT ) )
             {
-            otherlv_0=(Token)match(input,33,FOLLOW_9); 
+            otherlv_0=(Token)match(input,35,FOLLOW_9); 
 
             			newLeafNode(otherlv_0, grammarAccess.getWithdrawalAccess().getWithdrawalKeyword_0());
             		
-            // InternalFin.g:933:3: ( (lv_amount_1_0= ruleFLOAT ) )
-            // InternalFin.g:934:4: (lv_amount_1_0= ruleFLOAT )
+            // InternalFin.g:1034:3: ( (lv_amount_1_0= ruleFLOAT ) )
+            // InternalFin.g:1035:4: (lv_amount_1_0= ruleFLOAT )
             {
-            // InternalFin.g:934:4: (lv_amount_1_0= ruleFLOAT )
-            // InternalFin.g:935:5: lv_amount_1_0= ruleFLOAT
+            // InternalFin.g:1035:4: (lv_amount_1_0= ruleFLOAT )
+            // InternalFin.g:1036:5: lv_amount_1_0= ruleFLOAT
             {
 
             					newCompositeNode(grammarAccess.getWithdrawalAccess().getAmountFLOATParserRuleCall_1_0());
@@ -2287,25 +2613,25 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleWithdrawal"
 
 
-    // $ANTLR start "entryRuleDisplay"
-    // InternalFin.g:956:1: entryRuleDisplay returns [EObject current=null] : iv_ruleDisplay= ruleDisplay EOF ;
-    public final EObject entryRuleDisplay() throws RecognitionException {
+    // $ANTLR start "entryRuleView"
+    // InternalFin.g:1057:1: entryRuleView returns [EObject current=null] : iv_ruleView= ruleView EOF ;
+    public final EObject entryRuleView() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleDisplay = null;
+        EObject iv_ruleView = null;
 
 
         try {
-            // InternalFin.g:956:48: (iv_ruleDisplay= ruleDisplay EOF )
-            // InternalFin.g:957:2: iv_ruleDisplay= ruleDisplay EOF
+            // InternalFin.g:1057:45: (iv_ruleView= ruleView EOF )
+            // InternalFin.g:1058:2: iv_ruleView= ruleView EOF
             {
-             newCompositeNode(grammarAccess.getDisplayRule()); 
+             newCompositeNode(grammarAccess.getViewRule()); 
             pushFollow(FOLLOW_1);
-            iv_ruleDisplay=ruleDisplay();
+            iv_ruleView=ruleView();
 
             state._fsp--;
 
-             current =iv_ruleDisplay; 
+             current =iv_ruleView; 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -2320,55 +2646,88 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleDisplay"
+    // $ANTLR end "entryRuleView"
 
 
-    // $ANTLR start "ruleDisplay"
-    // InternalFin.g:963:1: ruleDisplay returns [EObject current=null] : (otherlv_0= 'Display' ( (lv_displayType_1_0= ruleDisplayType ) ) ) ;
-    public final EObject ruleDisplay() throws RecognitionException {
+    // $ANTLR start "ruleView"
+    // InternalFin.g:1064:1: ruleView returns [EObject current=null] : (otherlv_0= 'View' ( (lv_viewType_1_0= ruleViewType ) ) ( (lv_time_2_0= ruleTime ) ) ) ;
+    public final EObject ruleView() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        AntlrDatatypeRuleToken lv_displayType_1_0 = null;
+        AntlrDatatypeRuleToken lv_viewType_1_0 = null;
+
+        AntlrDatatypeRuleToken lv_time_2_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalFin.g:969:2: ( (otherlv_0= 'Display' ( (lv_displayType_1_0= ruleDisplayType ) ) ) )
-            // InternalFin.g:970:2: (otherlv_0= 'Display' ( (lv_displayType_1_0= ruleDisplayType ) ) )
+            // InternalFin.g:1070:2: ( (otherlv_0= 'View' ( (lv_viewType_1_0= ruleViewType ) ) ( (lv_time_2_0= ruleTime ) ) ) )
+            // InternalFin.g:1071:2: (otherlv_0= 'View' ( (lv_viewType_1_0= ruleViewType ) ) ( (lv_time_2_0= ruleTime ) ) )
             {
-            // InternalFin.g:970:2: (otherlv_0= 'Display' ( (lv_displayType_1_0= ruleDisplayType ) ) )
-            // InternalFin.g:971:3: otherlv_0= 'Display' ( (lv_displayType_1_0= ruleDisplayType ) )
+            // InternalFin.g:1071:2: (otherlv_0= 'View' ( (lv_viewType_1_0= ruleViewType ) ) ( (lv_time_2_0= ruleTime ) ) )
+            // InternalFin.g:1072:3: otherlv_0= 'View' ( (lv_viewType_1_0= ruleViewType ) ) ( (lv_time_2_0= ruleTime ) )
             {
-            otherlv_0=(Token)match(input,34,FOLLOW_26); 
+            otherlv_0=(Token)match(input,36,FOLLOW_26); 
 
-            			newLeafNode(otherlv_0, grammarAccess.getDisplayAccess().getDisplayKeyword_0());
+            			newLeafNode(otherlv_0, grammarAccess.getViewAccess().getViewKeyword_0());
             		
-            // InternalFin.g:975:3: ( (lv_displayType_1_0= ruleDisplayType ) )
-            // InternalFin.g:976:4: (lv_displayType_1_0= ruleDisplayType )
+            // InternalFin.g:1076:3: ( (lv_viewType_1_0= ruleViewType ) )
+            // InternalFin.g:1077:4: (lv_viewType_1_0= ruleViewType )
             {
-            // InternalFin.g:976:4: (lv_displayType_1_0= ruleDisplayType )
-            // InternalFin.g:977:5: lv_displayType_1_0= ruleDisplayType
+            // InternalFin.g:1077:4: (lv_viewType_1_0= ruleViewType )
+            // InternalFin.g:1078:5: lv_viewType_1_0= ruleViewType
             {
 
-            					newCompositeNode(grammarAccess.getDisplayAccess().getDisplayTypeDisplayTypeParserRuleCall_1_0());
+            					newCompositeNode(grammarAccess.getViewAccess().getViewTypeViewTypeParserRuleCall_1_0());
             				
-            pushFollow(FOLLOW_2);
-            lv_displayType_1_0=ruleDisplayType();
+            pushFollow(FOLLOW_27);
+            lv_viewType_1_0=ruleViewType();
 
             state._fsp--;
 
 
             					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getDisplayRule());
+            						current = createModelElementForParent(grammarAccess.getViewRule());
             					}
             					set(
             						current,
-            						"displayType",
-            						lv_displayType_1_0,
-            						"org.xtext.mydsl.Fin.DisplayType");
+            						"viewType",
+            						lv_viewType_1_0,
+            						"org.xtext.mydsl.Fin.ViewType");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            // InternalFin.g:1095:3: ( (lv_time_2_0= ruleTime ) )
+            // InternalFin.g:1096:4: (lv_time_2_0= ruleTime )
+            {
+            // InternalFin.g:1096:4: (lv_time_2_0= ruleTime )
+            // InternalFin.g:1097:5: lv_time_2_0= ruleTime
+            {
+
+            					newCompositeNode(grammarAccess.getViewAccess().getTimeTimeParserRuleCall_2_0());
+            				
+            pushFollow(FOLLOW_2);
+            lv_time_2_0=ruleTime();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getViewRule());
+            					}
+            					set(
+            						current,
+            						"time",
+            						lv_time_2_0,
+            						"org.xtext.mydsl.Fin.Time");
             					afterParserOrEnumRuleCall();
             				
 
@@ -2396,28 +2755,28 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleDisplay"
+    // $ANTLR end "ruleView"
 
 
-    // $ANTLR start "entryRuleDisplayType"
-    // InternalFin.g:998:1: entryRuleDisplayType returns [String current=null] : iv_ruleDisplayType= ruleDisplayType EOF ;
-    public final String entryRuleDisplayType() throws RecognitionException {
+    // $ANTLR start "entryRuleViewType"
+    // InternalFin.g:1118:1: entryRuleViewType returns [String current=null] : iv_ruleViewType= ruleViewType EOF ;
+    public final String entryRuleViewType() throws RecognitionException {
         String current = null;
 
-        AntlrDatatypeRuleToken iv_ruleDisplayType = null;
+        AntlrDatatypeRuleToken iv_ruleViewType = null;
 
 
         try {
-            // InternalFin.g:998:51: (iv_ruleDisplayType= ruleDisplayType EOF )
-            // InternalFin.g:999:2: iv_ruleDisplayType= ruleDisplayType EOF
+            // InternalFin.g:1118:48: (iv_ruleViewType= ruleViewType EOF )
+            // InternalFin.g:1119:2: iv_ruleViewType= ruleViewType EOF
             {
-             newCompositeNode(grammarAccess.getDisplayTypeRule()); 
+             newCompositeNode(grammarAccess.getViewTypeRule()); 
             pushFollow(FOLLOW_1);
-            iv_ruleDisplayType=ruleDisplayType();
+            iv_ruleViewType=ruleViewType();
 
             state._fsp--;
 
-             current =iv_ruleDisplayType.getText(); 
+             current =iv_ruleViewType.getText(); 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -2432,12 +2791,12 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleDisplayType"
+    // $ANTLR end "entryRuleViewType"
 
 
-    // $ANTLR start "ruleDisplayType"
-    // InternalFin.g:1005:1: ruleDisplayType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'Porfolio' | kw= 'Bond' | kw= 'Option' | kw= 'Cash' | kw= 'All' ) ;
-    public final AntlrDatatypeRuleToken ruleDisplayType() throws RecognitionException {
+    // $ANTLR start "ruleViewType"
+    // InternalFin.g:1125:1: ruleViewType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'Porfolio' | kw= 'Bond' | kw= 'Option' | kw= 'Cash' | kw= 'All' ) ;
+    public final AntlrDatatypeRuleToken ruleViewType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
         Token kw=null;
@@ -2446,96 +2805,96 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:1011:2: ( (kw= 'Porfolio' | kw= 'Bond' | kw= 'Option' | kw= 'Cash' | kw= 'All' ) )
-            // InternalFin.g:1012:2: (kw= 'Porfolio' | kw= 'Bond' | kw= 'Option' | kw= 'Cash' | kw= 'All' )
+            // InternalFin.g:1131:2: ( (kw= 'Porfolio' | kw= 'Bond' | kw= 'Option' | kw= 'Cash' | kw= 'All' ) )
+            // InternalFin.g:1132:2: (kw= 'Porfolio' | kw= 'Bond' | kw= 'Option' | kw= 'Cash' | kw= 'All' )
             {
-            // InternalFin.g:1012:2: (kw= 'Porfolio' | kw= 'Bond' | kw= 'Option' | kw= 'Cash' | kw= 'All' )
-            int alt7=5;
+            // InternalFin.g:1132:2: (kw= 'Porfolio' | kw= 'Bond' | kw= 'Option' | kw= 'Cash' | kw= 'All' )
+            int alt8=5;
             switch ( input.LA(1) ) {
-            case 35:
+            case 37:
                 {
-                alt7=1;
+                alt8=1;
                 }
                 break;
-            case 14:
+            case 16:
                 {
-                alt7=2;
+                alt8=2;
                 }
                 break;
-            case 19:
+            case 21:
                 {
-                alt7=3;
+                alt8=3;
                 }
                 break;
-            case 27:
+            case 29:
                 {
-                alt7=4;
+                alt8=4;
                 }
                 break;
-            case 36:
+            case 38:
                 {
-                alt7=5;
+                alt8=5;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 7, 0, input);
+                    new NoViableAltException("", 8, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt7) {
+            switch (alt8) {
                 case 1 :
-                    // InternalFin.g:1013:3: kw= 'Porfolio'
+                    // InternalFin.g:1133:3: kw= 'Porfolio'
                     {
-                    kw=(Token)match(input,35,FOLLOW_2); 
+                    kw=(Token)match(input,37,FOLLOW_2); 
 
                     			current.merge(kw);
-                    			newLeafNode(kw, grammarAccess.getDisplayTypeAccess().getPorfolioKeyword_0());
+                    			newLeafNode(kw, grammarAccess.getViewTypeAccess().getPorfolioKeyword_0());
                     		
 
                     }
                     break;
                 case 2 :
-                    // InternalFin.g:1019:3: kw= 'Bond'
+                    // InternalFin.g:1139:3: kw= 'Bond'
                     {
-                    kw=(Token)match(input,14,FOLLOW_2); 
+                    kw=(Token)match(input,16,FOLLOW_2); 
 
                     			current.merge(kw);
-                    			newLeafNode(kw, grammarAccess.getDisplayTypeAccess().getBondKeyword_1());
+                    			newLeafNode(kw, grammarAccess.getViewTypeAccess().getBondKeyword_1());
                     		
 
                     }
                     break;
                 case 3 :
-                    // InternalFin.g:1025:3: kw= 'Option'
+                    // InternalFin.g:1145:3: kw= 'Option'
                     {
-                    kw=(Token)match(input,19,FOLLOW_2); 
+                    kw=(Token)match(input,21,FOLLOW_2); 
 
                     			current.merge(kw);
-                    			newLeafNode(kw, grammarAccess.getDisplayTypeAccess().getOptionKeyword_2());
+                    			newLeafNode(kw, grammarAccess.getViewTypeAccess().getOptionKeyword_2());
                     		
 
                     }
                     break;
                 case 4 :
-                    // InternalFin.g:1031:3: kw= 'Cash'
+                    // InternalFin.g:1151:3: kw= 'Cash'
                     {
-                    kw=(Token)match(input,27,FOLLOW_2); 
+                    kw=(Token)match(input,29,FOLLOW_2); 
 
                     			current.merge(kw);
-                    			newLeafNode(kw, grammarAccess.getDisplayTypeAccess().getCashKeyword_3());
+                    			newLeafNode(kw, grammarAccess.getViewTypeAccess().getCashKeyword_3());
                     		
 
                     }
                     break;
                 case 5 :
-                    // InternalFin.g:1037:3: kw= 'All'
+                    // InternalFin.g:1157:3: kw= 'All'
                     {
-                    kw=(Token)match(input,36,FOLLOW_2); 
+                    kw=(Token)match(input,38,FOLLOW_2); 
 
                     			current.merge(kw);
-                    			newLeafNode(kw, grammarAccess.getDisplayTypeAccess().getAllKeyword_4());
+                    			newLeafNode(kw, grammarAccess.getViewTypeAccess().getAllKeyword_4());
                     		
 
                     }
@@ -2559,11 +2918,158 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleDisplayType"
+    // $ANTLR end "ruleViewType"
+
+
+    // $ANTLR start "entryRuleTime"
+    // InternalFin.g:1166:1: entryRuleTime returns [String current=null] : iv_ruleTime= ruleTime EOF ;
+    public final String entryRuleTime() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleTime = null;
+
+
+        try {
+            // InternalFin.g:1166:44: (iv_ruleTime= ruleTime EOF )
+            // InternalFin.g:1167:2: iv_ruleTime= ruleTime EOF
+            {
+             newCompositeNode(grammarAccess.getTimeRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleTime=ruleTime();
+
+            state._fsp--;
+
+             current =iv_ruleTime.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleTime"
+
+
+    // $ANTLR start "ruleTime"
+    // InternalFin.g:1173:1: ruleTime returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'Now' | kw= 'NextMonth' | kw= 'NextQuarter' | kw= 'NextYear' ) ;
+    public final AntlrDatatypeRuleToken ruleTime() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalFin.g:1179:2: ( (kw= 'Now' | kw= 'NextMonth' | kw= 'NextQuarter' | kw= 'NextYear' ) )
+            // InternalFin.g:1180:2: (kw= 'Now' | kw= 'NextMonth' | kw= 'NextQuarter' | kw= 'NextYear' )
+            {
+            // InternalFin.g:1180:2: (kw= 'Now' | kw= 'NextMonth' | kw= 'NextQuarter' | kw= 'NextYear' )
+            int alt9=4;
+            switch ( input.LA(1) ) {
+            case 39:
+                {
+                alt9=1;
+                }
+                break;
+            case 40:
+                {
+                alt9=2;
+                }
+                break;
+            case 41:
+                {
+                alt9=3;
+                }
+                break;
+            case 42:
+                {
+                alt9=4;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 9, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt9) {
+                case 1 :
+                    // InternalFin.g:1181:3: kw= 'Now'
+                    {
+                    kw=(Token)match(input,39,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getTimeAccess().getNowKeyword_0());
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalFin.g:1187:3: kw= 'NextMonth'
+                    {
+                    kw=(Token)match(input,40,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getTimeAccess().getNextMonthKeyword_1());
+                    		
+
+                    }
+                    break;
+                case 3 :
+                    // InternalFin.g:1193:3: kw= 'NextQuarter'
+                    {
+                    kw=(Token)match(input,41,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getTimeAccess().getNextQuarterKeyword_2());
+                    		
+
+                    }
+                    break;
+                case 4 :
+                    // InternalFin.g:1199:3: kw= 'NextYear'
+                    {
+                    kw=(Token)match(input,42,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getTimeAccess().getNextYearKeyword_3());
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleTime"
 
 
     // $ANTLR start "entryRuleFLOAT"
-    // InternalFin.g:1046:1: entryRuleFLOAT returns [String current=null] : iv_ruleFLOAT= ruleFLOAT EOF ;
+    // InternalFin.g:1208:1: entryRuleFLOAT returns [String current=null] : iv_ruleFLOAT= ruleFLOAT EOF ;
     public final String entryRuleFLOAT() throws RecognitionException {
         String current = null;
 
@@ -2574,8 +3080,8 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
 
         try {
-            // InternalFin.g:1048:2: (iv_ruleFLOAT= ruleFLOAT EOF )
-            // InternalFin.g:1049:2: iv_ruleFLOAT= ruleFLOAT EOF
+            // InternalFin.g:1210:2: (iv_ruleFLOAT= ruleFLOAT EOF )
+            // InternalFin.g:1211:2: iv_ruleFLOAT= ruleFLOAT EOF
             {
              newCompositeNode(grammarAccess.getFLOATRule()); 
             pushFollow(FOLLOW_1);
@@ -2605,7 +3111,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFLOAT"
-    // InternalFin.g:1058:1: ruleFLOAT returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (this_INT_0= RULE_INT )? kw= '.' this_INT_2= RULE_INT ) ;
+    // InternalFin.g:1220:1: ruleFLOAT returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (this_INT_0= RULE_INT )? kw= '.' this_INT_2= RULE_INT ) ;
     public final AntlrDatatypeRuleToken ruleFLOAT() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2618,24 +3124,24 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
 
         try {
-            // InternalFin.g:1065:2: ( ( (this_INT_0= RULE_INT )? kw= '.' this_INT_2= RULE_INT ) )
-            // InternalFin.g:1066:2: ( (this_INT_0= RULE_INT )? kw= '.' this_INT_2= RULE_INT )
+            // InternalFin.g:1227:2: ( ( (this_INT_0= RULE_INT )? kw= '.' this_INT_2= RULE_INT ) )
+            // InternalFin.g:1228:2: ( (this_INT_0= RULE_INT )? kw= '.' this_INT_2= RULE_INT )
             {
-            // InternalFin.g:1066:2: ( (this_INT_0= RULE_INT )? kw= '.' this_INT_2= RULE_INT )
-            // InternalFin.g:1067:3: (this_INT_0= RULE_INT )? kw= '.' this_INT_2= RULE_INT
+            // InternalFin.g:1228:2: ( (this_INT_0= RULE_INT )? kw= '.' this_INT_2= RULE_INT )
+            // InternalFin.g:1229:3: (this_INT_0= RULE_INT )? kw= '.' this_INT_2= RULE_INT
             {
-            // InternalFin.g:1067:3: (this_INT_0= RULE_INT )?
-            int alt8=2;
-            int LA8_0 = input.LA(1);
+            // InternalFin.g:1229:3: (this_INT_0= RULE_INT )?
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( (LA8_0==RULE_INT) ) {
-                alt8=1;
+            if ( (LA10_0==RULE_INT) ) {
+                alt10=1;
             }
-            switch (alt8) {
+            switch (alt10) {
                 case 1 :
-                    // InternalFin.g:1068:4: this_INT_0= RULE_INT
+                    // InternalFin.g:1230:4: this_INT_0= RULE_INT
                     {
-                    this_INT_0=(Token)match(input,RULE_INT,FOLLOW_27); 
+                    this_INT_0=(Token)match(input,RULE_INT,FOLLOW_28); 
 
                     				current.merge(this_INT_0);
                     			
@@ -2648,7 +3154,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
             }
 
-            kw=(Token)match(input,37,FOLLOW_12); 
+            kw=(Token)match(input,43,FOLLOW_12); 
 
             			current.merge(kw);
             			newLeafNode(kw, grammarAccess.getFLOATAccess().getFullStopKeyword_1());
@@ -2686,7 +3192,7 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOptionType"
-    // InternalFin.g:1095:1: ruleOptionType returns [Enumerator current=null] : ( (enumLiteral_0= 'Call' ) | (enumLiteral_1= 'Put' ) ) ;
+    // InternalFin.g:1257:1: ruleOptionType returns [Enumerator current=null] : ( (enumLiteral_0= 'Call' ) | (enumLiteral_1= 'Put' ) ) ;
     public final Enumerator ruleOptionType() throws RecognitionException {
         Enumerator current = null;
 
@@ -2697,33 +3203,33 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFin.g:1101:2: ( ( (enumLiteral_0= 'Call' ) | (enumLiteral_1= 'Put' ) ) )
-            // InternalFin.g:1102:2: ( (enumLiteral_0= 'Call' ) | (enumLiteral_1= 'Put' ) )
+            // InternalFin.g:1263:2: ( ( (enumLiteral_0= 'Call' ) | (enumLiteral_1= 'Put' ) ) )
+            // InternalFin.g:1264:2: ( (enumLiteral_0= 'Call' ) | (enumLiteral_1= 'Put' ) )
             {
-            // InternalFin.g:1102:2: ( (enumLiteral_0= 'Call' ) | (enumLiteral_1= 'Put' ) )
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            // InternalFin.g:1264:2: ( (enumLiteral_0= 'Call' ) | (enumLiteral_1= 'Put' ) )
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA9_0==38) ) {
-                alt9=1;
+            if ( (LA11_0==44) ) {
+                alt11=1;
             }
-            else if ( (LA9_0==39) ) {
-                alt9=2;
+            else if ( (LA11_0==45) ) {
+                alt11=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 9, 0, input);
+                    new NoViableAltException("", 11, 0, input);
 
                 throw nvae;
             }
-            switch (alt9) {
+            switch (alt11) {
                 case 1 :
-                    // InternalFin.g:1103:3: (enumLiteral_0= 'Call' )
+                    // InternalFin.g:1265:3: (enumLiteral_0= 'Call' )
                     {
-                    // InternalFin.g:1103:3: (enumLiteral_0= 'Call' )
-                    // InternalFin.g:1104:4: enumLiteral_0= 'Call'
+                    // InternalFin.g:1265:3: (enumLiteral_0= 'Call' )
+                    // InternalFin.g:1266:4: enumLiteral_0= 'Call'
                     {
-                    enumLiteral_0=(Token)match(input,38,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,44,FOLLOW_2); 
 
                     				current = grammarAccess.getOptionTypeAccess().getCallEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getOptionTypeAccess().getCallEnumLiteralDeclaration_0());
@@ -2735,12 +3241,12 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalFin.g:1111:3: (enumLiteral_1= 'Put' )
+                    // InternalFin.g:1273:3: (enumLiteral_1= 'Put' )
                     {
-                    // InternalFin.g:1111:3: (enumLiteral_1= 'Put' )
-                    // InternalFin.g:1112:4: enumLiteral_1= 'Put'
+                    // InternalFin.g:1273:3: (enumLiteral_1= 'Put' )
+                    // InternalFin.g:1274:4: enumLiteral_1= 'Put'
                     {
-                    enumLiteral_1=(Token)match(input,39,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,45,FOLLOW_2); 
 
                     				current = grammarAccess.getOptionTypeAccess().getPutEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getOptionTypeAccess().getPutEnumLiteralDeclaration_1());
@@ -2779,30 +3285,31 @@ public class InternalFinParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000760000802L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000008084000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000008086000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000001D80003802L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000020210000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000020218000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000002000000020L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000080000000020L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000080000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x000000C000000000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000084000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000001808084000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000300000000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000210000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000006020210000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000078000000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000080000000000L});
 
 }

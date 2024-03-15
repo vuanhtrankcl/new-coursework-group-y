@@ -79,7 +79,7 @@ public class FinFactoryImpl extends EFactoryImpl implements FinFactory
       case FinPackage.SELL: return createSell();
       case FinPackage.DEPOSIT: return createDeposit();
       case FinPackage.WITHDRAWAL: return createWithdrawal();
-      case FinPackage.DISPLAY: return createDisplay();
+      case FinPackage.VIEW: return createView();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -281,10 +281,10 @@ public class FinFactoryImpl extends EFactoryImpl implements FinFactory
    * @generated
    */
   @Override
-  public Display createDisplay()
+  public View createView()
   {
-    DisplayImpl display = new DisplayImpl();
-    return display;
+    ViewImpl view = new ViewImpl();
+    return view;
   }
 
   /**

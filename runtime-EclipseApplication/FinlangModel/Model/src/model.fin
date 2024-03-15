@@ -26,15 +26,15 @@ Deposit 1000.0
 
 Withdrawal 500.0
 
-Display Porfolio
+View Porfolio Now
 
-Display Bond
+View Bond NextMonth
 
-Display Option
+View Option NextQuarter
 
-Display Cash
+View Cash Now
 
-Display All
+View All NextYear
 
 Buy {
 	Bond aNewBond {
@@ -48,8 +48,9 @@ Buy {
 Sell {
 	assetName myBond
 	amount 300.0
-} 
+}
 
+// Can have some more if else statement
 
-
+ 
 

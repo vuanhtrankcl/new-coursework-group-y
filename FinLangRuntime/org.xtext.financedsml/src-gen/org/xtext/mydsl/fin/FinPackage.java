@@ -504,32 +504,41 @@ public interface FinPackage extends EPackage
   int WITHDRAWAL_FEATURE_COUNT = TRANSACTION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.mydsl.fin.impl.DisplayImpl <em>Display</em>}' class.
+   * The meta object id for the '{@link org.xtext.mydsl.fin.impl.ViewImpl <em>View</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.mydsl.fin.impl.DisplayImpl
-   * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getDisplay()
+   * @see org.xtext.mydsl.fin.impl.ViewImpl
+   * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getView()
    * @generated
    */
-  int DISPLAY = 13;
+  int VIEW = 13;
 
   /**
-   * The feature id for the '<em><b>Display Type</b></em>' attribute.
+   * The feature id for the '<em><b>View Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DISPLAY__DISPLAY_TYPE = ACTION_FEATURE_COUNT + 0;
+  int VIEW__VIEW_TYPE = ACTION_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Display</em>' class.
+   * The feature id for the '<em><b>Time</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DISPLAY_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
+  int VIEW__TIME = ACTION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>View</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VIEW_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.fin.OptionType <em>Option Type</em>}' enum.
@@ -915,25 +924,36 @@ public interface FinPackage extends EPackage
   EAttribute getWithdrawal_Amount();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.mydsl.fin.Display <em>Display</em>}'.
+   * Returns the meta object for class '{@link org.xtext.mydsl.fin.View <em>View</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Display</em>'.
-   * @see org.xtext.mydsl.fin.Display
+   * @return the meta object for class '<em>View</em>'.
+   * @see org.xtext.mydsl.fin.View
    * @generated
    */
-  EClass getDisplay();
+  EClass getView();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.Display#getDisplayType <em>Display Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.View#getViewType <em>View Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Display Type</em>'.
-   * @see org.xtext.mydsl.fin.Display#getDisplayType()
-   * @see #getDisplay()
+   * @return the meta object for the attribute '<em>View Type</em>'.
+   * @see org.xtext.mydsl.fin.View#getViewType()
+   * @see #getView()
    * @generated
    */
-  EAttribute getDisplay_DisplayType();
+  EAttribute getView_ViewType();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.View#getTime <em>Time</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Time</em>'.
+   * @see org.xtext.mydsl.fin.View#getTime()
+   * @see #getView()
+   * @generated
+   */
+  EAttribute getView_Time();
 
   /**
    * Returns the meta object for enum '{@link org.xtext.mydsl.fin.OptionType <em>Option Type</em>}'.
@@ -1275,22 +1295,30 @@ public interface FinPackage extends EPackage
     EAttribute WITHDRAWAL__AMOUNT = eINSTANCE.getWithdrawal_Amount();
 
     /**
-     * The meta object literal for the '{@link org.xtext.mydsl.fin.impl.DisplayImpl <em>Display</em>}' class.
+     * The meta object literal for the '{@link org.xtext.mydsl.fin.impl.ViewImpl <em>View</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.mydsl.fin.impl.DisplayImpl
-     * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getDisplay()
+     * @see org.xtext.mydsl.fin.impl.ViewImpl
+     * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getView()
      * @generated
      */
-    EClass DISPLAY = eINSTANCE.getDisplay();
+    EClass VIEW = eINSTANCE.getView();
 
     /**
-     * The meta object literal for the '<em><b>Display Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>View Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DISPLAY__DISPLAY_TYPE = eINSTANCE.getDisplay_DisplayType();
+    EAttribute VIEW__VIEW_TYPE = eINSTANCE.getView_ViewType();
+
+    /**
+     * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VIEW__TIME = eINSTANCE.getView_Time();
 
     /**
      * The meta object literal for the '{@link org.xtext.mydsl.fin.OptionType <em>Option Type</em>}' enum.

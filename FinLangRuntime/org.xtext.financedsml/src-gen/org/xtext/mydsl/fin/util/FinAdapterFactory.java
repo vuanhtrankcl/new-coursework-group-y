@@ -141,9 +141,9 @@ public class FinAdapterFactory extends AdapterFactoryImpl
         return createWithdrawalAdapter();
       }
       @Override
-      public Adapter caseDisplay(Display object)
+      public Adapter caseView(View object)
       {
-        return createDisplayAdapter();
+        return createViewAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -363,16 +363,16 @@ public class FinAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.fin.Display <em>Display</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.mydsl.fin.View <em>View</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.mydsl.fin.Display
+   * @see org.xtext.mydsl.fin.View
    * @generated
    */
-  public Adapter createDisplayAdapter()
+  public Adapter createViewAdapter()
   {
     return null;
   }

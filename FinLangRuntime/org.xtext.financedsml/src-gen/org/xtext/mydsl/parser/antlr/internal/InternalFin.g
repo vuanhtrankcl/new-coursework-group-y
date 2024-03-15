@@ -139,6 +139,23 @@ ruleElement returns [EObject current=null]
 			$current = $this_Action_2.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getElementAccess().getElementAction_3_0(),
+						$current);
+				}
+			)
+			{
+				newCompositeNode(grammarAccess.getElementAccess().getConditionalStatementParserRuleCall_3_1());
+			}
+			ruleConditionalStatement
+			{
+				afterParserOrEnumRuleCall();
+			}
+		)
 	)
 ;
 
@@ -257,12 +274,96 @@ ruleAction returns [EObject current=null]
 	leaveRule();
 }:
 	{
-		newCompositeNode(grammarAccess.getActionAccess().getDisplayParserRuleCall());
+		newCompositeNode(grammarAccess.getActionAccess().getViewParserRuleCall());
 	}
-	this_Display_0=ruleDisplay
+	this_View_0=ruleView
 	{
-		$current = $this_Display_0.current;
+		$current = $this_View_0.current;
 		afterParserOrEnumRuleCall();
+	}
+;
+
+// Entry rule entryRuleConditionalStatement
+entryRuleConditionalStatement returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getConditionalStatementRule()); }
+	iv_ruleConditionalStatement=ruleConditionalStatement
+	{ $current=$iv_ruleConditionalStatement.current.getText(); }
+	EOF;
+
+// Rule ConditionalStatement
+ruleConditionalStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getConditionalStatementAccess().getIfStatementParserRuleCall_0());
+		}
+		this_IfStatement_0=ruleIfStatement
+		{
+			$current.merge(this_IfStatement_0);
+		}
+		{
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getConditionalStatementAccess().getForStatementParserRuleCall_1());
+		}
+		this_ForStatement_1=ruleForStatement
+		{
+			$current.merge(this_ForStatement_1);
+		}
+		{
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleIfStatement
+entryRuleIfStatement returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getIfStatementRule()); }
+	iv_ruleIfStatement=ruleIfStatement
+	{ $current=$iv_ruleIfStatement.current.getText(); }
+	EOF;
+
+// Rule IfStatement
+ruleIfStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	kw='If'
+	{
+		$current.merge(kw);
+		newLeafNode(kw, grammarAccess.getIfStatementAccess().getIfKeyword());
+	}
+;
+
+// Entry rule entryRuleForStatement
+entryRuleForStatement returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getForStatementRule()); }
+	iv_ruleForStatement=ruleForStatement
+	{ $current=$iv_ruleForStatement.current.getText(); }
+	EOF;
+
+// Rule ForStatement
+ruleForStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	kw='For'
+	{
+		$current.merge(kw);
+		newLeafNode(kw, grammarAccess.getForStatementAccess().getForKeyword());
 	}
 ;
 
@@ -952,15 +1053,15 @@ ruleWithdrawal returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleDisplay
-entryRuleDisplay returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getDisplayRule()); }
-	iv_ruleDisplay=ruleDisplay
-	{ $current=$iv_ruleDisplay.current; }
+// Entry rule entryRuleView
+entryRuleView returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getViewRule()); }
+	iv_ruleView=ruleView
+	{ $current=$iv_ruleView.current; }
 	EOF;
 
-// Rule Display
-ruleDisplay returns [EObject current=null]
+// Rule View
+ruleView returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -968,25 +1069,44 @@ ruleDisplay returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Display'
+		otherlv_0='View'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getDisplayAccess().getDisplayKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getViewAccess().getViewKeyword_0());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDisplayAccess().getDisplayTypeDisplayTypeParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getViewAccess().getViewTypeViewTypeParserRuleCall_1_0());
 				}
-				lv_displayType_1_0=ruleDisplayType
+				lv_viewType_1_0=ruleViewType
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getDisplayRule());
+						$current = createModelElementForParent(grammarAccess.getViewRule());
 					}
 					set(
 						$current,
-						"displayType",
-						lv_displayType_1_0,
-						"org.xtext.mydsl.Fin.DisplayType");
+						"viewType",
+						lv_viewType_1_0,
+						"org.xtext.mydsl.Fin.ViewType");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getViewAccess().getTimeTimeParserRuleCall_2_0());
+				}
+				lv_time_2_0=ruleTime
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getViewRule());
+					}
+					set(
+						$current,
+						"time",
+						lv_time_2_0,
+						"org.xtext.mydsl.Fin.Time");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -994,15 +1114,15 @@ ruleDisplay returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleDisplayType
-entryRuleDisplayType returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getDisplayTypeRule()); }
-	iv_ruleDisplayType=ruleDisplayType
-	{ $current=$iv_ruleDisplayType.current.getText(); }
+// Entry rule entryRuleViewType
+entryRuleViewType returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getViewTypeRule()); }
+	iv_ruleViewType=ruleViewType
+	{ $current=$iv_ruleViewType.current.getText(); }
 	EOF;
 
-// Rule DisplayType
-ruleDisplayType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+// Rule ViewType
+ruleViewType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 @init {
 	enterRule();
 }
@@ -1013,31 +1133,73 @@ ruleDisplayType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTok
 		kw='Porfolio'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getDisplayTypeAccess().getPorfolioKeyword_0());
+			newLeafNode(kw, grammarAccess.getViewTypeAccess().getPorfolioKeyword_0());
 		}
 		    |
 		kw='Bond'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getDisplayTypeAccess().getBondKeyword_1());
+			newLeafNode(kw, grammarAccess.getViewTypeAccess().getBondKeyword_1());
 		}
 		    |
 		kw='Option'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getDisplayTypeAccess().getOptionKeyword_2());
+			newLeafNode(kw, grammarAccess.getViewTypeAccess().getOptionKeyword_2());
 		}
 		    |
 		kw='Cash'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getDisplayTypeAccess().getCashKeyword_3());
+			newLeafNode(kw, grammarAccess.getViewTypeAccess().getCashKeyword_3());
 		}
 		    |
 		kw='All'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getDisplayTypeAccess().getAllKeyword_4());
+			newLeafNode(kw, grammarAccess.getViewTypeAccess().getAllKeyword_4());
+		}
+	)
+;
+
+// Entry rule entryRuleTime
+entryRuleTime returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getTimeRule()); }
+	iv_ruleTime=ruleTime
+	{ $current=$iv_ruleTime.current.getText(); }
+	EOF;
+
+// Rule Time
+ruleTime returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw='Now'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTimeAccess().getNowKeyword_0());
+		}
+		    |
+		kw='NextMonth'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTimeAccess().getNextMonthKeyword_1());
+		}
+		    |
+		kw='NextQuarter'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTimeAccess().getNextQuarterKeyword_2());
+		}
+		    |
+		kw='NextYear'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getTimeAccess().getNextYearKeyword_3());
 		}
 	)
 ;

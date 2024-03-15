@@ -178,12 +178,12 @@ public class FinSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case FinPackage.DISPLAY:
+      case FinPackage.VIEW:
       {
-        Display display = (Display)theEObject;
-        T result = caseDisplay(display);
-        if (result == null) result = caseAction(display);
-        if (result == null) result = caseElement(display);
+        View view = (View)theEObject;
+        T result = caseView(view);
+        if (result == null) result = caseAction(view);
+        if (result == null) result = caseElement(view);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -400,17 +400,17 @@ public class FinSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Display</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>View</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Display</em>'.
+   * @return the result of interpreting the object as an instance of '<em>View</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDisplay(Display object)
+  public T caseView(View object)
   {
     return null;
   }

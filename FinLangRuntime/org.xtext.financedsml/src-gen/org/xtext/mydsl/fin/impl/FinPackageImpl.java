@@ -17,7 +17,6 @@ import org.xtext.mydsl.fin.Bond;
 import org.xtext.mydsl.fin.Buy;
 import org.xtext.mydsl.fin.Cash;
 import org.xtext.mydsl.fin.Deposit;
-import org.xtext.mydsl.fin.Display;
 import org.xtext.mydsl.fin.Element;
 import org.xtext.mydsl.fin.FinFactory;
 import org.xtext.mydsl.fin.FinPackage;
@@ -27,6 +26,7 @@ import org.xtext.mydsl.fin.OptionType;
 import org.xtext.mydsl.fin.Portfolio;
 import org.xtext.mydsl.fin.Sell;
 import org.xtext.mydsl.fin.Transaction;
+import org.xtext.mydsl.fin.View;
 import org.xtext.mydsl.fin.Withdrawal;
 
 /**
@@ -133,7 +133,7 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass displayEClass = null;
+  private EClass viewEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -595,9 +595,9 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
-  public EClass getDisplay()
+  public EClass getView()
   {
-    return displayEClass;
+    return viewEClass;
   }
 
   /**
@@ -606,9 +606,20 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
-  public EAttribute getDisplay_DisplayType()
+  public EAttribute getView_ViewType()
   {
-    return (EAttribute)displayEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)viewEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getView_Time()
+  {
+    return (EAttribute)viewEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -701,8 +712,9 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     withdrawalEClass = createEClass(WITHDRAWAL);
     createEAttribute(withdrawalEClass, WITHDRAWAL__AMOUNT);
 
-    displayEClass = createEClass(DISPLAY);
-    createEAttribute(displayEClass, DISPLAY__DISPLAY_TYPE);
+    viewEClass = createEClass(VIEW);
+    createEAttribute(viewEClass, VIEW__VIEW_TYPE);
+    createEAttribute(viewEClass, VIEW__TIME);
 
     // Create enums
     optionTypeEEnum = createEEnum(OPTION_TYPE);
@@ -747,7 +759,7 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     sellEClass.getESuperTypes().add(this.getTransaction());
     depositEClass.getESuperTypes().add(this.getTransaction());
     withdrawalEClass.getESuperTypes().add(this.getTransaction());
-    displayEClass.getESuperTypes().add(this.getAction());
+    viewEClass.getESuperTypes().add(this.getAction());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -798,8 +810,9 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     initEClass(withdrawalEClass, Withdrawal.class, "Withdrawal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWithdrawal_Amount(), ecorePackage.getEFloat(), "amount", null, 0, 1, Withdrawal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(displayEClass, Display.class, "Display", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDisplay_DisplayType(), ecorePackage.getEString(), "displayType", null, 0, 1, Display.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(viewEClass, View.class, "View", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getView_ViewType(), ecorePackage.getEString(), "viewType", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getView_Time(), ecorePackage.getEString(), "time", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(optionTypeEEnum, OptionType.class, "OptionType");

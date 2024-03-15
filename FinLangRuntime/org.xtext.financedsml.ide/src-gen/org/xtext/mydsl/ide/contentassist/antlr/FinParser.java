@@ -34,9 +34,12 @@ public class FinParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getElementAccess().getAlternatives(), "rule__Element__Alternatives");
 			builder.put(grammarAccess.getAssetAccess().getAlternatives(), "rule__Asset__Alternatives");
 			builder.put(grammarAccess.getTransactionAccess().getAlternatives(), "rule__Transaction__Alternatives");
+			builder.put(grammarAccess.getConditionalStatementAccess().getAlternatives(), "rule__ConditionalStatement__Alternatives");
 			builder.put(grammarAccess.getBuyAccess().getAlternatives_2(), "rule__Buy__Alternatives_2");
-			builder.put(grammarAccess.getDisplayTypeAccess().getAlternatives(), "rule__DisplayType__Alternatives");
+			builder.put(grammarAccess.getViewTypeAccess().getAlternatives(), "rule__ViewType__Alternatives");
+			builder.put(grammarAccess.getTimeAccess().getAlternatives(), "rule__Time__Alternatives");
 			builder.put(grammarAccess.getOptionTypeAccess().getAlternatives(), "rule__OptionType__Alternatives");
+			builder.put(grammarAccess.getElementAccess().getGroup_3(), "rule__Element__Group_3__0");
 			builder.put(grammarAccess.getPortfolioAccess().getGroup(), "rule__Portfolio__Group__0");
 			builder.put(grammarAccess.getBondAccess().getGroup(), "rule__Bond__Group__0");
 			builder.put(grammarAccess.getOptionAccess().getGroup(), "rule__Option__Group__0");
@@ -45,7 +48,7 @@ public class FinParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSellAccess().getGroup(), "rule__Sell__Group__0");
 			builder.put(grammarAccess.getDepositAccess().getGroup(), "rule__Deposit__Group__0");
 			builder.put(grammarAccess.getWithdrawalAccess().getGroup(), "rule__Withdrawal__Group__0");
-			builder.put(grammarAccess.getDisplayAccess().getGroup(), "rule__Display__Group__0");
+			builder.put(grammarAccess.getViewAccess().getGroup(), "rule__View__Group__0");
 			builder.put(grammarAccess.getFLOATAccess().getGroup(), "rule__FLOAT__Group__0");
 			builder.put(grammarAccess.getModelAccess().getElementAssignment(), "rule__Model__ElementAssignment");
 			builder.put(grammarAccess.getPortfolioAccess().getAssetAssignment_2(), "rule__Portfolio__AssetAssignment_2");
@@ -69,7 +72,8 @@ public class FinParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSellAccess().getAmountAssignment_5(), "rule__Sell__AmountAssignment_5");
 			builder.put(grammarAccess.getDepositAccess().getAmountAssignment_1(), "rule__Deposit__AmountAssignment_1");
 			builder.put(grammarAccess.getWithdrawalAccess().getAmountAssignment_1(), "rule__Withdrawal__AmountAssignment_1");
-			builder.put(grammarAccess.getDisplayAccess().getDisplayTypeAssignment_1(), "rule__Display__DisplayTypeAssignment_1");
+			builder.put(grammarAccess.getViewAccess().getViewTypeAssignment_1(), "rule__View__ViewTypeAssignment_1");
+			builder.put(grammarAccess.getViewAccess().getTimeAssignment_2(), "rule__View__TimeAssignment_2");
 		}
 	}
 	

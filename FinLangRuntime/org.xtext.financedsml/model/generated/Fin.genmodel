@@ -54,8 +54,9 @@
     <genClasses ecoreClass="Fin.ecore#//Withdrawal">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//Withdrawal/amount"/>
     </genClasses>
-    <genClasses ecoreClass="Fin.ecore#//Display">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//Display/displayType"/>
+    <genClasses ecoreClass="Fin.ecore#//View">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//View/viewType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//View/time"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

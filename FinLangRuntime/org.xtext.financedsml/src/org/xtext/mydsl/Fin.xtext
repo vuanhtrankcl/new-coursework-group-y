@@ -7,7 +7,7 @@ Model:
 	(element+=Element)*;
 	
 Element:
-	Portfolio | Transaction | Action
+	Portfolio | Transaction | Action | {Element} ConditionalStatement
 ;
 
 Asset:
@@ -20,7 +20,20 @@ Transaction:
 
 // TODO: Thinking to add more actions
 Action: 
-	Display
+	View
+;
+
+// TODO: Implement this
+ConditionalStatement:
+	IfStatement | ForStatement
+;
+
+IfStatement: 
+	"If"
+;
+
+ForStatement: 
+	"For"
 ;
 
 // Use portfolio to initialise a profile
@@ -78,12 +91,17 @@ Withdrawal:
 	'Withdrawal' amount=FLOAT
 ;
 
-Display:
-	'Display' (displayType=DisplayType)
+View:
+	'View' (viewType=ViewType) (time=Time)
 ;
 
-DisplayType:
+ViewType:
 	'Porfolio' | 'Bond' | 'Option' | 'Cash' | 'All'
+;
+
+// Plus 1 month, 3 months or 12 months, using model to calculate the price at that time.
+Time:
+	'Now' | 'NextMonth' | 'NextQuarter' | 'NextYear'
 ;
 
 enum OptionType:

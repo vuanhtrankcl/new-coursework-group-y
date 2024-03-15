@@ -18,12 +18,13 @@ import org.xtext.mydsl.fin.Bond;
 import org.xtext.mydsl.fin.Buy;
 import org.xtext.mydsl.fin.Cash;
 import org.xtext.mydsl.fin.Deposit;
-import org.xtext.mydsl.fin.Display;
+import org.xtext.mydsl.fin.Element;
 import org.xtext.mydsl.fin.FinPackage;
 import org.xtext.mydsl.fin.Model;
 import org.xtext.mydsl.fin.Option;
 import org.xtext.mydsl.fin.Portfolio;
 import org.xtext.mydsl.fin.Sell;
+import org.xtext.mydsl.fin.View;
 import org.xtext.mydsl.fin.Withdrawal;
 import org.xtext.mydsl.services.FinGrammarAccess;
 
@@ -53,8 +54,8 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case FinPackage.DEPOSIT:
 				sequence_Deposit(context, (Deposit) semanticObject); 
 				return; 
-			case FinPackage.DISPLAY:
-				sequence_Display(context, (Display) semanticObject); 
+			case FinPackage.ELEMENT:
+				sequence_Element(context, (Element) semanticObject); 
 				return; 
 			case FinPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
@@ -67,6 +68,9 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case FinPackage.SELL:
 				sequence_Sell(context, (Sell) semanticObject); 
+				return; 
+			case FinPackage.VIEW:
+				sequence_View(context, (View) semanticObject); 
 				return; 
 			case FinPackage.WITHDRAWAL:
 				sequence_Withdrawal(context, (Withdrawal) semanticObject); 
@@ -171,22 +175,14 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Element returns Display
-	 *     Action returns Display
-	 *     Display returns Display
+	 *     Element returns Element
 	 *
 	 * Constraint:
-	 *     displayType=DisplayType
+	 *     {Element}
 	 * </pre>
 	 */
-	protected void sequence_Display(ISerializationContext context, Display semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.DISPLAY__DISPLAY_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.DISPLAY__DISPLAY_TYPE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDisplayAccess().getDisplayTypeDisplayTypeParserRuleCall_1_0(), semanticObject.getDisplayType());
-		feeder.finish();
+	protected void sequence_Element(ISerializationContext context, Element semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -291,6 +287,31 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSellAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getSellAccess().getAmountFLOATParserRuleCall_5_0(), semanticObject.getAmount());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Element returns View
+	 *     Action returns View
+	 *     View returns View
+	 *
+	 * Constraint:
+	 *     (viewType=ViewType time=Time)
+	 * </pre>
+	 */
+	protected void sequence_View(ISerializationContext context, View semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.VIEW__VIEW_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.VIEW__VIEW_TYPE));
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.VIEW__TIME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.VIEW__TIME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getViewAccess().getViewTypeViewTypeParserRuleCall_1_0(), semanticObject.getViewType());
+		feeder.accept(grammarAccess.getViewAccess().getTimeTimeParserRuleCall_2_0(), semanticObject.getTime());
 		feeder.finish();
 	}
 	
