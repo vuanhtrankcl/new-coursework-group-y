@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.financedsml.ui
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.financedsml.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.financedsml.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.xtext.financedsml,
+ org.xtext.financedsml.ide,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.14.300",
+ org.eclipse.ui.ide;bundle-version="3.18.500",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: org.xtext.mydsl.ui.contentassist,
+ org.xtext.mydsl.ui.quickfix,
+ org.xtext.financedsml.ui.internal
+Bundle-Activator: org.xtext.financedsml.ui.internal.FinancedsmlActivator

@@ -1,0 +1,55 @@
+Portfolio {
+	Bond myBond {
+		faceValue 1000.0
+		couponRate 0.05
+		maturity 10
+		yieldRate 0.04
+	}
+	
+	Option myOption {
+		type Call
+		underlyingPrice 100.50
+		strikePrice 95.25
+		timeToExpiration 0.5
+		riskFreeRate 0.01
+		volatility 0.2
+		dividendYield 0.03
+	}
+	
+	Cash {
+		amount 1000.0
+	}
+
+}
+
+Deposit 1000.0
+
+Withdrawal 500.0
+
+Display Porfolio
+
+Display Bond
+
+Display Option
+
+Display Cash
+
+Display All
+
+Buy {
+	Bond aNewBond {
+		faceValue 2000.0
+		couponRate 0.04
+		maturity 20
+		yieldRate 0.04
+	}
+}
+
+Sell {
+	assetName myBond
+	amount 300.0
+} 
+
+
+
+

@@ -1,0 +1,47 @@
+/* XPECT_SETUP uk.ac.kcl.FinLangXpect.XPectTests END_SETUP */
+
+// Xpect test for parsing a Bond with integer face value
+// XPECT noerrors --> 
+Bond myBond {
+	faceValue 1000.0
+	couponRate 0.05
+	maturity 10
+	yieldRate 0.04
+}
+Price { calculatePrice }
+
+// Xpect test for parsing an Option with floating point values
+// XPECT noerrors --> 
+Option myOption {
+	type Call
+	underlyingPrice 100.50
+	strikePrice 95.25
+	timeToExpiration 0.5
+	riskFreeRate 0.01
+	volatility 0.2
+	dividendYield 0.03
+}
+Value { calculateBlackScholes }
+
+// Xpect test for parsing a Portfolio with a Bond and an Option
+// XPECT noerrors -->
+Portfolio myPortfolio {
+	Bond bond1 {
+		faceValue 1000.0
+		couponRate 0.05
+		maturity 10
+		yieldRate 0.04
+	}
+	Price { calculatePrice }
+	
+	Option option1 {
+		type Put
+		underlyingPrice .75
+		strikePrice 1.50
+		timeToExpiration .25
+		riskFreeRate 0.01
+		volatility 0.15
+		dividendYield 0.02
+	}
+	Value { calculateBlackScholes }
+}

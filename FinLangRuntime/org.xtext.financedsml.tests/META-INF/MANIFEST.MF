@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.financedsml.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.financedsml.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.financedsml.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.xtext.financedsml,
+ org.junit;bundle-version="4.13.2",
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: org.xtext.mydsl.tests;x-internal=true
