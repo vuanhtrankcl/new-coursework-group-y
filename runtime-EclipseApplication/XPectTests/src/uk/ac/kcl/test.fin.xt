@@ -1,0 +1,22 @@
+/* XPECT_SETUP uk.ac.kcl.XPectTests END_SETUP */
+
+
+// Xpect test for parsing a Portfolio with a Bond and an Option
+// XPECT noerrors -->
+Portfolio {
+	Bond bond1 {
+		faceValue 1000.0
+		couponRate 0.05
+		maturity 10
+		yieldRate 0.04
+	}
+	Option option1 {
+		type Put
+		underlyingPrice .75
+		strikePrice 1.50
+		timeToExpiration .25
+		riskFreeRate 0.01
+		volatility 0.15
+		dividendYield 0.02
+	}
+}

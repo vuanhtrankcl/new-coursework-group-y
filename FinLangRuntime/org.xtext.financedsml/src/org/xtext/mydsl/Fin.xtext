@@ -38,7 +38,7 @@ ForStatement:
 
 // Use portfolio to initialise a profile
 Portfolio:
-	'Portfolio' '{'
+	'Portfolio' name=ID '{'
 		(asset+=Asset)+
 	'}'
 ;
