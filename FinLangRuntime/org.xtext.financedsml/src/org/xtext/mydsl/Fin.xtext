@@ -25,16 +25,19 @@ Action:
 
 // TODO: Implement this
 ConditionalStatement:
-	IfStatement | ForStatement
+	IfStatement 
 ;
 
 IfStatement: 
 	"If"
 ;
 
+/* TODO: figure out a use case 
 ForStatement: 
 	"For"
 ;
+* 
+*/
 
 // Use portfolio to initialise a profile
 Portfolio:
@@ -92,18 +95,18 @@ Withdrawal:
 ;
 
 View:
-	'View' (viewType=ViewType) (time=Time)
+	'View' (viewType=ViewType) (amount=INT)? (time=TimeUnit)
 ;
 
-ViewType:
-	'Porfolio' | 'Bond' | 'Option' | 'Cash'
+enum ViewType:
+	Portfolio | Bond | Option | Cash
 ;
 
 // 4 <time unit> (day, month, year)
 
 // Plus 1 month, 3 months or 12 months, using model to calculate the price at that time.
-Time:
-	'Now' | 'NextMonth' | 'NextQuarter' | 'NextYear'
+enum TimeUnit:
+	Day | Month | Year
 ;
 
 enum OptionType:
