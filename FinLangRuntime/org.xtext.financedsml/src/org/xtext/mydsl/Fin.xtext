@@ -96,8 +96,10 @@ View:
 ;
 
 ViewType:
-	'Porfolio' | 'Bond' | 'Option' | 'Cash' | 'All'
+	'Porfolio' | 'Bond' | 'Option' | 'Cash'
 ;
+
+// 4 <time unit> (day, month, year)
 
 // Plus 1 month, 3 months or 12 months, using model to calculate the price at that time.
 Time:
