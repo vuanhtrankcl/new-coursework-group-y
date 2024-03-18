@@ -39,6 +39,8 @@ class FinGenerator extends AbstractGenerator {
 	   
 	}
 	
+	// TODO: create static class with static methods to view assets
+	
 	
 	def protected void generateOption(IFileSystemAccess2 fsa) {
 		val content = '''

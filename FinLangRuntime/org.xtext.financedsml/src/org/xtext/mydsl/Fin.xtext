@@ -20,7 +20,7 @@ Transaction:
 
 // TODO: Thinking to add more actions
 Action: 
-	View
+	View // View whats inside assets / portfolio
 ;
 
 // TODO: Implement this
