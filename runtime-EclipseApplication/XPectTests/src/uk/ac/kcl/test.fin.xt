@@ -3,7 +3,7 @@
 
 // Xpect test for parsing a Portfolio with a Bond and an Option
 // XPECT noerrors -->
-Portfolio {
+Portfolio myPort {
 	Bond bond1 {
 		faceValue 1000.0
 		couponRate 0.05

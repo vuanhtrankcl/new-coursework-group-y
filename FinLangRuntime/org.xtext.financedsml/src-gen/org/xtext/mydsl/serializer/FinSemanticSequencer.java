@@ -258,7 +258,7 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Portfolio returns Portfolio
 	 *
 	 * Constraint:
-	 *     asset+=Asset+
+	 *     (name=ID asset+=Asset+)
 	 * </pre>
 	 */
 	protected void sequence_Portfolio(ISerializationContext context, Portfolio semanticObject) {

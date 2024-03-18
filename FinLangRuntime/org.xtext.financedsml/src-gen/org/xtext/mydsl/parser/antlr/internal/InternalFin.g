@@ -387,16 +387,34 @@ rulePortfolio returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getPortfolioAccess().getPortfolioKeyword_0());
 		}
-		otherlv_1='{'
+		(
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getPortfolioAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getPortfolioRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2='{'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getPortfolioAccess().getLeftCurlyBracketKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getPortfolioAccess().getLeftCurlyBracketKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPortfolioAccess().getAssetAssetParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getPortfolioAccess().getAssetAssetParserRuleCall_3_0());
 				}
-				lv_asset_2_0=ruleAsset
+				lv_asset_3_0=ruleAsset
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPortfolioRule());
@@ -404,15 +422,15 @@ rulePortfolio returns [EObject current=null]
 					add(
 						$current,
 						"asset",
-						lv_asset_2_0,
+						lv_asset_3_0,
 						"org.xtext.mydsl.Fin.Asset");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
-		otherlv_3='}'
+		otherlv_4='}'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getPortfolioAccess().getRightCurlyBracketKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getPortfolioAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;
@@ -1152,12 +1170,6 @@ ruleViewType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 		{
 			$current.merge(kw);
 			newLeafNode(kw, grammarAccess.getViewTypeAccess().getCashKeyword_3());
-		}
-		    |
-		kw='All'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getViewTypeAccess().getAllKeyword_4());
 		}
 	)
 ;

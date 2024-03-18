@@ -287,9 +287,20 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
+  public EAttribute getPortfolio_Name()
+  {
+    return (EAttribute)portfolioEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getPortfolio_Asset()
   {
-    return (EReference)portfolioEClass.getEStructuralFeatures().get(0);
+    return (EReference)portfolioEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -676,6 +687,7 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     actionEClass = createEClass(ACTION);
 
     portfolioEClass = createEClass(PORTFOLIO);
+    createEAttribute(portfolioEClass, PORTFOLIO__NAME);
     createEReference(portfolioEClass, PORTFOLIO__ASSET);
 
     bondEClass = createEClass(BOND);
@@ -774,6 +786,7 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(portfolioEClass, Portfolio.class, "Portfolio", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPortfolio_Name(), ecorePackage.getEString(), "name", null, 0, 1, Portfolio.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPortfolio_Asset(), this.getAsset(), null, "asset", null, 0, -1, Portfolio.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(bondEClass, Bond.class, "Bond", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

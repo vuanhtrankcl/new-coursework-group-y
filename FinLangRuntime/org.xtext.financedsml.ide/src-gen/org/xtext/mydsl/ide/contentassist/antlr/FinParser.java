@@ -51,7 +51,8 @@ public class FinParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getViewAccess().getGroup(), "rule__View__Group__0");
 			builder.put(grammarAccess.getFLOATAccess().getGroup(), "rule__FLOAT__Group__0");
 			builder.put(grammarAccess.getModelAccess().getElementAssignment(), "rule__Model__ElementAssignment");
-			builder.put(grammarAccess.getPortfolioAccess().getAssetAssignment_2(), "rule__Portfolio__AssetAssignment_2");
+			builder.put(grammarAccess.getPortfolioAccess().getNameAssignment_1(), "rule__Portfolio__NameAssignment_1");
+			builder.put(grammarAccess.getPortfolioAccess().getAssetAssignment_3(), "rule__Portfolio__AssetAssignment_3");
 			builder.put(grammarAccess.getBondAccess().getNameAssignment_1(), "rule__Bond__NameAssignment_1");
 			builder.put(grammarAccess.getBondAccess().getFaceValueAssignment_4(), "rule__Bond__FaceValueAssignment_4");
 			builder.put(grammarAccess.getBondAccess().getCouponRateAssignment_6(), "rule__Bond__CouponRateAssignment_6");

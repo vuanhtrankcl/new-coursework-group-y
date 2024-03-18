@@ -134,7 +134,7 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//// TODO: Thinking to add more actions
 		//Action:
-		//    View
+		//    View // View whats inside assets / portfolio
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -190,20 +190,22 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.Portfolio");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPortfolioKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cAssetAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cAssetAssetParserRuleCall_2_0 = (RuleCall)cAssetAssignment_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cAssetAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cAssetAssetParserRuleCall_3_0 = (RuleCall)cAssetAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//// Use portfolio to initialise a profile
 		//Portfolio:
-		//    'Portfolio' '{'
+		//    'Portfolio' name=ID '{'
 		//        (asset+=Asset)+
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Portfolio' '{'
+		//'Portfolio' name=ID '{'
 		//    (asset+=Asset)+
 		//'}'
 		public Group getGroup() { return cGroup; }
@@ -211,17 +213,23 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'Portfolio'
 		public Keyword getPortfolioKeyword_0() { return cPortfolioKeyword_0; }
 		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//(asset+=Asset)+
-		public Assignment getAssetAssignment_2() { return cAssetAssignment_2; }
+		public Assignment getAssetAssignment_3() { return cAssetAssignment_3; }
 		
 		//Asset
-		public RuleCall getAssetAssetParserRuleCall_2_0() { return cAssetAssetParserRuleCall_2_0; }
+		public RuleCall getAssetAssetParserRuleCall_3_0() { return cAssetAssetParserRuleCall_3_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 	public class BondElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.Bond");
@@ -673,14 +681,13 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Keyword cBondKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cOptionKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		private final Keyword cCashKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cAllKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
 		
 		//ViewType:
-		//    'Porfolio' | 'Bond' | 'Option' | 'Cash' | 'All'
+		//    'Porfolio' | 'Bond' | 'Option' | 'Cash'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Porfolio' | 'Bond' | 'Option' | 'Cash' | 'All'
+		//'Porfolio' | 'Bond' | 'Option' | 'Cash'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'Porfolio'
@@ -694,9 +701,6 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//'Cash'
 		public Keyword getCashKeyword_3() { return cCashKeyword_3; }
-		
-		//'All'
-		public Keyword getAllKeyword_4() { return cAllKeyword_4; }
 	}
 	public class TimeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.Time");
@@ -706,6 +710,7 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Keyword cNextQuarterKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		private final Keyword cNextYearKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
 		
+		//// 4 <time unit> (day, month, year)
 		//// Plus 1 month, 3 months or 12 months, using model to calculate the price at that time.
 		//Time:
 		//    'Now' | 'NextMonth' | 'NextQuarter' | 'NextYear'
@@ -905,7 +910,7 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	//// TODO: Thinking to add more actions
 	//Action:
-	//    View
+	//    View // View whats inside assets / portfolio
 	//;
 	public ActionElements getActionAccess() {
 		return pAction;
@@ -951,7 +956,7 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	//// Use portfolio to initialise a profile
 	//Portfolio:
-	//    'Portfolio' '{'
+	//    'Portfolio' name=ID '{'
 	//        (asset+=Asset)+
 	//    '}'
 	//;
@@ -1071,7 +1076,7 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//ViewType:
-	//    'Porfolio' | 'Bond' | 'Option' | 'Cash' | 'All'
+	//    'Porfolio' | 'Bond' | 'Option' | 'Cash'
 	//;
 	public ViewTypeElements getViewTypeAccess() {
 		return pViewType;
@@ -1081,6 +1086,7 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getViewTypeAccess().getRule();
 	}
 	
+	//// 4 <time unit> (day, month, year)
 	//// Plus 1 month, 3 months or 12 months, using model to calculate the price at that time.
 	//Time:
 	//    'Now' | 'NextMonth' | 'NextQuarter' | 'NextYear'

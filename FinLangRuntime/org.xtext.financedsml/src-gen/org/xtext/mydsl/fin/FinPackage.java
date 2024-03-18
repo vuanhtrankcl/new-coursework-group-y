@@ -173,13 +173,22 @@ public interface FinPackage extends EPackage
   int PORTFOLIO = 5;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PORTFOLIO__NAME = ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Asset</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PORTFOLIO__ASSET = ELEMENT_FEATURE_COUNT + 0;
+  int PORTFOLIO__ASSET = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Portfolio</em>' class.
@@ -188,7 +197,7 @@ public interface FinPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PORTFOLIO_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 1;
+  int PORTFOLIO_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.fin.impl.BondImpl <em>Bond</em>}' class.
@@ -623,6 +632,17 @@ public interface FinPackage extends EPackage
   EClass getPortfolio();
 
   /**
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.Portfolio#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.mydsl.fin.Portfolio#getName()
+   * @see #getPortfolio()
+   * @generated
+   */
+  EAttribute getPortfolio_Name();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.xtext.mydsl.fin.Portfolio#getAsset <em>Asset</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1055,6 +1075,14 @@ public interface FinPackage extends EPackage
      * @generated
      */
     EClass PORTFOLIO = eINSTANCE.getPortfolio();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PORTFOLIO__NAME = eINSTANCE.getPortfolio_Name();
 
     /**
      * The meta object literal for the '<em><b>Asset</b></em>' containment reference list feature.

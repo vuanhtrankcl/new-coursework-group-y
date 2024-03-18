@@ -18,6 +18,7 @@
     <genClasses ecoreClass="Fin.ecore#//Transaction"/>
     <genClasses ecoreClass="Fin.ecore#//Action"/>
     <genClasses ecoreClass="Fin.ecore#//Portfolio">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//Portfolio/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fin.ecore#//Portfolio/asset"/>
     </genClasses>
     <genClasses ecoreClass="Fin.ecore#//Bond">
