@@ -34,10 +34,9 @@ public class FinParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getElementAccess().getAlternatives(), "rule__Element__Alternatives");
 			builder.put(grammarAccess.getAssetAccess().getAlternatives(), "rule__Asset__Alternatives");
 			builder.put(grammarAccess.getTransactionAccess().getAlternatives(), "rule__Transaction__Alternatives");
-			builder.put(grammarAccess.getConditionalStatementAccess().getAlternatives(), "rule__ConditionalStatement__Alternatives");
 			builder.put(grammarAccess.getBuyAccess().getAlternatives_2(), "rule__Buy__Alternatives_2");
 			builder.put(grammarAccess.getViewTypeAccess().getAlternatives(), "rule__ViewType__Alternatives");
-			builder.put(grammarAccess.getTimeAccess().getAlternatives(), "rule__Time__Alternatives");
+			builder.put(grammarAccess.getTimeUnitAccess().getAlternatives(), "rule__TimeUnit__Alternatives");
 			builder.put(grammarAccess.getOptionTypeAccess().getAlternatives(), "rule__OptionType__Alternatives");
 			builder.put(grammarAccess.getElementAccess().getGroup_3(), "rule__Element__Group_3__0");
 			builder.put(grammarAccess.getPortfolioAccess().getGroup(), "rule__Portfolio__Group__0");
@@ -73,8 +72,8 @@ public class FinParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSellAccess().getAmountAssignment_5(), "rule__Sell__AmountAssignment_5");
 			builder.put(grammarAccess.getDepositAccess().getAmountAssignment_1(), "rule__Deposit__AmountAssignment_1");
 			builder.put(grammarAccess.getWithdrawalAccess().getAmountAssignment_1(), "rule__Withdrawal__AmountAssignment_1");
-			builder.put(grammarAccess.getViewAccess().getViewTypeAssignment_1(), "rule__View__ViewTypeAssignment_1");
-			builder.put(grammarAccess.getViewAccess().getTimeAssignment_2(), "rule__View__TimeAssignment_2");
+			builder.put(grammarAccess.getViewAccess().getTargetTypeAssignment_1(), "rule__View__TargetTypeAssignment_1");
+			builder.put(grammarAccess.getViewAccess().getNameAssignment_4(), "rule__View__NameAssignment_4");
 		}
 	}
 	

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.mydsl.fin.FinPackage;
 import org.xtext.mydsl.fin.View;
+import org.xtext.mydsl.fin.ViewType;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,8 +21,8 @@ import org.xtext.mydsl.fin.View;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mydsl.fin.impl.ViewImpl#getViewType <em>View Type</em>}</li>
- *   <li>{@link org.xtext.mydsl.fin.impl.ViewImpl#getTime <em>Time</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.impl.ViewImpl#getTargetType <em>Target Type</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.impl.ViewImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -29,44 +30,44 @@ import org.xtext.mydsl.fin.View;
 public class ViewImpl extends ActionImpl implements View
 {
   /**
-   * The default value of the '{@link #getViewType() <em>View Type</em>}' attribute.
+   * The default value of the '{@link #getTargetType() <em>Target Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getViewType()
+   * @see #getTargetType()
    * @generated
    * @ordered
    */
-  protected static final String VIEW_TYPE_EDEFAULT = null;
+  protected static final ViewType TARGET_TYPE_EDEFAULT = ViewType.PORTFOLIO;
 
   /**
-   * The cached value of the '{@link #getViewType() <em>View Type</em>}' attribute.
+   * The cached value of the '{@link #getTargetType() <em>Target Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getViewType()
+   * @see #getTargetType()
    * @generated
    * @ordered
    */
-  protected String viewType = VIEW_TYPE_EDEFAULT;
+  protected ViewType targetType = TARGET_TYPE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTime()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String TIME_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTime()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String time = TIME_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,9 +96,9 @@ public class ViewImpl extends ActionImpl implements View
    * @generated
    */
   @Override
-  public String getViewType()
+  public ViewType getTargetType()
   {
-    return viewType;
+    return targetType;
   }
 
   /**
@@ -106,12 +107,12 @@ public class ViewImpl extends ActionImpl implements View
    * @generated
    */
   @Override
-  public void setViewType(String newViewType)
+  public void setTargetType(ViewType newTargetType)
   {
-    String oldViewType = viewType;
-    viewType = newViewType;
+    ViewType oldTargetType = targetType;
+    targetType = newTargetType == null ? TARGET_TYPE_EDEFAULT : newTargetType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.VIEW__VIEW_TYPE, oldViewType, viewType));
+      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.VIEW__TARGET_TYPE, oldTargetType, targetType));
   }
 
   /**
@@ -120,9 +121,9 @@ public class ViewImpl extends ActionImpl implements View
    * @generated
    */
   @Override
-  public String getTime()
+  public String getName()
   {
-    return time;
+    return name;
   }
 
   /**
@@ -131,12 +132,12 @@ public class ViewImpl extends ActionImpl implements View
    * @generated
    */
   @Override
-  public void setTime(String newTime)
+  public void setName(String newName)
   {
-    String oldTime = time;
-    time = newTime;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.VIEW__TIME, oldTime, time));
+      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.VIEW__NAME, oldName, name));
   }
 
   /**
@@ -149,10 +150,10 @@ public class ViewImpl extends ActionImpl implements View
   {
     switch (featureID)
     {
-      case FinPackage.VIEW__VIEW_TYPE:
-        return getViewType();
-      case FinPackage.VIEW__TIME:
-        return getTime();
+      case FinPackage.VIEW__TARGET_TYPE:
+        return getTargetType();
+      case FinPackage.VIEW__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -167,11 +168,11 @@ public class ViewImpl extends ActionImpl implements View
   {
     switch (featureID)
     {
-      case FinPackage.VIEW__VIEW_TYPE:
-        setViewType((String)newValue);
+      case FinPackage.VIEW__TARGET_TYPE:
+        setTargetType((ViewType)newValue);
         return;
-      case FinPackage.VIEW__TIME:
-        setTime((String)newValue);
+      case FinPackage.VIEW__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -187,11 +188,11 @@ public class ViewImpl extends ActionImpl implements View
   {
     switch (featureID)
     {
-      case FinPackage.VIEW__VIEW_TYPE:
-        setViewType(VIEW_TYPE_EDEFAULT);
+      case FinPackage.VIEW__TARGET_TYPE:
+        setTargetType(TARGET_TYPE_EDEFAULT);
         return;
-      case FinPackage.VIEW__TIME:
-        setTime(TIME_EDEFAULT);
+      case FinPackage.VIEW__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -207,10 +208,10 @@ public class ViewImpl extends ActionImpl implements View
   {
     switch (featureID)
     {
-      case FinPackage.VIEW__VIEW_TYPE:
-        return VIEW_TYPE_EDEFAULT == null ? viewType != null : !VIEW_TYPE_EDEFAULT.equals(viewType);
-      case FinPackage.VIEW__TIME:
-        return TIME_EDEFAULT == null ? time != null : !TIME_EDEFAULT.equals(time);
+      case FinPackage.VIEW__TARGET_TYPE:
+        return targetType != TARGET_TYPE_EDEFAULT;
+      case FinPackage.VIEW__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -226,10 +227,10 @@ public class ViewImpl extends ActionImpl implements View
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (viewType: ");
-    result.append(viewType);
-    result.append(", time: ");
-    result.append(time);
+    result.append(" (targetType: ");
+    result.append(targetType);
+    result.append(", name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

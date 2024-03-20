@@ -9,6 +9,8 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.mydsl.fin.Bond
 import org.xtext.mydsl.fin.Option
+import org.xtext.mydsl.fin.Portfolio
+import org.xtext.mydsl.fin.View
 
 /**
  * Generates code from your model files on save.
@@ -17,78 +19,420 @@ import org.xtext.mydsl.fin.Option
  */
 class FinGenerator extends AbstractGenerator {
 
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		// Generate utility classes for Bond and Option calculations
-    	generateBond(fsa)
-    	generateOption(fsa)
+    val String basePackagePath = "mpp/"
+    val String mainPackagePath = "def/"
+
+    override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+        // Generate utility and domain classes
+        generateInvestor(fsa)
+        generatePortfolio(fsa)
+        generateBond(fsa)
+        generateOption(fsa)
+        generateCash(fsa)
+        generateViews(fsa)
+        generateMain(resource,fsa)
+    }
     
-    	// Generate the main class that uses the utility classes
-    	generateMain(resource, fsa)
+	def protected void generateMain(Resource resource, IFileSystemAccess2 fsa) {
+	    val portfolios = resource.allContents.toIterable.filter(Portfolio)
+	    val views = resource.allContents.toIterable.filter(View)
+	
+	    val content = '''
+        package def;
+        
+        import java.util.HashMap;
+        import java.util.Map;
+        
+        import mpp.*;
+        import mpp.Option.OptionType;
+        
+        import java.io.PrintWriter;
+        import java.io.File;
+        
+
+        public class Main {
+            public static void main(String[] args) {
+                Investor investor = new Investor();
+                Map<String, Portfolio> portfolioMap = new HashMap<>();
+
+                // Iterate over portfolios
+                «FOR portfolio : portfolios»
+                Portfolio «portfolio.name» = new Portfolio("«portfolio.name»");
+                investor.addPortfolio(«portfolio.name»);
+                portfolioMap.put("«portfolio.name»", «portfolio.name»);
+
+                // Generate code for Bonds within this Portfolio
+                «FOR bond : portfolio.getAsset.filter(Bond)»
+                Bond «bond.name» = new Bond("«bond.name»", «bond.faceValue», «bond.couponRate», «bond.maturity», «bond.yieldRate»);
+                «portfolio.name».addBond(«bond.name»);
+                «ENDFOR»
+
+                // Generate code for Options within this Portfolio
+                «FOR option : portfolio.getAsset.filter(Option)»
+                Option «option.name» = new Option("«option.name»", OptionType.«option.type», «option.underlyingPrice», «option.strikePrice», «option.timeToExpiration», «option.riskFreeRate», «option.volatility», «option.dividendYield»);
+                «portfolio.name».addOption(«option.name»);
+                «ENDFOR»
+
+                «ENDFOR»
+
+
+                // View actions
+                «FOR view : views»
+                if (portfolioMap.containsKey("«view.name»")) {
+                    Portfolio portfolioToView = portfolioMap.get("«view.name»");
+                    Views.viewPortfolio(portfolioToView);
+                }
+                «ENDFOR»
+            }
+        }
+	    '''
+	    fsa.generateFile(mainPackagePath + "Main.java", content)
+		}
+
+
+	// Create investor  which is the person using the modelling language
+    def protected void generateInvestor(IFileSystemAccess2 fsa) {
+        val content = '''
+        package mpp;
+
+        import java.util.ArrayList;
+        import java.util.List;
+
+        public class Investor {
+            private List<Portfolio> portfolios = new ArrayList<>();
+
+            public void addPortfolio(Portfolio portfolio) {
+                portfolios.add(portfolio);
+            }
+
+            public void removePortfolio(Portfolio portfolio) {
+                portfolios.remove(portfolio);
+            }
+
+            public List<Portfolio> getPortfolios() {
+                return portfolios;
+            }
+        }
+        '''
+        fsa.generateFile(basePackagePath + "Investor.java", content)
+    }
+
+	// Create the views for each asset
+    def protected void generateViews(IFileSystemAccess2 fsa) {
+	    val content = '''
+        package mpp;
+
+        import java.io.FileWriter;
+        import java.io.PrintWriter;
+        import java.io.IOException;
+
+        public class Views {
+
+            public static void viewPortfolio(Portfolio portfolio) {
+                try (PrintWriter writer = new PrintWriter(new FileWriter("views.txt", true))) {
+                    writer.println("Portfolio: " + portfolio.getName());
+                    for (Bond bond : portfolio.getBonds()) {
+                        viewBond(bond, writer);
+                    }
+                    for (Option option : portfolio.getOptions()) {
+                        viewOption(option, writer);
+                    }
+                    writer.println(); // Add a newline for readability
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            private static void viewBond(Bond bond, PrintWriter writer) {
+                double bondValue = bond.calculatePrice();
+                writer.println("    Bond: " + bond.getName() + ", Face Value: " + bond.getFaceValue() + 
+                               ", Coupon Rate: " + bond.getCouponRate() + "%, Maturity: " + bond.getMaturity() + 
+                               " years, Yield Rate: " + bond.getYieldRate() + "%, Estimated Value: " + bondValue);
+            }
+
+            private static void viewOption(Option option, PrintWriter writer) {
+                double optionValue = option.calculateBlackScholesPrice();
+                writer.println("    Option: " + option.getName() + ", Type: " + option.getType() + 
+                               ", Underlying Price: " + option.getUnderlyingPrice() + ", Strike Price: " + option.getStrikePrice() + 
+                               ", Time to Expiration: " + option.getTimeToExpiration() + " years, Risk Free Rate: " + option.getRiskFreeRate() + 
+                               "%, Volatility: " + option.getVolatility() + "%, Dividend Yield: " + option.getDividendYield() + 
+                               "%, Estimated Value: " + optionValue);
+            }
+        }
+	    '''
+	    fsa.generateFile(basePackagePath + "Views.java", content)
+	}
+
+    
+    // Create the cash class
+    def protected void generateCash(IFileSystemAccess2 fsa) {
+	    val content = '''
+        package mpp;
+
+        public class Cash {
+            private double amount;
+
+            public Cash(double amount) {
+                this.amount = amount;
+            }
+
+            public double getAmount() {
+                return amount;
+            }
+
+            public void setAmount(double amount) {
+                this.amount = amount;
+            }
+        }
+	    '''
+	    fsa.generateFile(basePackagePath + "Cash.java", content)
 	}
 	
 	def protected void generateBond(IFileSystemAccess2 fsa) {
-	   val content = '''
-		    public class BondCalculator {
-		        public static double calculatePrice(double faceValue, double couponRate, int maturity, double yieldRate) {
-		            // Simplified bond valuation formula
-		            return faceValue / Math.pow(1 + yieldRate, maturity);
-		        }
-		    }
-		'''
-		fsa.generateFile("BondCalculator.java", content)
-	   
+    	val content = '''
+        package mpp;
+
+        public class Bond {
+            private String name;
+            private double faceValue;
+            private double couponRate;
+            private int maturity;
+            private double yieldRate;
+
+            public Bond(String name, double faceValue, double couponRate, int maturity, double yieldRate) {
+                this.name = name;
+                this.faceValue = faceValue;
+                this.couponRate = couponRate;
+                this.maturity = maturity;
+                this.yieldRate = yieldRate;
+            }
+            
+            public double calculatePrice() {
+                            return faceValue / Math.pow(1 + yieldRate, maturity);
+            }
+
+            // Getters and Setters
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public double getFaceValue() {
+                return faceValue;
+            }
+
+            public void setFaceValue(double faceValue) {
+                this.faceValue = faceValue;
+            }
+
+            public double getCouponRate() {
+                return couponRate;
+            }
+
+            public void setCouponRate(double couponRate) {
+                this.couponRate = couponRate;
+            }
+
+            public int getMaturity() {
+                return maturity;
+            }
+
+            public void setMaturity(int maturity) {
+                this.maturity = maturity;
+            }
+
+            public double getYieldRate() {
+                return yieldRate;
+            }
+
+            public void setYieldRate(double yieldRate) {
+                this.yieldRate = yieldRate;
+            }
+        }
+    '''
+    	fsa.generateFile(basePackagePath + "Bond.java", content)
 	}
 	
 	
+	// Create the option class
 	def protected void generateOption(IFileSystemAccess2 fsa) {
-		val content = '''
-		    import org.apache.commons.math3.distribution.NormalDistribution;
-		
-		    public class OptionCalculator {
-		        public static double calculateBlackScholes(double S, double K, double T, double r, double sigma) {
-		            double d1 = (Math.log(S / K) + (r + sigma * sigma / 2) * T) / (sigma * Math.sqrt(T));
-		            double d2 = d1 - sigma * Math.sqrt(T);
-		            
-		            NormalDistribution nd = new NormalDistribution();
-		            return S * nd.cumulativeProbability(d1) - K * Math.exp(-r * T) * nd.cumulativeProbability(d2);
-		        }
-		    }
-		'''
-		fsa.generateFile("OptionCalculator.java", content)
-	}
-	
-	def protected void generateMain(Resource resource, IFileSystemAccess2 fsa) {
-	    val bonds = resource.allContents.toIterable.filter(Bond)
-	    val options = resource.allContents.toIterable.filter(Option)
-	
 	    val content = '''
-	        import java.io.PrintWriter;
-	        import java.io.File;
-	
-	        public class FinancialCalculatorMain {
-	            public static void main(String[] args) {
-	                try (PrintWriter writer = new PrintWriter(new File("financial_results.txt"))) {
-	                    // Calculate and write bond values
-	                    «FOR bond : bonds»
-	                    double bondPrice = BondCalculator.calculatePrice(«bond.faceValue», «bond.couponRate», «bond.maturity», «bond.yieldRate»);
-	                    writer.println("Bond Price: " + bondPrice);
-	                    «ENDFOR»
-	
-	                    // Calculate and write option values
-	                    «FOR option : options»
-	                    double optionPrice = OptionCalculator.calculateBlackScholes(«option.underlyingPrice», «option.strikePrice», «option.timeToExpiration», «option.riskFreeRate», «option.volatility»);
-	                    writer.println("Option Price: " + optionPrice);
-	                    «ENDFOR»
-	                } catch (Exception e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        }
+        package mpp;
+
+        public class Option {
+            private String name;
+            private OptionType type;
+            private double underlyingPrice;
+            private double strikePrice;
+            private double timeToExpiration;
+            private double riskFreeRate;
+            private double volatility;
+            private double dividendYield;
+
+            public Option(String name, OptionType type, double underlyingPrice, double strikePrice,
+                          double timeToExpiration, double riskFreeRate, double volatility, double dividendYield) {
+                this.name = name;
+                this.type = type;
+                this.underlyingPrice = underlyingPrice;
+                this.strikePrice = strikePrice;
+                this.timeToExpiration = timeToExpiration;
+                this.riskFreeRate = riskFreeRate;
+                this.volatility = volatility;
+                this.dividendYield = dividendYield;
+            }
+            
+            private double normalCDF(double value) {
+                // Constants for the approximation
+                double a1 =  0.254829592;
+                double a2 = -0.284496736;
+                double a3 =  1.421413741;
+                double a4 = -1.453152027;
+                double a5 =  1.061405429;
+                double p  =  0.3275911;
+
+                // Save the sign of value
+                int sign = (value >= 0) ? 1 : -1;
+                value = Math.abs(value) / Math.sqrt(2.0);
+
+                // A&S formula 7.1.26
+                double t = 1.0 / (1.0 + p * value);
+                double y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-value * value);
+
+                return 0.5 * (1.0 + sign * y);
+            }
+
+            public double calculateBlackScholesPrice() {
+                double d1 = (Math.log(underlyingPrice / strikePrice) + (riskFreeRate + Math.pow(volatility, 2) / 2) * timeToExpiration) / (volatility * Math.sqrt(timeToExpiration));
+                double d2 = d1 - volatility * Math.sqrt(timeToExpiration);
+                
+                if (type == OptionType.CALL) {
+                    return underlyingPrice * normalCDF(d1) - strikePrice * Math.exp(-riskFreeRate * timeToExpiration) * normalCDF(d2);
+                } else {
+                    return strikePrice * Math.exp(-riskFreeRate * timeToExpiration) * normalCDF(-d2) - underlyingPrice * normalCDF(-d1);
+                }
+            }
+
+            // Getters and Setters
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public OptionType getType() {
+                return type;
+            }
+
+            public void setType(OptionType type) {
+                this.type = type;
+            }
+
+            public double getUnderlyingPrice() {
+                return underlyingPrice;
+            }
+
+            public void setUnderlyingPrice(double underlyingPrice) {
+                this.underlyingPrice = underlyingPrice;
+            }
+
+            public double getStrikePrice() {
+                return strikePrice;
+            }
+
+            public void setStrikePrice(double strikePrice) {
+                this.strikePrice = strikePrice;
+            }
+
+            public double getTimeToExpiration() {
+                return timeToExpiration;
+            }
+
+            public void setTimeToExpiration(double timeToExpiration) {
+                this.timeToExpiration = timeToExpiration;
+            }
+
+            public double getRiskFreeRate() {
+                return riskFreeRate;
+            }
+
+            public void setRiskFreeRate(double riskFreeRate) {
+                this.riskFreeRate = riskFreeRate;
+            }
+
+            public double getVolatility() {
+                return volatility;
+            }
+
+            public void setVolatility(double volatility) {
+                this.volatility = volatility;
+            }
+
+            public double getDividendYield() {
+                return dividendYield;
+            }
+
+            public void setDividendYield(double dividendYield) {
+                this.dividendYield = dividendYield;
+            }
+
+            public enum OptionType {
+                CALL, PUT
+            }
+        }
 	    '''
-	    fsa.generateFile("FinancialCalculatorMain.java", content)
+    	fsa.generateFile(basePackagePath + "Option.java", content);
 	}
-
-
 	
-		
+	// Create the portfolio class
+	def protected void generatePortfolio(IFileSystemAccess2 fsa) {
+	    val content = '''
+        package mpp;
+
+        import java.util.ArrayList;
+        import java.util.List;
+
+        public class Portfolio {
+            private List<Bond> bonds = new ArrayList<>();
+            private List<Option> options = new ArrayList<>();
+            private String name;
+
+            public Portfolio(String name) {
+                this.name = name;
+            }
+
+            public void addBond(Bond bond) {
+                bonds.add(bond);
+            }
+
+            public void addOption(Option option) {
+                options.add(option);
+            }
+
+            public List<Bond> getBonds() {
+                return bonds;
+            }
+
+            public List<Option> getOptions() {
+                return options;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            // Additional portfolio-related methods can be added here
+        }
+	    '''
+    	fsa.generateFile(basePackagePath + "Portfolio.java", content)
+	}
+    
 }
+
+

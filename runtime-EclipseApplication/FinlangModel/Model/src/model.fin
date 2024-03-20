@@ -1,4 +1,4 @@
-Portfolio heloo {
+Portfolio mp {
 	Bond myBond {
 		faceValue 1000.0
 		couponRate 0.05
@@ -10,9 +10,9 @@ Portfolio heloo {
 		type Call
 		underlyingPrice 100.50
 		strikePrice 95.25
-		timeToExpiration 0.5
+		timeToExpiration 20.0
 		riskFreeRate 0.01
-		volatility 0.2
+		volatility 0.06
 		dividendYield 0.03
 	}
 	
@@ -26,30 +26,9 @@ Deposit 1000.0
 
 Withdrawal 500.0
 
-View Porfolio Now
-
-View Bond NextMonth
-
-View Option NextQuarter
-
-View Cash Now
-
-
-Buy {
-	Bond aNewBond {
-		faceValue 2000.0
-		couponRate 0.04
-		maturity 20
-		yieldRate 0.04
-	}
-}
-
-Sell {
-	assetName myBond
-	amount 300.0
-}
-
-// Can have some more if else statement
+View Portfolio {
+	targetName mp
+} // Can have some more if else statement
 
  
 

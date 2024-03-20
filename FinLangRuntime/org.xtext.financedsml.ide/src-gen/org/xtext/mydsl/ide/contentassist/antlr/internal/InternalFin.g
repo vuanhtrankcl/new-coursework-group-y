@@ -190,9 +190,9 @@ ruleConditionalStatement
 	}
 	:
 	(
-		{ before(grammarAccess.getConditionalStatementAccess().getAlternatives()); }
-		(rule__ConditionalStatement__Alternatives)
-		{ after(grammarAccess.getConditionalStatementAccess().getAlternatives()); }
+		{ before(grammarAccess.getConditionalStatementAccess().getIfStatementParserRuleCall()); }
+		ruleIfStatement
+		{ after(grammarAccess.getConditionalStatementAccess().getIfStatementParserRuleCall()); }
 	)
 ;
 finally {
@@ -218,31 +218,6 @@ ruleIfStatement
 		{ before(grammarAccess.getIfStatementAccess().getIfKeyword()); }
 		'If'
 		{ after(grammarAccess.getIfStatementAccess().getIfKeyword()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-// Entry rule entryRuleForStatement
-entryRuleForStatement
-:
-{ before(grammarAccess.getForStatementRule()); }
-	 ruleForStatement
-{ after(grammarAccess.getForStatementRule()); } 
-	 EOF 
-;
-
-// Rule ForStatement
-ruleForStatement 
-	@init {
-		int stackSize = keepStackSize();
-	}
-	:
-	(
-		{ before(grammarAccess.getForStatementAccess().getForKeyword()); }
-		'For'
-		{ after(grammarAccess.getForStatementAccess().getForKeyword()); }
 	)
 ;
 finally {
@@ -474,56 +449,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-// Entry rule entryRuleViewType
-entryRuleViewType
-:
-{ before(grammarAccess.getViewTypeRule()); }
-	 ruleViewType
-{ after(grammarAccess.getViewTypeRule()); } 
-	 EOF 
-;
-
-// Rule ViewType
-ruleViewType 
-	@init {
-		int stackSize = keepStackSize();
-	}
-	:
-	(
-		{ before(grammarAccess.getViewTypeAccess().getAlternatives()); }
-		(rule__ViewType__Alternatives)
-		{ after(grammarAccess.getViewTypeAccess().getAlternatives()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-// Entry rule entryRuleTime
-entryRuleTime
-:
-{ before(grammarAccess.getTimeRule()); }
-	 ruleTime
-{ after(grammarAccess.getTimeRule()); } 
-	 EOF 
-;
-
-// Rule Time
-ruleTime 
-	@init {
-		int stackSize = keepStackSize();
-	}
-	:
-	(
-		{ before(grammarAccess.getTimeAccess().getAlternatives()); }
-		(rule__Time__Alternatives)
-		{ after(grammarAccess.getTimeAccess().getAlternatives()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 // Entry rule entryRuleFLOAT
 entryRuleFLOAT
 @init { 
@@ -555,6 +480,22 @@ ruleFLOAT
 finally {
 	restoreStackSize(stackSize);
 	myHiddenTokenState.restore();
+}
+
+// Rule ViewType
+ruleViewType
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getViewTypeAccess().getAlternatives()); }
+		(rule__ViewType__Alternatives)
+		{ after(grammarAccess.getViewTypeAccess().getAlternatives()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
 }
 
 // Rule OptionType
@@ -666,27 +607,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ConditionalStatement__Alternatives
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getConditionalStatementAccess().getIfStatementParserRuleCall_0()); }
-		ruleIfStatement
-		{ after(grammarAccess.getConditionalStatementAccess().getIfStatementParserRuleCall_0()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getConditionalStatementAccess().getForStatementParserRuleCall_1()); }
-		ruleForStatement
-		{ after(grammarAccess.getConditionalStatementAccess().getForStatementParserRuleCall_1()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 rule__Buy__Alternatives_2
 	@init {
 		int stackSize = keepStackSize();
@@ -714,60 +634,27 @@ rule__ViewType__Alternatives
 	}
 :
 	(
-		{ before(grammarAccess.getViewTypeAccess().getPorfolioKeyword_0()); }
-		'Porfolio'
-		{ after(grammarAccess.getViewTypeAccess().getPorfolioKeyword_0()); }
+		{ before(grammarAccess.getViewTypeAccess().getPortfolioEnumLiteralDeclaration_0()); }
+		('Portfolio')
+		{ after(grammarAccess.getViewTypeAccess().getPortfolioEnumLiteralDeclaration_0()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getViewTypeAccess().getBondKeyword_1()); }
-		'Bond'
-		{ after(grammarAccess.getViewTypeAccess().getBondKeyword_1()); }
+		{ before(grammarAccess.getViewTypeAccess().getBondEnumLiteralDeclaration_1()); }
+		('Bond')
+		{ after(grammarAccess.getViewTypeAccess().getBondEnumLiteralDeclaration_1()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getViewTypeAccess().getOptionKeyword_2()); }
-		'Option'
-		{ after(grammarAccess.getViewTypeAccess().getOptionKeyword_2()); }
+		{ before(grammarAccess.getViewTypeAccess().getOptionEnumLiteralDeclaration_2()); }
+		('Option')
+		{ after(grammarAccess.getViewTypeAccess().getOptionEnumLiteralDeclaration_2()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getViewTypeAccess().getCashKeyword_3()); }
-		'Cash'
-		{ after(grammarAccess.getViewTypeAccess().getCashKeyword_3()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Time__Alternatives
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getTimeAccess().getNowKeyword_0()); }
-		'Now'
-		{ after(grammarAccess.getTimeAccess().getNowKeyword_0()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getTimeAccess().getNextMonthKeyword_1()); }
-		'NextMonth'
-		{ after(grammarAccess.getTimeAccess().getNextMonthKeyword_1()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getTimeAccess().getNextQuarterKeyword_2()); }
-		'NextQuarter'
-		{ after(grammarAccess.getTimeAccess().getNextQuarterKeyword_2()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getTimeAccess().getNextYearKeyword_3()); }
-		'NextYear'
-		{ after(grammarAccess.getTimeAccess().getNextYearKeyword_3()); }
+		{ before(grammarAccess.getViewTypeAccess().getCashEnumLiteralDeclaration_3()); }
+		('Cash')
+		{ after(grammarAccess.getViewTypeAccess().getCashEnumLiteralDeclaration_3()); }
 	)
 ;
 finally {
@@ -2386,9 +2273,9 @@ rule__View__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getViewAccess().getViewTypeAssignment_1()); }
-	(rule__View__ViewTypeAssignment_1)
-	{ after(grammarAccess.getViewAccess().getViewTypeAssignment_1()); }
+	{ before(grammarAccess.getViewAccess().getTargetTypeAssignment_1()); }
+	(rule__View__TargetTypeAssignment_1)
+	{ after(grammarAccess.getViewAccess().getTargetTypeAssignment_1()); }
 )
 ;
 finally {
@@ -2401,6 +2288,7 @@ rule__View__Group__2
 	}
 :
 	rule__View__Group__2__Impl
+	rule__View__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2412,9 +2300,89 @@ rule__View__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getViewAccess().getTimeAssignment_2()); }
-	(rule__View__TimeAssignment_2)
-	{ after(grammarAccess.getViewAccess().getTimeAssignment_2()); }
+	{ before(grammarAccess.getViewAccess().getLeftCurlyBracketKeyword_2()); }
+	'{'
+	{ after(grammarAccess.getViewAccess().getLeftCurlyBracketKeyword_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__View__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__View__Group__3__Impl
+	rule__View__Group__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__View__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getViewAccess().getTargetNameKeyword_3()); }
+	'targetName'
+	{ after(grammarAccess.getViewAccess().getTargetNameKeyword_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__View__Group__4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__View__Group__4__Impl
+	rule__View__Group__5
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__View__Group__4__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getViewAccess().getNameAssignment_4()); }
+	(rule__View__NameAssignment_4)
+	{ after(grammarAccess.getViewAccess().getNameAssignment_4()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__View__Group__5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__View__Group__5__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__View__Group__5__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getViewAccess().getRightCurlyBracketKeyword_5()); }
+	'}'
+	{ after(grammarAccess.getViewAccess().getRightCurlyBracketKeyword_5()); }
 )
 ;
 finally {
@@ -2848,30 +2816,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__View__ViewTypeAssignment_1
+rule__View__TargetTypeAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getViewAccess().getViewTypeViewTypeParserRuleCall_1_0()); }
+		{ before(grammarAccess.getViewAccess().getTargetTypeViewTypeEnumRuleCall_1_0()); }
 		ruleViewType
-		{ after(grammarAccess.getViewAccess().getViewTypeViewTypeParserRuleCall_1_0()); }
+		{ after(grammarAccess.getViewAccess().getTargetTypeViewTypeEnumRuleCall_1_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__View__TimeAssignment_2
+rule__View__NameAssignment_4
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getViewAccess().getTimeTimeParserRuleCall_2_0()); }
-		ruleTime
-		{ after(grammarAccess.getViewAccess().getTimeTimeParserRuleCall_2_0()); }
+		{ before(grammarAccess.getViewAccess().getNameIDTerminalRuleCall_4_0()); }
+		RULE_ID
+		{ after(grammarAccess.getViewAccess().getNameIDTerminalRuleCall_4_0()); }
 	)
 ;
 finally {

@@ -33,7 +33,7 @@ public class FinSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * ConditionalStatement:
-	 * 	IfStatement | ForStatement
+	 * 	IfStatement 
 	 * ;
 	 */
 	protected String getConditionalStatementToken(EObject semanticObject, RuleCall ruleCall, INode node) {

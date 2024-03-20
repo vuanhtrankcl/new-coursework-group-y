@@ -95,6 +95,10 @@ public class FinFactoryImpl extends EFactoryImpl implements FinFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case FinPackage.VIEW_TYPE:
+        return createViewTypeFromString(eDataType, initialValue);
+      case FinPackage.TIME_UNIT:
+        return createTimeUnitFromString(eDataType, initialValue);
       case FinPackage.OPTION_TYPE:
         return createOptionTypeFromString(eDataType, initialValue);
       default:
@@ -112,6 +116,10 @@ public class FinFactoryImpl extends EFactoryImpl implements FinFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case FinPackage.VIEW_TYPE:
+        return convertViewTypeToString(eDataType, instanceValue);
+      case FinPackage.TIME_UNIT:
+        return convertTimeUnitToString(eDataType, instanceValue);
       case FinPackage.OPTION_TYPE:
         return convertOptionTypeToString(eDataType, instanceValue);
       default:
@@ -285,6 +293,50 @@ public class FinFactoryImpl extends EFactoryImpl implements FinFactory
   {
     ViewImpl view = new ViewImpl();
     return view;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ViewType createViewTypeFromString(EDataType eDataType, String initialValue)
+  {
+    ViewType result = ViewType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertViewTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TimeUnit createTimeUnitFromString(EDataType eDataType, String initialValue)
+  {
+    TimeUnit result = TimeUnit.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertTimeUnitToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

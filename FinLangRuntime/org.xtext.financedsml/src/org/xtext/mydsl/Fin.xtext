@@ -20,7 +20,7 @@ Transaction:
 
 // TODO: Thinking to add more actions
 Action: 
-	View // View whats inside assets / portfolio
+	View
 ;
 
 // TODO: Implement this
@@ -95,7 +95,9 @@ Withdrawal:
 ;
 
 View:
-	'View' (viewType=ViewType) (amount=INT)? (time=TimeUnit)
+	'View' targetType=ViewType '{'
+		'targetName' name=ID
+	'}'
 ;
 
 enum ViewType:

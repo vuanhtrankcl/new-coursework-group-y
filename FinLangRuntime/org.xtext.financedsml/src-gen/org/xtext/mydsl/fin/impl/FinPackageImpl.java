@@ -25,8 +25,10 @@ import org.xtext.mydsl.fin.Option;
 import org.xtext.mydsl.fin.OptionType;
 import org.xtext.mydsl.fin.Portfolio;
 import org.xtext.mydsl.fin.Sell;
+import org.xtext.mydsl.fin.TimeUnit;
 import org.xtext.mydsl.fin.Transaction;
 import org.xtext.mydsl.fin.View;
+import org.xtext.mydsl.fin.ViewType;
 import org.xtext.mydsl.fin.Withdrawal;
 
 /**
@@ -134,6 +136,20 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   private EClass viewEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum viewTypeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum timeUnitEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -617,7 +633,7 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
-  public EAttribute getView_ViewType()
+  public EAttribute getView_TargetType()
   {
     return (EAttribute)viewEClass.getEStructuralFeatures().get(0);
   }
@@ -628,9 +644,31 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
-  public EAttribute getView_Time()
+  public EAttribute getView_Name()
   {
     return (EAttribute)viewEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getViewType()
+  {
+    return viewTypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getTimeUnit()
+  {
+    return timeUnitEEnum;
   }
 
   /**
@@ -725,10 +763,12 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     createEAttribute(withdrawalEClass, WITHDRAWAL__AMOUNT);
 
     viewEClass = createEClass(VIEW);
-    createEAttribute(viewEClass, VIEW__VIEW_TYPE);
-    createEAttribute(viewEClass, VIEW__TIME);
+    createEAttribute(viewEClass, VIEW__TARGET_TYPE);
+    createEAttribute(viewEClass, VIEW__NAME);
 
     // Create enums
+    viewTypeEEnum = createEEnum(VIEW_TYPE);
+    timeUnitEEnum = createEEnum(TIME_UNIT);
     optionTypeEEnum = createEEnum(OPTION_TYPE);
   }
 
@@ -824,10 +864,21 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     initEAttribute(getWithdrawal_Amount(), ecorePackage.getEFloat(), "amount", null, 0, 1, Withdrawal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(viewEClass, View.class, "View", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getView_ViewType(), ecorePackage.getEString(), "viewType", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getView_Time(), ecorePackage.getEString(), "time", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getView_TargetType(), this.getViewType(), "targetType", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getView_Name(), ecorePackage.getEString(), "name", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
+    initEEnum(viewTypeEEnum, ViewType.class, "ViewType");
+    addEEnumLiteral(viewTypeEEnum, ViewType.PORTFOLIO);
+    addEEnumLiteral(viewTypeEEnum, ViewType.BOND);
+    addEEnumLiteral(viewTypeEEnum, ViewType.OPTION);
+    addEEnumLiteral(viewTypeEEnum, ViewType.CASH);
+
+    initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
+    addEEnumLiteral(timeUnitEEnum, TimeUnit.DAY);
+    addEEnumLiteral(timeUnitEEnum, TimeUnit.MONTH);
+    addEEnumLiteral(timeUnitEEnum, TimeUnit.YEAR);
+
     initEEnum(optionTypeEEnum, OptionType.class, "OptionType");
     addEEnumLiteral(optionTypeEEnum, OptionType.CALL);
     addEEnumLiteral(optionTypeEEnum, OptionType.PUT);

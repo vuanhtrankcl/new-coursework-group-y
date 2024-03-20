@@ -13,8 +13,8 @@ package org.xtext.mydsl.fin;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mydsl.fin.View#getViewType <em>View Type</em>}</li>
- *   <li>{@link org.xtext.mydsl.fin.View#getTime <em>Time</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.View#getTargetType <em>Target Type</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.View#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see org.xtext.mydsl.fin.FinPackage#getView()
@@ -24,47 +24,50 @@ package org.xtext.mydsl.fin;
 public interface View extends Action
 {
   /**
-   * Returns the value of the '<em><b>View Type</b></em>' attribute.
+   * Returns the value of the '<em><b>Target Type</b></em>' attribute.
+   * The literals are from the enumeration {@link org.xtext.mydsl.fin.ViewType}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>View Type</em>' attribute.
-   * @see #setViewType(String)
-   * @see org.xtext.mydsl.fin.FinPackage#getView_ViewType()
+   * @return the value of the '<em>Target Type</em>' attribute.
+   * @see org.xtext.mydsl.fin.ViewType
+   * @see #setTargetType(ViewType)
+   * @see org.xtext.mydsl.fin.FinPackage#getView_TargetType()
    * @model
    * @generated
    */
-  String getViewType();
+  ViewType getTargetType();
 
   /**
-   * Sets the value of the '{@link org.xtext.mydsl.fin.View#getViewType <em>View Type</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.mydsl.fin.View#getTargetType <em>Target Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>View Type</em>' attribute.
-   * @see #getViewType()
+   * @param value the new value of the '<em>Target Type</em>' attribute.
+   * @see org.xtext.mydsl.fin.ViewType
+   * @see #getTargetType()
    * @generated
    */
-  void setViewType(String value);
+  void setTargetType(ViewType value);
 
   /**
-   * Returns the value of the '<em><b>Time</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Time</em>' attribute.
-   * @see #setTime(String)
-   * @see org.xtext.mydsl.fin.FinPackage#getView_Time()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.xtext.mydsl.fin.FinPackage#getView_Name()
    * @model
    * @generated
    */
-  String getTime();
+  String getName();
 
   /**
-   * Sets the value of the '{@link org.xtext.mydsl.fin.View#getTime <em>Time</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.mydsl.fin.View#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Time</em>' attribute.
-   * @see #getTime()
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  void setTime(String value);
+  void setName(String value);
 
 } // View

@@ -298,29 +298,16 @@ ruleConditionalStatement returns [AntlrDatatypeRuleToken current=new AntlrDataty
 @after {
 	leaveRule();
 }:
-	(
-		{
-			newCompositeNode(grammarAccess.getConditionalStatementAccess().getIfStatementParserRuleCall_0());
-		}
-		this_IfStatement_0=ruleIfStatement
-		{
-			$current.merge(this_IfStatement_0);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getConditionalStatementAccess().getForStatementParserRuleCall_1());
-		}
-		this_ForStatement_1=ruleForStatement
-		{
-			$current.merge(this_ForStatement_1);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
-	)
+	{
+		newCompositeNode(grammarAccess.getConditionalStatementAccess().getIfStatementParserRuleCall());
+	}
+	this_IfStatement_0=ruleIfStatement
+	{
+		$current.merge(this_IfStatement_0);
+	}
+	{
+		afterParserOrEnumRuleCall();
+	}
 ;
 
 // Entry rule entryRuleIfStatement
@@ -342,28 +329,6 @@ ruleIfStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTok
 	{
 		$current.merge(kw);
 		newLeafNode(kw, grammarAccess.getIfStatementAccess().getIfKeyword());
-	}
-;
-
-// Entry rule entryRuleForStatement
-entryRuleForStatement returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getForStatementRule()); }
-	iv_ruleForStatement=ruleForStatement
-	{ $current=$iv_ruleForStatement.current.getText(); }
-	EOF;
-
-// Rule ForStatement
-ruleForStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	kw='For'
-	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getForStatementAccess().getForKeyword());
 	}
 ;
 
@@ -1094,124 +1059,51 @@ ruleView returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getViewAccess().getViewTypeViewTypeParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getViewAccess().getTargetTypeViewTypeEnumRuleCall_1_0());
 				}
-				lv_viewType_1_0=ruleViewType
+				lv_targetType_1_0=ruleViewType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getViewRule());
 					}
 					set(
 						$current,
-						"viewType",
-						lv_viewType_1_0,
+						"targetType",
+						lv_targetType_1_0,
 						"org.xtext.mydsl.Fin.ViewType");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getViewAccess().getLeftCurlyBracketKeyword_2());
+		}
+		otherlv_3='targetName'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getViewAccess().getTargetNameKeyword_3());
+		}
 		(
 			(
+				lv_name_4_0=RULE_ID
 				{
-					newCompositeNode(grammarAccess.getViewAccess().getTimeTimeParserRuleCall_2_0());
+					newLeafNode(lv_name_4_0, grammarAccess.getViewAccess().getNameIDTerminalRuleCall_4_0());
 				}
-				lv_time_2_0=ruleTime
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getViewRule());
+						$current = createModelElement(grammarAccess.getViewRule());
 					}
-					set(
+					setWithLastConsumed(
 						$current,
-						"time",
-						lv_time_2_0,
-						"org.xtext.mydsl.Fin.Time");
-					afterParserOrEnumRuleCall();
+						"name",
+						lv_name_4_0,
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-	)
-;
-
-// Entry rule entryRuleViewType
-entryRuleViewType returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getViewTypeRule()); }
-	iv_ruleViewType=ruleViewType
-	{ $current=$iv_ruleViewType.current.getText(); }
-	EOF;
-
-// Rule ViewType
-ruleViewType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		kw='Porfolio'
+		otherlv_5='}'
 		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getViewTypeAccess().getPorfolioKeyword_0());
-		}
-		    |
-		kw='Bond'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getViewTypeAccess().getBondKeyword_1());
-		}
-		    |
-		kw='Option'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getViewTypeAccess().getOptionKeyword_2());
-		}
-		    |
-		kw='Cash'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getViewTypeAccess().getCashKeyword_3());
-		}
-	)
-;
-
-// Entry rule entryRuleTime
-entryRuleTime returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getTimeRule()); }
-	iv_ruleTime=ruleTime
-	{ $current=$iv_ruleTime.current.getText(); }
-	EOF;
-
-// Rule Time
-ruleTime returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		kw='Now'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getTimeAccess().getNowKeyword_0());
-		}
-		    |
-		kw='NextMonth'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getTimeAccess().getNextMonthKeyword_1());
-		}
-		    |
-		kw='NextQuarter'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getTimeAccess().getNextQuarterKeyword_2());
-		}
-		    |
-		kw='NextYear'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getTimeAccess().getNextYearKeyword_3());
+			newLeafNode(otherlv_5, grammarAccess.getViewAccess().getRightCurlyBracketKeyword_5());
 		}
 	)
 ;
@@ -1264,6 +1156,49 @@ ruleFLOAT returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 finally {
 	myHiddenTokenState.restore();
 }
+
+// Rule ViewType
+ruleViewType returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='Portfolio'
+			{
+				$current = grammarAccess.getViewTypeAccess().getPortfolioEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getViewTypeAccess().getPortfolioEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='Bond'
+			{
+				$current = grammarAccess.getViewTypeAccess().getBondEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getViewTypeAccess().getBondEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='Option'
+			{
+				$current = grammarAccess.getViewTypeAccess().getOptionEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getViewTypeAccess().getOptionEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3='Cash'
+			{
+				$current = grammarAccess.getViewTypeAccess().getCashEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getViewTypeAccess().getCashEnumLiteralDeclaration_3());
+			}
+		)
+	)
+;
 
 // Rule OptionType
 ruleOptionType returns [Enumerator current=null]

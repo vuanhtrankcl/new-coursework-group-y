@@ -6,6 +6,17 @@
     copyrightFields="false" runtimeVersion="2.29">
   <genPackages prefix="Fin" basePackage="org.xtext.mydsl" disposableProviderFactory="true"
       fileExtensions="fin" ecorePackage="Fin.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fin.ecore#//ViewType">
+      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//ViewType/Portfolio"/>
+      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//ViewType/Bond"/>
+      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//ViewType/Option"/>
+      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//ViewType/Cash"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fin.ecore#//TimeUnit">
+      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//TimeUnit/Day"/>
+      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//TimeUnit/Month"/>
+      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//TimeUnit/Year"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fin.ecore#//OptionType">
       <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//OptionType/Call"/>
       <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//OptionType/Put"/>
@@ -56,8 +67,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//Withdrawal/amount"/>
     </genClasses>
     <genClasses ecoreClass="Fin.ecore#//View">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//View/viewType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//View/time"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//View/targetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//View/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -523,22 +523,22 @@ public interface FinPackage extends EPackage
   int VIEW = 13;
 
   /**
-   * The feature id for the '<em><b>View Type</b></em>' attribute.
+   * The feature id for the '<em><b>Target Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VIEW__VIEW_TYPE = ACTION_FEATURE_COUNT + 0;
+  int VIEW__TARGET_TYPE = ACTION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Time</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VIEW__TIME = ACTION_FEATURE_COUNT + 1;
+  int VIEW__NAME = ACTION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>View</em>' class.
@@ -550,6 +550,26 @@ public interface FinPackage extends EPackage
   int VIEW_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link org.xtext.mydsl.fin.ViewType <em>View Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.mydsl.fin.ViewType
+   * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getViewType()
+   * @generated
+   */
+  int VIEW_TYPE = 14;
+
+  /**
+   * The meta object id for the '{@link org.xtext.mydsl.fin.TimeUnit <em>Time Unit</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.mydsl.fin.TimeUnit
+   * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getTimeUnit()
+   * @generated
+   */
+  int TIME_UNIT = 15;
+
+  /**
    * The meta object id for the '{@link org.xtext.mydsl.fin.OptionType <em>Option Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -557,7 +577,7 @@ public interface FinPackage extends EPackage
    * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getOptionType()
    * @generated
    */
-  int OPTION_TYPE = 14;
+  int OPTION_TYPE = 16;
 
 
   /**
@@ -954,26 +974,46 @@ public interface FinPackage extends EPackage
   EClass getView();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.View#getViewType <em>View Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.View#getTargetType <em>Target Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>View Type</em>'.
-   * @see org.xtext.mydsl.fin.View#getViewType()
+   * @return the meta object for the attribute '<em>Target Type</em>'.
+   * @see org.xtext.mydsl.fin.View#getTargetType()
    * @see #getView()
    * @generated
    */
-  EAttribute getView_ViewType();
+  EAttribute getView_TargetType();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.View#getTime <em>Time</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.View#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Time</em>'.
-   * @see org.xtext.mydsl.fin.View#getTime()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.mydsl.fin.View#getName()
    * @see #getView()
    * @generated
    */
-  EAttribute getView_Time();
+  EAttribute getView_Name();
+
+  /**
+   * Returns the meta object for enum '{@link org.xtext.mydsl.fin.ViewType <em>View Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>View Type</em>'.
+   * @see org.xtext.mydsl.fin.ViewType
+   * @generated
+   */
+  EEnum getViewType();
+
+  /**
+   * Returns the meta object for enum '{@link org.xtext.mydsl.fin.TimeUnit <em>Time Unit</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Time Unit</em>'.
+   * @see org.xtext.mydsl.fin.TimeUnit
+   * @generated
+   */
+  EEnum getTimeUnit();
 
   /**
    * Returns the meta object for enum '{@link org.xtext.mydsl.fin.OptionType <em>Option Type</em>}'.
@@ -1333,20 +1373,40 @@ public interface FinPackage extends EPackage
     EClass VIEW = eINSTANCE.getView();
 
     /**
-     * The meta object literal for the '<em><b>View Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Target Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute VIEW__VIEW_TYPE = eINSTANCE.getView_ViewType();
+    EAttribute VIEW__TARGET_TYPE = eINSTANCE.getView_TargetType();
 
     /**
-     * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute VIEW__TIME = eINSTANCE.getView_Time();
+    EAttribute VIEW__NAME = eINSTANCE.getView_Name();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.mydsl.fin.ViewType <em>View Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.mydsl.fin.ViewType
+     * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getViewType()
+     * @generated
+     */
+    EEnum VIEW_TYPE = eINSTANCE.getViewType();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.mydsl.fin.TimeUnit <em>Time Unit</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.mydsl.fin.TimeUnit
+     * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getTimeUnit()
+     * @generated
+     */
+    EEnum TIME_UNIT = eINSTANCE.getTimeUnit();
 
     /**
      * The meta object literal for the '{@link org.xtext.mydsl.fin.OptionType <em>Option Type</em>}' enum.

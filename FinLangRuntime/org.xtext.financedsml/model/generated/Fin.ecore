@@ -50,8 +50,19 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="View" eSuperTypes="#//Action">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="#//ViewType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ViewType">
+    <eLiterals name="Portfolio" literal="Portfolio"/>
+    <eLiterals name="Bond" value="1" literal="Bond"/>
+    <eLiterals name="Option" value="2" literal="Option"/>
+    <eLiterals name="Cash" value="3" literal="Cash"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TimeUnit">
+    <eLiterals name="Day" literal="Day"/>
+    <eLiterals name="Month" value="1" literal="Month"/>
+    <eLiterals name="Year" value="2" literal="Year"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="OptionType">
     <eLiterals name="Call" literal="Call"/>

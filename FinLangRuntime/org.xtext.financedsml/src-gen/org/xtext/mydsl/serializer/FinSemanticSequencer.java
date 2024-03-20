@@ -299,19 +299,19 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     View returns View
 	 *
 	 * Constraint:
-	 *     (viewType=ViewType time=Time)
+	 *     (targetType=ViewType name=ID)
 	 * </pre>
 	 */
 	protected void sequence_View(ISerializationContext context, View semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.VIEW__VIEW_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.VIEW__VIEW_TYPE));
-			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.VIEW__TIME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.VIEW__TIME));
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.VIEW__TARGET_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.VIEW__TARGET_TYPE));
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.VIEW__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.VIEW__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getViewAccess().getViewTypeViewTypeParserRuleCall_1_0(), semanticObject.getViewType());
-		feeder.accept(grammarAccess.getViewAccess().getTimeTimeParserRuleCall_2_0(), semanticObject.getTime());
+		feeder.accept(grammarAccess.getViewAccess().getTargetTypeViewTypeEnumRuleCall_1_0(), semanticObject.getTargetType());
+		feeder.accept(grammarAccess.getViewAccess().getNameIDTerminalRuleCall_4_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
