@@ -135,13 +135,22 @@ public interface FinPackage extends EPackage
   int TRANSACTION = 3;
 
   /**
+   * The feature id for the '<em><b>Portfolio</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRANSACTION__PORTFOLIO = ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Transaction</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSACTION_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 0;
+  int TRANSACTION_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.fin.impl.ActionImpl <em>Action</em>}' class.
@@ -154,13 +163,22 @@ public interface FinPackage extends EPackage
   int ACTION = 4;
 
   /**
+   * The feature id for the '<em><b>Portfolio</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION__PORTFOLIO = ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Action</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 0;
+  int ACTION_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.fin.impl.PortfolioImpl <em>Portfolio</em>}' class.
@@ -393,6 +411,15 @@ public interface FinPackage extends EPackage
   int BUY = 9;
 
   /**
+   * The feature id for the '<em><b>Portfolio</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUY__PORTFOLIO = TRANSACTION__PORTFOLIO;
+
+  /**
    * The feature id for the '<em><b>Bond</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -430,13 +457,31 @@ public interface FinPackage extends EPackage
   int SELL = 10;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Portfolio</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SELL__NAME = TRANSACTION_FEATURE_COUNT + 0;
+  int SELL__PORTFOLIO = TRANSACTION__PORTFOLIO;
+
+  /**
+   * The feature id for the '<em><b>Bond</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELL__BOND = TRANSACTION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Option</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELL__OPTION = TRANSACTION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Amount</b></em>' attribute.
@@ -445,7 +490,7 @@ public interface FinPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SELL__AMOUNT = TRANSACTION_FEATURE_COUNT + 1;
+  int SELL__AMOUNT = TRANSACTION_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Sell</em>' class.
@@ -454,7 +499,7 @@ public interface FinPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SELL_FEATURE_COUNT = TRANSACTION_FEATURE_COUNT + 2;
+  int SELL_FEATURE_COUNT = TRANSACTION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.fin.impl.DepositImpl <em>Deposit</em>}' class.
@@ -465,6 +510,15 @@ public interface FinPackage extends EPackage
    * @generated
    */
   int DEPOSIT = 11;
+
+  /**
+   * The feature id for the '<em><b>Portfolio</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEPOSIT__PORTFOLIO = TRANSACTION__PORTFOLIO;
 
   /**
    * The feature id for the '<em><b>Amount</b></em>' attribute.
@@ -495,6 +549,15 @@ public interface FinPackage extends EPackage
   int WITHDRAWAL = 12;
 
   /**
+   * The feature id for the '<em><b>Portfolio</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WITHDRAWAL__PORTFOLIO = TRANSACTION__PORTFOLIO;
+
+  /**
    * The feature id for the '<em><b>Amount</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -523,22 +586,31 @@ public interface FinPackage extends EPackage
   int VIEW = 13;
 
   /**
-   * The feature id for the '<em><b>Target Type</b></em>' attribute.
+   * The feature id for the '<em><b>Portfolio</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VIEW__TARGET_TYPE = ACTION_FEATURE_COUNT + 0;
+  int VIEW__PORTFOLIO = ACTION__PORTFOLIO;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Range</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VIEW__NAME = ACTION_FEATURE_COUNT + 1;
+  int VIEW__RANGE = ACTION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Unit</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VIEW__UNIT = ACTION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>View</em>' class.
@@ -550,14 +622,32 @@ public interface FinPackage extends EPackage
   int VIEW_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.xtext.mydsl.fin.ViewType <em>View Type</em>}' enum.
+   * The meta object id for the '{@link org.xtext.mydsl.fin.impl.DeleteImpl <em>Delete</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.mydsl.fin.ViewType
-   * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getViewType()
+   * @see org.xtext.mydsl.fin.impl.DeleteImpl
+   * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getDelete()
    * @generated
    */
-  int VIEW_TYPE = 14;
+  int DELETE = 14;
+
+  /**
+   * The feature id for the '<em><b>Portfolio</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DELETE__PORTFOLIO = ACTION__PORTFOLIO;
+
+  /**
+   * The number of structural features of the '<em>Delete</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DELETE_FEATURE_COUNT = ACTION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.fin.TimeUnit <em>Time Unit</em>}' enum.
@@ -632,6 +722,17 @@ public interface FinPackage extends EPackage
   EClass getTransaction();
 
   /**
+   * Returns the meta object for the reference '{@link org.xtext.mydsl.fin.Transaction#getPortfolio <em>Portfolio</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Portfolio</em>'.
+   * @see org.xtext.mydsl.fin.Transaction#getPortfolio()
+   * @see #getTransaction()
+   * @generated
+   */
+  EReference getTransaction_Portfolio();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.mydsl.fin.Action <em>Action</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -640,6 +741,17 @@ public interface FinPackage extends EPackage
    * @generated
    */
   EClass getAction();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.mydsl.fin.Action#getPortfolio <em>Portfolio</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Portfolio</em>'.
+   * @see org.xtext.mydsl.fin.Action#getPortfolio()
+   * @see #getAction()
+   * @generated
+   */
+  EReference getAction_Portfolio();
 
   /**
    * Returns the meta object for class '{@link org.xtext.mydsl.fin.Portfolio <em>Portfolio</em>}'.
@@ -900,15 +1012,26 @@ public interface FinPackage extends EPackage
   EClass getSell();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.Sell#getName <em>Name</em>}'.
+   * Returns the meta object for the reference '{@link org.xtext.mydsl.fin.Sell#getBond <em>Bond</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.mydsl.fin.Sell#getName()
+   * @return the meta object for the reference '<em>Bond</em>'.
+   * @see org.xtext.mydsl.fin.Sell#getBond()
    * @see #getSell()
    * @generated
    */
-  EAttribute getSell_Name();
+  EReference getSell_Bond();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.mydsl.fin.Sell#getOption <em>Option</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Option</em>'.
+   * @see org.xtext.mydsl.fin.Sell#getOption()
+   * @see #getSell()
+   * @generated
+   */
+  EReference getSell_Option();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.Sell#getAmount <em>Amount</em>}'.
@@ -974,36 +1097,36 @@ public interface FinPackage extends EPackage
   EClass getView();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.View#getTargetType <em>Target Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.View#getRange <em>Range</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Type</em>'.
-   * @see org.xtext.mydsl.fin.View#getTargetType()
+   * @return the meta object for the attribute '<em>Range</em>'.
+   * @see org.xtext.mydsl.fin.View#getRange()
    * @see #getView()
    * @generated
    */
-  EAttribute getView_TargetType();
+  EAttribute getView_Range();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.View#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.View#getUnit <em>Unit</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.mydsl.fin.View#getName()
+   * @return the meta object for the attribute '<em>Unit</em>'.
+   * @see org.xtext.mydsl.fin.View#getUnit()
    * @see #getView()
    * @generated
    */
-  EAttribute getView_Name();
+  EAttribute getView_Unit();
 
   /**
-   * Returns the meta object for enum '{@link org.xtext.mydsl.fin.ViewType <em>View Type</em>}'.
+   * Returns the meta object for class '{@link org.xtext.mydsl.fin.Delete <em>Delete</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>View Type</em>'.
-   * @see org.xtext.mydsl.fin.ViewType
+   * @return the meta object for class '<em>Delete</em>'.
+   * @see org.xtext.mydsl.fin.Delete
    * @generated
    */
-  EEnum getViewType();
+  EClass getDelete();
 
   /**
    * Returns the meta object for enum '{@link org.xtext.mydsl.fin.TimeUnit <em>Time Unit</em>}'.
@@ -1097,6 +1220,14 @@ public interface FinPackage extends EPackage
     EClass TRANSACTION = eINSTANCE.getTransaction();
 
     /**
+     * The meta object literal for the '<em><b>Portfolio</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TRANSACTION__PORTFOLIO = eINSTANCE.getTransaction_Portfolio();
+
+    /**
      * The meta object literal for the '{@link org.xtext.mydsl.fin.impl.ActionImpl <em>Action</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1105,6 +1236,14 @@ public interface FinPackage extends EPackage
      * @generated
      */
     EClass ACTION = eINSTANCE.getAction();
+
+    /**
+     * The meta object literal for the '<em><b>Portfolio</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION__PORTFOLIO = eINSTANCE.getAction_Portfolio();
 
     /**
      * The meta object literal for the '{@link org.xtext.mydsl.fin.impl.PortfolioImpl <em>Portfolio</em>}' class.
@@ -1311,12 +1450,20 @@ public interface FinPackage extends EPackage
     EClass SELL = eINSTANCE.getSell();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Bond</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SELL__NAME = eINSTANCE.getSell_Name();
+    EReference SELL__BOND = eINSTANCE.getSell_Bond();
+
+    /**
+     * The meta object literal for the '<em><b>Option</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELL__OPTION = eINSTANCE.getSell_Option();
 
     /**
      * The meta object literal for the '<em><b>Amount</b></em>' attribute feature.
@@ -1373,30 +1520,30 @@ public interface FinPackage extends EPackage
     EClass VIEW = eINSTANCE.getView();
 
     /**
-     * The meta object literal for the '<em><b>Target Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Range</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute VIEW__TARGET_TYPE = eINSTANCE.getView_TargetType();
+    EAttribute VIEW__RANGE = eINSTANCE.getView_Range();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute VIEW__NAME = eINSTANCE.getView_Name();
+    EAttribute VIEW__UNIT = eINSTANCE.getView_Unit();
 
     /**
-     * The meta object literal for the '{@link org.xtext.mydsl.fin.ViewType <em>View Type</em>}' enum.
+     * The meta object literal for the '{@link org.xtext.mydsl.fin.impl.DeleteImpl <em>Delete</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.mydsl.fin.ViewType
-     * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getViewType()
+     * @see org.xtext.mydsl.fin.impl.DeleteImpl
+     * @see org.xtext.mydsl.fin.impl.FinPackageImpl#getDelete()
      * @generated
      */
-    EEnum VIEW_TYPE = eINSTANCE.getViewType();
+    EClass DELETE = eINSTANCE.getDelete();
 
     /**
      * The meta object literal for the '{@link org.xtext.mydsl.fin.TimeUnit <em>Time Unit</em>}' enum.

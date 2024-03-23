@@ -7,7 +7,7 @@ Model:
 	(element+=Element)*;
 	
 Element:
-	Portfolio | Transaction | Action | {Element} ConditionalStatement
+	Portfolio | Transaction | Action
 ;
 
 Asset:
@@ -18,36 +18,18 @@ Transaction:
 	Buy | Sell | Deposit | Withdrawal
 ;
 
-// TODO: Thinking to add more actions
 Action: 
-	View
+	View | Delete
 ;
 
-// TODO: Implement this
-ConditionalStatement:
-	IfStatement 
-;
-
-IfStatement: 
-	"If"
-;
-
-/* TODO: figure out a use case 
-ForStatement: 
-	"For"
-;
-* 
-*/
-
-// Use portfolio to initialise a profile
 Portfolio:
-	'Portfolio' name=ID '{'
+	'portfolio' name=ID '{'
 		(asset+=Asset)+
 	'}'
 ;
 
 Bond:
-	'Bond' name=ID '{'
+	'bond' name=ID '{'
 		'faceValue' faceValue=FLOAT
 		'couponRate' couponRate=FLOAT
 		'maturity' maturity=INT
@@ -56,7 +38,7 @@ Bond:
 ;
 
 Option:
-	'Option' name=ID '{'
+	'option' name=ID '{'
 		'type' type=OptionType
 		'underlyingPrice' underlyingPrice=FLOAT
 		'strikePrice' strikePrice=FLOAT
@@ -68,47 +50,55 @@ Option:
 ;
 
 Cash:
-    'Cash' '{'
+    'cash' '{'
     	'amount' amount=FLOAT
     '}'
 ;
 
 
 Buy:
-    'Buy' '{'
+    'buy' '{'
+    	'portfolio' portfolio=[Portfolio]
         (bond=Bond | option=Option)
     '}'
 ;
 
 Sell:
-    'Sell' '{'
-        'assetName' name=ID
+    'sell' '{'
+    	'portfolio' portfolio=[Portfolio]
+        'asset' bond=[Bond] | option=[Option]
         'amount' amount=FLOAT
     '}';
 
 Deposit:
-	'Deposit' amount=FLOAT
-;
-
-Withdrawal:
-	'Withdrawal' amount=FLOAT
-;
-
-View:
-	'View' targetType=ViewType '{'
-		'targetName' name=ID
+	'deposit' '{'
+    	'portfolio' portfolio=[Portfolio]
+		'amount' amount=FLOAT
 	'}'
 ;
 
-enum ViewType:
-	Portfolio | Bond | Option | Cash
+Withdrawal:
+	'withdrawal' '{'
+	    'portfolio' portfolio=[Portfolio]
+		'amount' amount=FLOAT
+	'}'
 ;
 
-// 4 <time unit> (day, month, year)
+View:
+	'view' '{'
+		'portfolio' portfolio=[Portfolio]
+		'time' range=INT unit=TimeUnit
+	'}'
+;
 
-// Plus 1 month, 3 months or 12 months, using model to calculate the price at that time.
+Delete: 
+	'delete' '{'
+		'portfolio' portfolio=[Portfolio]
+	'}'
+;
+
 enum TimeUnit:
-	Day | Month | Year
+	day | month | year
 ;
 
 enum OptionType:

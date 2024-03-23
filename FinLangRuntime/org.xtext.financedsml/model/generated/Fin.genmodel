@@ -6,16 +6,10 @@
     copyrightFields="false" runtimeVersion="2.29">
   <genPackages prefix="Fin" basePackage="org.xtext.mydsl" disposableProviderFactory="true"
       fileExtensions="fin" ecorePackage="Fin.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fin.ecore#//ViewType">
-      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//ViewType/Portfolio"/>
-      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//ViewType/Bond"/>
-      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//ViewType/Option"/>
-      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//ViewType/Cash"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fin.ecore#//TimeUnit">
-      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//TimeUnit/Day"/>
-      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//TimeUnit/Month"/>
-      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//TimeUnit/Year"/>
+      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//TimeUnit/day"/>
+      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//TimeUnit/month"/>
+      <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//TimeUnit/year"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fin.ecore#//OptionType">
       <genEnumLiterals ecoreEnumLiteral="Fin.ecore#//OptionType/Call"/>
@@ -26,8 +20,12 @@
     </genClasses>
     <genClasses ecoreClass="Fin.ecore#//Element"/>
     <genClasses ecoreClass="Fin.ecore#//Asset"/>
-    <genClasses ecoreClass="Fin.ecore#//Transaction"/>
-    <genClasses ecoreClass="Fin.ecore#//Action"/>
+    <genClasses ecoreClass="Fin.ecore#//Transaction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Fin.ecore#//Transaction/portfolio"/>
+    </genClasses>
+    <genClasses ecoreClass="Fin.ecore#//Action">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Fin.ecore#//Action/portfolio"/>
+    </genClasses>
     <genClasses ecoreClass="Fin.ecore#//Portfolio">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//Portfolio/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fin.ecore#//Portfolio/asset"/>
@@ -57,7 +55,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fin.ecore#//Buy/option"/>
     </genClasses>
     <genClasses ecoreClass="Fin.ecore#//Sell">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//Sell/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Fin.ecore#//Sell/bond"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Fin.ecore#//Sell/option"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//Sell/amount"/>
     </genClasses>
     <genClasses ecoreClass="Fin.ecore#//Deposit">
@@ -67,8 +66,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//Withdrawal/amount"/>
     </genClasses>
     <genClasses ecoreClass="Fin.ecore#//View">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//View/targetType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//View/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//View/range"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//View/unit"/>
     </genClasses>
+    <genClasses ecoreClass="Fin.ecore#//Delete"/>
   </genPackages>
 </genmodel:GenModel>

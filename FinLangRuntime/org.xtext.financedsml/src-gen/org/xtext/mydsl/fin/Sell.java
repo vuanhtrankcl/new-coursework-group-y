@@ -13,7 +13,8 @@ package org.xtext.mydsl.fin;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mydsl.fin.Sell#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.Sell#getBond <em>Bond</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.Sell#getOption <em>Option</em>}</li>
  *   <li>{@link org.xtext.mydsl.fin.Sell#getAmount <em>Amount</em>}</li>
  * </ul>
  *
@@ -24,26 +25,48 @@ package org.xtext.mydsl.fin;
 public interface Sell extends Transaction
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Bond</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.xtext.mydsl.fin.FinPackage#getSell_Name()
+   * @return the value of the '<em>Bond</em>' reference.
+   * @see #setBond(Bond)
+   * @see org.xtext.mydsl.fin.FinPackage#getSell_Bond()
    * @model
    * @generated
    */
-  String getName();
+  Bond getBond();
 
   /**
-   * Sets the value of the '{@link org.xtext.mydsl.fin.Sell#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.mydsl.fin.Sell#getBond <em>Bond</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Bond</em>' reference.
+   * @see #getBond()
    * @generated
    */
-  void setName(String value);
+  void setBond(Bond value);
+
+  /**
+   * Returns the value of the '<em><b>Option</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Option</em>' reference.
+   * @see #setOption(Option)
+   * @see org.xtext.mydsl.fin.FinPackage#getSell_Option()
+   * @model
+   * @generated
+   */
+  Option getOption();
+
+  /**
+   * Sets the value of the '{@link org.xtext.mydsl.fin.Sell#getOption <em>Option</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Option</em>' reference.
+   * @see #getOption()
+   * @generated
+   */
+  void setOption(Option value);
 
   /**
    * Returns the value of the '<em><b>Amount</b></em>' attribute.

@@ -1,12 +1,12 @@
-Portfolio mp {
-	Bond myBond {
+portfolio myPort1 {
+	bond myBond1 {
 		faceValue 1000.0
 		couponRate 0.05
 		maturity 10
 		yieldRate 0.04
 	}
 	
-	Option myOption {
+	option myOption1 {
 		type Call
 		underlyingPrice 100.50
 		strikePrice 95.25
@@ -16,19 +16,42 @@ Portfolio mp {
 		dividendYield 0.03
 	}
 	
-	Cash {
+	cash {
 		amount 1000.0
 	}
 
 }
 
-Deposit 1000.0
+buy {
+	portfolio myPort1
+	bond myBond2 {
+		faceValue 1000.0
+		couponRate 0.05
+		maturity 10
+		yieldRate 0.04
+	}
+}
 
-Withdrawal 500.0
+sell {
+	portfolio myPort1
+	asset myBond2
+}
 
-View Portfolio {
-	targetName mp
-} // Can have some more if else statement
+deposit {
+	portfolio myPort1
+	amount 1000.0
+}
 
- 
+withdrawal {
+	portfolio myPort1
+	amount 100.0
+}
 
+view {
+	portfolio myPort1
+	time 100 day
+}
+
+delete {
+	portfolio myPort1
+}

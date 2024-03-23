@@ -6,10 +6,13 @@ package org.xtext.mydsl.fin.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.xtext.mydsl.fin.Bond;
 import org.xtext.mydsl.fin.FinPackage;
+import org.xtext.mydsl.fin.Option;
 import org.xtext.mydsl.fin.Sell;
 
 /**
@@ -20,7 +23,8 @@ import org.xtext.mydsl.fin.Sell;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mydsl.fin.impl.SellImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.impl.SellImpl#getBond <em>Bond</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.impl.SellImpl#getOption <em>Option</em>}</li>
  *   <li>{@link org.xtext.mydsl.fin.impl.SellImpl#getAmount <em>Amount</em>}</li>
  * </ul>
  *
@@ -29,24 +33,24 @@ import org.xtext.mydsl.fin.Sell;
 public class SellImpl extends TransactionImpl implements Sell
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getBond() <em>Bond</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getBond()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected Bond bond;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getOption() <em>Option</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getOption()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected Option option;
 
   /**
    * The default value of the '{@link #getAmount() <em>Amount</em>}' attribute.
@@ -95,9 +99,29 @@ public class SellImpl extends TransactionImpl implements Sell
    * @generated
    */
   @Override
-  public String getName()
+  public Bond getBond()
   {
-    return name;
+    if (bond != null && bond.eIsProxy())
+    {
+      InternalEObject oldBond = (InternalEObject)bond;
+      bond = (Bond)eResolveProxy(oldBond);
+      if (bond != oldBond)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, FinPackage.SELL__BOND, oldBond, bond));
+      }
+    }
+    return bond;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Bond basicGetBond()
+  {
+    return bond;
   }
 
   /**
@@ -106,12 +130,57 @@ public class SellImpl extends TransactionImpl implements Sell
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public void setBond(Bond newBond)
   {
-    String oldName = name;
-    name = newName;
+    Bond oldBond = bond;
+    bond = newBond;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.SELL__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.SELL__BOND, oldBond, bond));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Option getOption()
+  {
+    if (option != null && option.eIsProxy())
+    {
+      InternalEObject oldOption = (InternalEObject)option;
+      option = (Option)eResolveProxy(oldOption);
+      if (option != oldOption)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, FinPackage.SELL__OPTION, oldOption, option));
+      }
+    }
+    return option;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Option basicGetOption()
+  {
+    return option;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOption(Option newOption)
+  {
+    Option oldOption = option;
+    option = newOption;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.SELL__OPTION, oldOption, option));
   }
 
   /**
@@ -149,8 +218,12 @@ public class SellImpl extends TransactionImpl implements Sell
   {
     switch (featureID)
     {
-      case FinPackage.SELL__NAME:
-        return getName();
+      case FinPackage.SELL__BOND:
+        if (resolve) return getBond();
+        return basicGetBond();
+      case FinPackage.SELL__OPTION:
+        if (resolve) return getOption();
+        return basicGetOption();
       case FinPackage.SELL__AMOUNT:
         return getAmount();
     }
@@ -167,8 +240,11 @@ public class SellImpl extends TransactionImpl implements Sell
   {
     switch (featureID)
     {
-      case FinPackage.SELL__NAME:
-        setName((String)newValue);
+      case FinPackage.SELL__BOND:
+        setBond((Bond)newValue);
+        return;
+      case FinPackage.SELL__OPTION:
+        setOption((Option)newValue);
         return;
       case FinPackage.SELL__AMOUNT:
         setAmount((Float)newValue);
@@ -187,8 +263,11 @@ public class SellImpl extends TransactionImpl implements Sell
   {
     switch (featureID)
     {
-      case FinPackage.SELL__NAME:
-        setName(NAME_EDEFAULT);
+      case FinPackage.SELL__BOND:
+        setBond((Bond)null);
+        return;
+      case FinPackage.SELL__OPTION:
+        setOption((Option)null);
         return;
       case FinPackage.SELL__AMOUNT:
         setAmount(AMOUNT_EDEFAULT);
@@ -207,8 +286,10 @@ public class SellImpl extends TransactionImpl implements Sell
   {
     switch (featureID)
     {
-      case FinPackage.SELL__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case FinPackage.SELL__BOND:
+        return bond != null;
+      case FinPackage.SELL__OPTION:
+        return option != null;
       case FinPackage.SELL__AMOUNT:
         return amount != AMOUNT_EDEFAULT;
     }
@@ -226,9 +307,7 @@ public class SellImpl extends TransactionImpl implements Sell
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", amount: ");
+    result.append(" (amount: ");
     result.append(amount);
     result.append(')');
     return result.toString();

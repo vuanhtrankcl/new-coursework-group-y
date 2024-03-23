@@ -80,6 +80,7 @@ public class FinFactoryImpl extends EFactoryImpl implements FinFactory
       case FinPackage.DEPOSIT: return createDeposit();
       case FinPackage.WITHDRAWAL: return createWithdrawal();
       case FinPackage.VIEW: return createView();
+      case FinPackage.DELETE: return createDelete();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -95,8 +96,6 @@ public class FinFactoryImpl extends EFactoryImpl implements FinFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case FinPackage.VIEW_TYPE:
-        return createViewTypeFromString(eDataType, initialValue);
       case FinPackage.TIME_UNIT:
         return createTimeUnitFromString(eDataType, initialValue);
       case FinPackage.OPTION_TYPE:
@@ -116,8 +115,6 @@ public class FinFactoryImpl extends EFactoryImpl implements FinFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case FinPackage.VIEW_TYPE:
-        return convertViewTypeToString(eDataType, instanceValue);
       case FinPackage.TIME_UNIT:
         return convertTimeUnitToString(eDataType, instanceValue);
       case FinPackage.OPTION_TYPE:
@@ -300,21 +297,11 @@ public class FinFactoryImpl extends EFactoryImpl implements FinFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ViewType createViewTypeFromString(EDataType eDataType, String initialValue)
+  @Override
+  public Delete createDelete()
   {
-    ViewType result = ViewType.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertViewTypeToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
+    DeleteImpl delete = new DeleteImpl();
+    return delete;
   }
 
   /**

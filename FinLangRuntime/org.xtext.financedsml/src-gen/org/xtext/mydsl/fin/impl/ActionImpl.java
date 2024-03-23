@@ -3,20 +3,42 @@
  */
 package org.xtext.mydsl.fin.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.mydsl.fin.Action;
 import org.xtext.mydsl.fin.FinPackage;
+import org.xtext.mydsl.fin.Portfolio;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Action</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.mydsl.fin.impl.ActionImpl#getPortfolio <em>Portfolio</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ActionImpl extends ElementImpl implements Action
 {
+  /**
+   * The cached value of the '{@link #getPortfolio() <em>Portfolio</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPortfolio()
+   * @generated
+   * @ordered
+   */
+  protected Portfolio portfolio;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -36,6 +58,118 @@ public class ActionImpl extends ElementImpl implements Action
   protected EClass eStaticClass()
   {
     return FinPackage.Literals.ACTION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Portfolio getPortfolio()
+  {
+    if (portfolio != null && portfolio.eIsProxy())
+    {
+      InternalEObject oldPortfolio = (InternalEObject)portfolio;
+      portfolio = (Portfolio)eResolveProxy(oldPortfolio);
+      if (portfolio != oldPortfolio)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, FinPackage.ACTION__PORTFOLIO, oldPortfolio, portfolio));
+      }
+    }
+    return portfolio;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Portfolio basicGetPortfolio()
+  {
+    return portfolio;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPortfolio(Portfolio newPortfolio)
+  {
+    Portfolio oldPortfolio = portfolio;
+    portfolio = newPortfolio;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.ACTION__PORTFOLIO, oldPortfolio, portfolio));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case FinPackage.ACTION__PORTFOLIO:
+        if (resolve) return getPortfolio();
+        return basicGetPortfolio();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case FinPackage.ACTION__PORTFOLIO:
+        setPortfolio((Portfolio)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case FinPackage.ACTION__PORTFOLIO:
+        setPortfolio((Portfolio)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case FinPackage.ACTION__PORTFOLIO:
+        return portfolio != null;
+    }
+    return super.eIsSet(featureID);
   }
 
 } //ActionImpl

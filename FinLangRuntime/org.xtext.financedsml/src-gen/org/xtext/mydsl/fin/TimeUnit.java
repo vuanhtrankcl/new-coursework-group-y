@@ -28,7 +28,7 @@ public enum TimeUnit implements Enumerator
    * @generated
    * @ordered
    */
-  DAY(0, "Day", "Day"),
+  DAY(0, "day", "day"),
 
   /**
    * The '<em><b>Month</b></em>' literal object.
@@ -38,7 +38,7 @@ public enum TimeUnit implements Enumerator
    * @generated
    * @ordered
    */
-  MONTH(1, "Month", "Month"),
+  MONTH(1, "month", "month"),
 
   /**
    * The '<em><b>Year</b></em>' literal object.
@@ -48,14 +48,14 @@ public enum TimeUnit implements Enumerator
    * @generated
    * @ordered
    */
-  YEAR(2, "Year", "Year");
+  YEAR(2, "year", "year");
 
   /**
    * The '<em><b>Day</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #DAY
-   * @model name="Day"
+   * @model name="day"
    * @generated
    * @ordered
    */
@@ -66,7 +66,7 @@ public enum TimeUnit implements Enumerator
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #MONTH
-   * @model name="Month"
+   * @model name="month"
    * @generated
    * @ordered
    */
@@ -77,7 +77,7 @@ public enum TimeUnit implements Enumerator
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #YEAR
-   * @model name="Year"
+   * @model name="year"
    * @generated
    * @ordered
    */

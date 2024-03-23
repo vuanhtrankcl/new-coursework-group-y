@@ -139,23 +139,6 @@ ruleElement returns [EObject current=null]
 			$current = $this_Action_2.current;
 			afterParserOrEnumRuleCall();
 		}
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getElementAccess().getElementAction_3_0(),
-						$current);
-				}
-			)
-			{
-				newCompositeNode(grammarAccess.getElementAccess().getConditionalStatementParserRuleCall_3_1());
-			}
-			ruleConditionalStatement
-			{
-				afterParserOrEnumRuleCall();
-			}
-		)
 	)
 ;
 
@@ -273,63 +256,25 @@ ruleAction returns [EObject current=null]
 @after {
 	leaveRule();
 }:
-	{
-		newCompositeNode(grammarAccess.getActionAccess().getViewParserRuleCall());
-	}
-	this_View_0=ruleView
-	{
-		$current = $this_View_0.current;
-		afterParserOrEnumRuleCall();
-	}
-;
-
-// Entry rule entryRuleConditionalStatement
-entryRuleConditionalStatement returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getConditionalStatementRule()); }
-	iv_ruleConditionalStatement=ruleConditionalStatement
-	{ $current=$iv_ruleConditionalStatement.current.getText(); }
-	EOF;
-
-// Rule ConditionalStatement
-ruleConditionalStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	{
-		newCompositeNode(grammarAccess.getConditionalStatementAccess().getIfStatementParserRuleCall());
-	}
-	this_IfStatement_0=ruleIfStatement
-	{
-		$current.merge(this_IfStatement_0);
-	}
-	{
-		afterParserOrEnumRuleCall();
-	}
-;
-
-// Entry rule entryRuleIfStatement
-entryRuleIfStatement returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getIfStatementRule()); }
-	iv_ruleIfStatement=ruleIfStatement
-	{ $current=$iv_ruleIfStatement.current.getText(); }
-	EOF;
-
-// Rule IfStatement
-ruleIfStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	kw='If'
-	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getIfStatementAccess().getIfKeyword());
-	}
+	(
+		{
+			newCompositeNode(grammarAccess.getActionAccess().getViewParserRuleCall_0());
+		}
+		this_View_0=ruleView
+		{
+			$current = $this_View_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getActionAccess().getDeleteParserRuleCall_1());
+		}
+		this_Delete_1=ruleDelete
+		{
+			$current = $this_Delete_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
 ;
 
 // Entry rule entryRulePortfolio
@@ -348,7 +293,7 @@ rulePortfolio returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Portfolio'
+		otherlv_0='portfolio'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getPortfolioAccess().getPortfolioKeyword_0());
 		}
@@ -416,7 +361,7 @@ ruleBond returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Bond'
+		otherlv_0='bond'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getBondAccess().getBondKeyword_0());
 		}
@@ -556,7 +501,7 @@ ruleOption returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Option'
+		otherlv_0='option'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getOptionAccess().getOptionKeyword_0());
 		}
@@ -766,7 +711,7 @@ ruleCash returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Cash'
+		otherlv_0='cash'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getCashAccess().getCashKeyword_0());
 		}
@@ -820,7 +765,7 @@ ruleBuy returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Buy'
+		otherlv_0='buy'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getBuyAccess().getBuyKeyword_0());
 		}
@@ -828,13 +773,30 @@ ruleBuy returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getBuyAccess().getLeftCurlyBracketKeyword_1());
 		}
+		otherlv_2='portfolio'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getBuyAccess().getPortfolioKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getBuyRule());
+					}
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getBuyAccess().getPortfolioPortfolioCrossReference_3_0());
+				}
+			)
+		)
 		(
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getBuyAccess().getBondBondParserRuleCall_2_0_0());
+						newCompositeNode(grammarAccess.getBuyAccess().getBondBondParserRuleCall_4_0_0());
 					}
-					lv_bond_2_0=ruleBond
+					lv_bond_4_0=ruleBond
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBuyRule());
@@ -842,7 +804,7 @@ ruleBuy returns [EObject current=null]
 						set(
 							$current,
 							"bond",
-							lv_bond_2_0,
+							lv_bond_4_0,
 							"org.xtext.mydsl.Fin.Bond");
 						afterParserOrEnumRuleCall();
 					}
@@ -852,9 +814,9 @@ ruleBuy returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getBuyAccess().getOptionOptionParserRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getBuyAccess().getOptionOptionParserRuleCall_4_1_0());
 					}
-					lv_option_3_0=ruleOption
+					lv_option_5_0=ruleOption
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBuyRule());
@@ -862,16 +824,16 @@ ruleBuy returns [EObject current=null]
 						set(
 							$current,
 							"option",
-							lv_option_3_0,
+							lv_option_5_0,
 							"org.xtext.mydsl.Fin.Option");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)
-		otherlv_4='}'
+		otherlv_6='}'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getBuyAccess().getRightCurlyBracketKeyword_3());
+			newLeafNode(otherlv_6, grammarAccess.getBuyAccess().getRightCurlyBracketKeyword_5());
 		}
 	)
 ;
@@ -892,63 +854,93 @@ ruleSell returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Sell'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getSellAccess().getSellKeyword_0());
-		}
-		otherlv_1='{'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getSellAccess().getLeftCurlyBracketKeyword_1());
-		}
-		otherlv_2='assetName'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getSellAccess().getAssetNameKeyword_2());
-		}
 		(
+			otherlv_0='sell'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getSellAccess().getSellKeyword_0_0());
+			}
+			otherlv_1='{'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getSellAccess().getLeftCurlyBracketKeyword_0_1());
+			}
+			otherlv_2='portfolio'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getSellAccess().getPortfolioKeyword_0_2());
+			}
 			(
-				lv_name_3_0=RULE_ID
-				{
-					newLeafNode(lv_name_3_0, grammarAccess.getSellAccess().getNameIDTerminalRuleCall_3_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSellRule());
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getSellRule());
+						}
 					}
-					setWithLastConsumed(
-						$current,
-						"name",
-						lv_name_3_0,
-						"org.eclipse.xtext.common.Terminals.ID");
-				}
+					otherlv_3=RULE_ID
+					{
+						newLeafNode(otherlv_3, grammarAccess.getSellAccess().getPortfolioPortfolioCrossReference_0_3_0());
+					}
+				)
+			)
+			otherlv_4='asset'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getSellAccess().getAssetKeyword_0_4());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getSellRule());
+						}
+					}
+					otherlv_5=RULE_ID
+					{
+						newLeafNode(otherlv_5, grammarAccess.getSellAccess().getBondBondCrossReference_0_5_0());
+					}
+				)
 			)
 		)
-		otherlv_4='amount'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getSellAccess().getAmountKeyword_4());
-		}
+		    |
 		(
 			(
-				{
-					newCompositeNode(grammarAccess.getSellAccess().getAmountFLOATParserRuleCall_5_0());
-				}
-				lv_amount_5_0=ruleFLOAT
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getSellRule());
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getSellRule());
+						}
 					}
-					set(
-						$current,
-						"amount",
-						lv_amount_5_0,
-						"org.xtext.mydsl.Fin.FLOAT");
-					afterParserOrEnumRuleCall();
-				}
+					otherlv_6=RULE_ID
+					{
+						newLeafNode(otherlv_6, grammarAccess.getSellAccess().getOptionOptionCrossReference_1_0_0());
+					}
+				)
 			)
+			otherlv_7='amount'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getSellAccess().getAmountKeyword_1_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getSellAccess().getAmountFLOATParserRuleCall_1_2_0());
+					}
+					lv_amount_8_0=ruleFLOAT
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getSellRule());
+						}
+						set(
+							$current,
+							"amount",
+							lv_amount_8_0,
+							"org.xtext.mydsl.Fin.FLOAT");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_9='}'
+			{
+				newLeafNode(otherlv_9, grammarAccess.getSellAccess().getRightCurlyBracketKeyword_1_3());
+			}
 		)
-		otherlv_6='}'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getSellAccess().getRightCurlyBracketKeyword_6());
-		}
 	)
 ;
 
@@ -968,16 +960,41 @@ ruleDeposit returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Deposit'
+		otherlv_0='deposit'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getDepositAccess().getDepositKeyword_0());
+		}
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDepositAccess().getLeftCurlyBracketKeyword_1());
+		}
+		otherlv_2='portfolio'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getDepositAccess().getPortfolioKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDepositAccess().getAmountFLOATParserRuleCall_1_0());
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDepositRule());
+					}
 				}
-				lv_amount_1_0=ruleFLOAT
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getDepositAccess().getPortfolioPortfolioCrossReference_3_0());
+				}
+			)
+		)
+		otherlv_4='amount'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getDepositAccess().getAmountKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDepositAccess().getAmountFLOATParserRuleCall_5_0());
+				}
+				lv_amount_5_0=ruleFLOAT
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDepositRule());
@@ -985,12 +1002,16 @@ ruleDeposit returns [EObject current=null]
 					set(
 						$current,
 						"amount",
-						lv_amount_1_0,
+						lv_amount_5_0,
 						"org.xtext.mydsl.Fin.FLOAT");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		otherlv_6='}'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getDepositAccess().getRightCurlyBracketKeyword_6());
+		}
 	)
 ;
 
@@ -1010,16 +1031,41 @@ ruleWithdrawal returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Withdrawal'
+		otherlv_0='withdrawal'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getWithdrawalAccess().getWithdrawalKeyword_0());
+		}
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getWithdrawalAccess().getLeftCurlyBracketKeyword_1());
+		}
+		otherlv_2='portfolio'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getWithdrawalAccess().getPortfolioKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getWithdrawalAccess().getAmountFLOATParserRuleCall_1_0());
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getWithdrawalRule());
+					}
 				}
-				lv_amount_1_0=ruleFLOAT
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getWithdrawalAccess().getPortfolioPortfolioCrossReference_3_0());
+				}
+			)
+		)
+		otherlv_4='amount'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getWithdrawalAccess().getAmountKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getWithdrawalAccess().getAmountFLOATParserRuleCall_5_0());
+				}
+				lv_amount_5_0=ruleFLOAT
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getWithdrawalRule());
@@ -1027,12 +1073,16 @@ ruleWithdrawal returns [EObject current=null]
 					set(
 						$current,
 						"amount",
-						lv_amount_1_0,
+						lv_amount_5_0,
 						"org.xtext.mydsl.Fin.FLOAT");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		otherlv_6='}'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getWithdrawalAccess().getRightCurlyBracketKeyword_6());
+		}
 	)
 ;
 
@@ -1052,42 +1102,40 @@ ruleView returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='View'
+		otherlv_0='view'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getViewAccess().getViewKeyword_0());
 		}
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getViewAccess().getLeftCurlyBracketKeyword_1());
+		}
+		otherlv_2='portfolio'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getViewAccess().getPortfolioKeyword_2());
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getViewAccess().getTargetTypeViewTypeEnumRuleCall_1_0());
-				}
-				lv_targetType_1_0=ruleViewType
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getViewRule());
+						$current = createModelElement(grammarAccess.getViewRule());
 					}
-					set(
-						$current,
-						"targetType",
-						lv_targetType_1_0,
-						"org.xtext.mydsl.Fin.ViewType");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getViewAccess().getPortfolioPortfolioCrossReference_3_0());
 				}
 			)
 		)
-		otherlv_2='{'
+		otherlv_4='time'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getViewAccess().getLeftCurlyBracketKeyword_2());
-		}
-		otherlv_3='targetName'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getViewAccess().getTargetNameKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getViewAccess().getTimeKeyword_4());
 		}
 		(
 			(
-				lv_name_4_0=RULE_ID
+				lv_range_5_0=RULE_INT
 				{
-					newLeafNode(lv_name_4_0, grammarAccess.getViewAccess().getNameIDTerminalRuleCall_4_0());
+					newLeafNode(lv_range_5_0, grammarAccess.getViewAccess().getRangeINTTerminalRuleCall_5_0());
 				}
 				{
 					if ($current==null) {
@@ -1095,15 +1143,82 @@ ruleView returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"name",
-						lv_name_4_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"range",
+						lv_range_5_0,
+						"org.eclipse.xtext.common.Terminals.INT");
 				}
 			)
 		)
-		otherlv_5='}'
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getViewAccess().getUnitTimeUnitEnumRuleCall_6_0());
+				}
+				lv_unit_6_0=ruleTimeUnit
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getViewRule());
+					}
+					set(
+						$current,
+						"unit",
+						lv_unit_6_0,
+						"org.xtext.mydsl.Fin.TimeUnit");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_7='}'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getViewAccess().getRightCurlyBracketKeyword_5());
+			newLeafNode(otherlv_7, grammarAccess.getViewAccess().getRightCurlyBracketKeyword_7());
+		}
+	)
+;
+
+// Entry rule entryRuleDelete
+entryRuleDelete returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDeleteRule()); }
+	iv_ruleDelete=ruleDelete
+	{ $current=$iv_ruleDelete.current; }
+	EOF;
+
+// Rule Delete
+ruleDelete returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='delete'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getDeleteAccess().getDeleteKeyword_0());
+		}
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDeleteAccess().getLeftCurlyBracketKeyword_1());
+		}
+		otherlv_2='portfolio'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getDeleteAccess().getPortfolioKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDeleteRule());
+					}
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getDeleteAccess().getPortfolioPortfolioCrossReference_3_0());
+				}
+			)
+		)
+		otherlv_4='}'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getDeleteAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;
@@ -1157,8 +1272,8 @@ finally {
 	myHiddenTokenState.restore();
 }
 
-// Rule ViewType
-ruleViewType returns [Enumerator current=null]
+// Rule TimeUnit
+ruleTimeUnit returns [Enumerator current=null]
 @init {
 	enterRule();
 }
@@ -1167,34 +1282,26 @@ ruleViewType returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='Portfolio'
+			enumLiteral_0='day'
 			{
-				$current = grammarAccess.getViewTypeAccess().getPortfolioEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getViewTypeAccess().getPortfolioEnumLiteralDeclaration_0());
+				$current = grammarAccess.getTimeUnitAccess().getDayEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getTimeUnitAccess().getDayEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
-			enumLiteral_1='Bond'
+			enumLiteral_1='month'
 			{
-				$current = grammarAccess.getViewTypeAccess().getBondEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getViewTypeAccess().getBondEnumLiteralDeclaration_1());
+				$current = grammarAccess.getTimeUnitAccess().getMonthEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getTimeUnitAccess().getMonthEnumLiteralDeclaration_1());
 			}
 		)
 		    |
 		(
-			enumLiteral_2='Option'
+			enumLiteral_2='year'
 			{
-				$current = grammarAccess.getViewTypeAccess().getOptionEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getViewTypeAccess().getOptionEnumLiteralDeclaration_2());
-			}
-		)
-		    |
-		(
-			enumLiteral_3='Cash'
-			{
-				$current = grammarAccess.getViewTypeAccess().getCashEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_3, grammarAccess.getViewTypeAccess().getCashEnumLiteralDeclaration_3());
+				$current = grammarAccess.getTimeUnitAccess().getYearEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getTimeUnitAccess().getYearEnumLiteralDeclaration_2());
 			}
 		)
 	)

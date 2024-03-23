@@ -34,20 +34,22 @@ public class FinParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getElementAccess().getAlternatives(), "rule__Element__Alternatives");
 			builder.put(grammarAccess.getAssetAccess().getAlternatives(), "rule__Asset__Alternatives");
 			builder.put(grammarAccess.getTransactionAccess().getAlternatives(), "rule__Transaction__Alternatives");
-			builder.put(grammarAccess.getBuyAccess().getAlternatives_2(), "rule__Buy__Alternatives_2");
-			builder.put(grammarAccess.getViewTypeAccess().getAlternatives(), "rule__ViewType__Alternatives");
+			builder.put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
+			builder.put(grammarAccess.getBuyAccess().getAlternatives_4(), "rule__Buy__Alternatives_4");
+			builder.put(grammarAccess.getSellAccess().getAlternatives(), "rule__Sell__Alternatives");
 			builder.put(grammarAccess.getTimeUnitAccess().getAlternatives(), "rule__TimeUnit__Alternatives");
 			builder.put(grammarAccess.getOptionTypeAccess().getAlternatives(), "rule__OptionType__Alternatives");
-			builder.put(grammarAccess.getElementAccess().getGroup_3(), "rule__Element__Group_3__0");
 			builder.put(grammarAccess.getPortfolioAccess().getGroup(), "rule__Portfolio__Group__0");
 			builder.put(grammarAccess.getBondAccess().getGroup(), "rule__Bond__Group__0");
 			builder.put(grammarAccess.getOptionAccess().getGroup(), "rule__Option__Group__0");
 			builder.put(grammarAccess.getCashAccess().getGroup(), "rule__Cash__Group__0");
 			builder.put(grammarAccess.getBuyAccess().getGroup(), "rule__Buy__Group__0");
-			builder.put(grammarAccess.getSellAccess().getGroup(), "rule__Sell__Group__0");
+			builder.put(grammarAccess.getSellAccess().getGroup_0(), "rule__Sell__Group_0__0");
+			builder.put(grammarAccess.getSellAccess().getGroup_1(), "rule__Sell__Group_1__0");
 			builder.put(grammarAccess.getDepositAccess().getGroup(), "rule__Deposit__Group__0");
 			builder.put(grammarAccess.getWithdrawalAccess().getGroup(), "rule__Withdrawal__Group__0");
 			builder.put(grammarAccess.getViewAccess().getGroup(), "rule__View__Group__0");
+			builder.put(grammarAccess.getDeleteAccess().getGroup(), "rule__Delete__Group__0");
 			builder.put(grammarAccess.getFLOATAccess().getGroup(), "rule__FLOAT__Group__0");
 			builder.put(grammarAccess.getModelAccess().getElementAssignment(), "rule__Model__ElementAssignment");
 			builder.put(grammarAccess.getPortfolioAccess().getNameAssignment_1(), "rule__Portfolio__NameAssignment_1");
@@ -66,14 +68,21 @@ public class FinParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getOptionAccess().getVolatilityAssignment_14(), "rule__Option__VolatilityAssignment_14");
 			builder.put(grammarAccess.getOptionAccess().getDividendYieldAssignment_16(), "rule__Option__DividendYieldAssignment_16");
 			builder.put(grammarAccess.getCashAccess().getAmountAssignment_3(), "rule__Cash__AmountAssignment_3");
-			builder.put(grammarAccess.getBuyAccess().getBondAssignment_2_0(), "rule__Buy__BondAssignment_2_0");
-			builder.put(grammarAccess.getBuyAccess().getOptionAssignment_2_1(), "rule__Buy__OptionAssignment_2_1");
-			builder.put(grammarAccess.getSellAccess().getNameAssignment_3(), "rule__Sell__NameAssignment_3");
-			builder.put(grammarAccess.getSellAccess().getAmountAssignment_5(), "rule__Sell__AmountAssignment_5");
-			builder.put(grammarAccess.getDepositAccess().getAmountAssignment_1(), "rule__Deposit__AmountAssignment_1");
-			builder.put(grammarAccess.getWithdrawalAccess().getAmountAssignment_1(), "rule__Withdrawal__AmountAssignment_1");
-			builder.put(grammarAccess.getViewAccess().getTargetTypeAssignment_1(), "rule__View__TargetTypeAssignment_1");
-			builder.put(grammarAccess.getViewAccess().getNameAssignment_4(), "rule__View__NameAssignment_4");
+			builder.put(grammarAccess.getBuyAccess().getPortfolioAssignment_3(), "rule__Buy__PortfolioAssignment_3");
+			builder.put(grammarAccess.getBuyAccess().getBondAssignment_4_0(), "rule__Buy__BondAssignment_4_0");
+			builder.put(grammarAccess.getBuyAccess().getOptionAssignment_4_1(), "rule__Buy__OptionAssignment_4_1");
+			builder.put(grammarAccess.getSellAccess().getPortfolioAssignment_0_3(), "rule__Sell__PortfolioAssignment_0_3");
+			builder.put(grammarAccess.getSellAccess().getBondAssignment_0_5(), "rule__Sell__BondAssignment_0_5");
+			builder.put(grammarAccess.getSellAccess().getOptionAssignment_1_0(), "rule__Sell__OptionAssignment_1_0");
+			builder.put(grammarAccess.getSellAccess().getAmountAssignment_1_2(), "rule__Sell__AmountAssignment_1_2");
+			builder.put(grammarAccess.getDepositAccess().getPortfolioAssignment_3(), "rule__Deposit__PortfolioAssignment_3");
+			builder.put(grammarAccess.getDepositAccess().getAmountAssignment_5(), "rule__Deposit__AmountAssignment_5");
+			builder.put(grammarAccess.getWithdrawalAccess().getPortfolioAssignment_3(), "rule__Withdrawal__PortfolioAssignment_3");
+			builder.put(grammarAccess.getWithdrawalAccess().getAmountAssignment_5(), "rule__Withdrawal__AmountAssignment_5");
+			builder.put(grammarAccess.getViewAccess().getPortfolioAssignment_3(), "rule__View__PortfolioAssignment_3");
+			builder.put(grammarAccess.getViewAccess().getRangeAssignment_5(), "rule__View__RangeAssignment_5");
+			builder.put(grammarAccess.getViewAccess().getUnitAssignment_6(), "rule__View__UnitAssignment_6");
+			builder.put(grammarAccess.getDeleteAccess().getPortfolioAssignment_3(), "rule__Delete__PortfolioAssignment_3");
 		}
 	}
 	

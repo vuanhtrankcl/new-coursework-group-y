@@ -16,6 +16,7 @@ import org.xtext.mydsl.fin.Asset;
 import org.xtext.mydsl.fin.Bond;
 import org.xtext.mydsl.fin.Buy;
 import org.xtext.mydsl.fin.Cash;
+import org.xtext.mydsl.fin.Delete;
 import org.xtext.mydsl.fin.Deposit;
 import org.xtext.mydsl.fin.Element;
 import org.xtext.mydsl.fin.FinFactory;
@@ -28,7 +29,6 @@ import org.xtext.mydsl.fin.Sell;
 import org.xtext.mydsl.fin.TimeUnit;
 import org.xtext.mydsl.fin.Transaction;
 import org.xtext.mydsl.fin.View;
-import org.xtext.mydsl.fin.ViewType;
 import org.xtext.mydsl.fin.Withdrawal;
 
 /**
@@ -142,7 +142,7 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum viewTypeEEnum = null;
+  private EClass deleteEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -281,9 +281,31 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
+  public EReference getTransaction_Portfolio()
+  {
+    return (EReference)transactionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getAction()
   {
     return actionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAction_Portfolio()
+  {
+    return (EReference)actionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -556,9 +578,20 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
-  public EAttribute getSell_Name()
+  public EReference getSell_Bond()
   {
-    return (EAttribute)sellEClass.getEStructuralFeatures().get(0);
+    return (EReference)sellEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSell_Option()
+  {
+    return (EReference)sellEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -569,7 +602,7 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
   @Override
   public EAttribute getSell_Amount()
   {
-    return (EAttribute)sellEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)sellEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -633,7 +666,7 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
-  public EAttribute getView_TargetType()
+  public EAttribute getView_Range()
   {
     return (EAttribute)viewEClass.getEStructuralFeatures().get(0);
   }
@@ -644,7 +677,7 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
-  public EAttribute getView_Name()
+  public EAttribute getView_Unit()
   {
     return (EAttribute)viewEClass.getEStructuralFeatures().get(1);
   }
@@ -655,9 +688,9 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
-  public EEnum getViewType()
+  public EClass getDelete()
   {
-    return viewTypeEEnum;
+    return deleteEClass;
   }
 
   /**
@@ -721,8 +754,10 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     assetEClass = createEClass(ASSET);
 
     transactionEClass = createEClass(TRANSACTION);
+    createEReference(transactionEClass, TRANSACTION__PORTFOLIO);
 
     actionEClass = createEClass(ACTION);
+    createEReference(actionEClass, ACTION__PORTFOLIO);
 
     portfolioEClass = createEClass(PORTFOLIO);
     createEAttribute(portfolioEClass, PORTFOLIO__NAME);
@@ -753,7 +788,8 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     createEReference(buyEClass, BUY__OPTION);
 
     sellEClass = createEClass(SELL);
-    createEAttribute(sellEClass, SELL__NAME);
+    createEReference(sellEClass, SELL__BOND);
+    createEReference(sellEClass, SELL__OPTION);
     createEAttribute(sellEClass, SELL__AMOUNT);
 
     depositEClass = createEClass(DEPOSIT);
@@ -763,11 +799,12 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     createEAttribute(withdrawalEClass, WITHDRAWAL__AMOUNT);
 
     viewEClass = createEClass(VIEW);
-    createEAttribute(viewEClass, VIEW__TARGET_TYPE);
-    createEAttribute(viewEClass, VIEW__NAME);
+    createEAttribute(viewEClass, VIEW__RANGE);
+    createEAttribute(viewEClass, VIEW__UNIT);
+
+    deleteEClass = createEClass(DELETE);
 
     // Create enums
-    viewTypeEEnum = createEEnum(VIEW_TYPE);
     timeUnitEEnum = createEEnum(TIME_UNIT);
     optionTypeEEnum = createEEnum(OPTION_TYPE);
   }
@@ -812,6 +849,7 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     depositEClass.getESuperTypes().add(this.getTransaction());
     withdrawalEClass.getESuperTypes().add(this.getTransaction());
     viewEClass.getESuperTypes().add(this.getAction());
+    deleteEClass.getESuperTypes().add(this.getAction());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -822,8 +860,10 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(transactionEClass, Transaction.class, "Transaction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTransaction_Portfolio(), this.getPortfolio(), null, "portfolio", null, 0, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAction_Portfolio(), this.getPortfolio(), null, "portfolio", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(portfolioEClass, Portfolio.class, "Portfolio", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPortfolio_Name(), ecorePackage.getEString(), "name", null, 0, 1, Portfolio.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -854,7 +894,8 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     initEReference(getBuy_Option(), this.getOption(), null, "option", null, 0, 1, Buy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sellEClass, Sell.class, "Sell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSell_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSell_Bond(), this.getBond(), null, "bond", null, 0, 1, Sell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSell_Option(), this.getOption(), null, "option", null, 0, 1, Sell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSell_Amount(), ecorePackage.getEFloat(), "amount", null, 0, 1, Sell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(depositEClass, Deposit.class, "Deposit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -864,16 +905,12 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     initEAttribute(getWithdrawal_Amount(), ecorePackage.getEFloat(), "amount", null, 0, 1, Withdrawal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(viewEClass, View.class, "View", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getView_TargetType(), this.getViewType(), "targetType", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getView_Name(), ecorePackage.getEString(), "name", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getView_Range(), ecorePackage.getEInt(), "range", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getView_Unit(), this.getTimeUnit(), "unit", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(deleteEClass, Delete.class, "Delete", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Initialize enums and add enum literals
-    initEEnum(viewTypeEEnum, ViewType.class, "ViewType");
-    addEEnumLiteral(viewTypeEEnum, ViewType.PORTFOLIO);
-    addEEnumLiteral(viewTypeEEnum, ViewType.BOND);
-    addEEnumLiteral(viewTypeEEnum, ViewType.OPTION);
-    addEEnumLiteral(viewTypeEEnum, ViewType.CASH);
-
     initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
     addEEnumLiteral(timeUnitEEnum, TimeUnit.DAY);
     addEEnumLiteral(timeUnitEEnum, TimeUnit.MONTH);

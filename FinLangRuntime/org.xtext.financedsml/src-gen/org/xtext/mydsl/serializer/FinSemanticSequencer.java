@@ -17,8 +17,8 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransi
 import org.xtext.mydsl.fin.Bond;
 import org.xtext.mydsl.fin.Buy;
 import org.xtext.mydsl.fin.Cash;
+import org.xtext.mydsl.fin.Delete;
 import org.xtext.mydsl.fin.Deposit;
-import org.xtext.mydsl.fin.Element;
 import org.xtext.mydsl.fin.FinPackage;
 import org.xtext.mydsl.fin.Model;
 import org.xtext.mydsl.fin.Option;
@@ -51,11 +51,11 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case FinPackage.CASH:
 				sequence_Cash(context, (Cash) semanticObject); 
 				return; 
+			case FinPackage.DELETE:
+				sequence_Delete(context, (Delete) semanticObject); 
+				return; 
 			case FinPackage.DEPOSIT:
 				sequence_Deposit(context, (Deposit) semanticObject); 
-				return; 
-			case FinPackage.ELEMENT:
-				sequence_Element(context, (Element) semanticObject); 
 				return; 
 			case FinPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
@@ -121,7 +121,7 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Buy returns Buy
 	 *
 	 * Constraint:
-	 *     (bond=Bond | option=Option)
+	 *     (portfolio=[Portfolio|ID] (bond=Bond | option=Option))
 	 * </pre>
 	 */
 	protected void sequence_Buy(ISerializationContext context, Buy semanticObject) {
@@ -153,21 +153,21 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Element returns Deposit
-	 *     Transaction returns Deposit
-	 *     Deposit returns Deposit
+	 *     Element returns Delete
+	 *     Action returns Delete
+	 *     Delete returns Delete
 	 *
 	 * Constraint:
-	 *     amount=FLOAT
+	 *     portfolio=[Portfolio|ID]
 	 * </pre>
 	 */
-	protected void sequence_Deposit(ISerializationContext context, Deposit semanticObject) {
+	protected void sequence_Delete(ISerializationContext context, Delete semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.DEPOSIT__AMOUNT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.DEPOSIT__AMOUNT));
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.ACTION__PORTFOLIO) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.ACTION__PORTFOLIO));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDepositAccess().getAmountFLOATParserRuleCall_1_0(), semanticObject.getAmount());
+		feeder.accept(grammarAccess.getDeleteAccess().getPortfolioPortfolioIDTerminalRuleCall_3_0_1(), semanticObject.eGet(FinPackage.Literals.ACTION__PORTFOLIO, false));
 		feeder.finish();
 	}
 	
@@ -175,14 +175,25 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Element returns Element
+	 *     Element returns Deposit
+	 *     Transaction returns Deposit
+	 *     Deposit returns Deposit
 	 *
 	 * Constraint:
-	 *     {Element}
+	 *     (portfolio=[Portfolio|ID] amount=FLOAT)
 	 * </pre>
 	 */
-	protected void sequence_Element(ISerializationContext context, Element semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_Deposit(ISerializationContext context, Deposit semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.TRANSACTION__PORTFOLIO) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.TRANSACTION__PORTFOLIO));
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.DEPOSIT__AMOUNT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.DEPOSIT__AMOUNT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDepositAccess().getPortfolioPortfolioIDTerminalRuleCall_3_0_1(), semanticObject.eGet(FinPackage.Literals.TRANSACTION__PORTFOLIO, false));
+		feeder.accept(grammarAccess.getDepositAccess().getAmountFLOATParserRuleCall_5_0(), semanticObject.getAmount());
+		feeder.finish();
 	}
 	
 	
@@ -274,20 +285,11 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Sell returns Sell
 	 *
 	 * Constraint:
-	 *     (name=ID amount=FLOAT)
+	 *     ((portfolio=[Portfolio|ID] bond=[Bond|ID]) | (option=[Option|ID] amount=FLOAT))
 	 * </pre>
 	 */
 	protected void sequence_Sell(ISerializationContext context, Sell semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.SELL__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.SELL__NAME));
-			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.SELL__AMOUNT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.SELL__AMOUNT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSellAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getSellAccess().getAmountFLOATParserRuleCall_5_0(), semanticObject.getAmount());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -299,19 +301,22 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     View returns View
 	 *
 	 * Constraint:
-	 *     (targetType=ViewType name=ID)
+	 *     (portfolio=[Portfolio|ID] range=INT unit=TimeUnit)
 	 * </pre>
 	 */
 	protected void sequence_View(ISerializationContext context, View semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.VIEW__TARGET_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.VIEW__TARGET_TYPE));
-			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.VIEW__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.VIEW__NAME));
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.ACTION__PORTFOLIO) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.ACTION__PORTFOLIO));
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.VIEW__RANGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.VIEW__RANGE));
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.VIEW__UNIT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.VIEW__UNIT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getViewAccess().getTargetTypeViewTypeEnumRuleCall_1_0(), semanticObject.getTargetType());
-		feeder.accept(grammarAccess.getViewAccess().getNameIDTerminalRuleCall_4_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getViewAccess().getPortfolioPortfolioIDTerminalRuleCall_3_0_1(), semanticObject.eGet(FinPackage.Literals.ACTION__PORTFOLIO, false));
+		feeder.accept(grammarAccess.getViewAccess().getRangeINTTerminalRuleCall_5_0(), semanticObject.getRange());
+		feeder.accept(grammarAccess.getViewAccess().getUnitTimeUnitEnumRuleCall_6_0(), semanticObject.getUnit());
 		feeder.finish();
 	}
 	
@@ -324,16 +329,19 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Withdrawal returns Withdrawal
 	 *
 	 * Constraint:
-	 *     amount=FLOAT
+	 *     (portfolio=[Portfolio|ID] amount=FLOAT)
 	 * </pre>
 	 */
 	protected void sequence_Withdrawal(ISerializationContext context, Withdrawal semanticObject) {
 		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.TRANSACTION__PORTFOLIO) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.TRANSACTION__PORTFOLIO));
 			if (transientValues.isValueTransient(semanticObject, FinPackage.Literals.WITHDRAWAL__AMOUNT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FinPackage.Literals.WITHDRAWAL__AMOUNT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getWithdrawalAccess().getAmountFLOATParserRuleCall_1_0(), semanticObject.getAmount());
+		feeder.accept(grammarAccess.getWithdrawalAccess().getPortfolioPortfolioIDTerminalRuleCall_3_0_1(), semanticObject.eGet(FinPackage.Literals.TRANSACTION__PORTFOLIO, false));
+		feeder.accept(grammarAccess.getWithdrawalAccess().getAmountFLOATParserRuleCall_5_0(), semanticObject.getAmount());
 		feeder.finish();
 	}
 	

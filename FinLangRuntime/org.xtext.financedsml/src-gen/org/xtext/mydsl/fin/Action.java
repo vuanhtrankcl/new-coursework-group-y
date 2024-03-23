@@ -9,6 +9,12 @@ package org.xtext.mydsl.fin;
  * A representation of the model object '<em><b>Action</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.mydsl.fin.Action#getPortfolio <em>Portfolio</em>}</li>
+ * </ul>
  *
  * @see org.xtext.mydsl.fin.FinPackage#getAction()
  * @model
@@ -16,4 +22,26 @@ package org.xtext.mydsl.fin;
  */
 public interface Action extends Element
 {
+  /**
+   * Returns the value of the '<em><b>Portfolio</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Portfolio</em>' reference.
+   * @see #setPortfolio(Portfolio)
+   * @see org.xtext.mydsl.fin.FinPackage#getAction_Portfolio()
+   * @model
+   * @generated
+   */
+  Portfolio getPortfolio();
+
+  /**
+   * Sets the value of the '{@link org.xtext.mydsl.fin.Action#getPortfolio <em>Portfolio</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Portfolio</em>' reference.
+   * @see #getPortfolio()
+   * @generated
+   */
+  void setPortfolio(Portfolio value);
+
 } // Action

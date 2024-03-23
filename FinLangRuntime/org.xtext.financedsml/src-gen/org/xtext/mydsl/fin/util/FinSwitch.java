@@ -187,6 +187,15 @@ public class FinSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case FinPackage.DELETE:
+      {
+        Delete delete = (Delete)theEObject;
+        T result = caseDelete(delete);
+        if (result == null) result = caseAction(delete);
+        if (result == null) result = caseElement(delete);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -411,6 +420,22 @@ public class FinSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseView(View object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Delete</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Delete</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDelete(Delete object)
   {
     return null;
   }

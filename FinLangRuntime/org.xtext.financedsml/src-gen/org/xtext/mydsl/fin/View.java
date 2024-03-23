@@ -13,8 +13,8 @@ package org.xtext.mydsl.fin;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mydsl.fin.View#getTargetType <em>Target Type</em>}</li>
- *   <li>{@link org.xtext.mydsl.fin.View#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.View#getRange <em>Range</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.View#getUnit <em>Unit</em>}</li>
  * </ul>
  *
  * @see org.xtext.mydsl.fin.FinPackage#getView()
@@ -24,50 +24,50 @@ package org.xtext.mydsl.fin;
 public interface View extends Action
 {
   /**
-   * Returns the value of the '<em><b>Target Type</b></em>' attribute.
-   * The literals are from the enumeration {@link org.xtext.mydsl.fin.ViewType}.
+   * Returns the value of the '<em><b>Range</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Target Type</em>' attribute.
-   * @see org.xtext.mydsl.fin.ViewType
-   * @see #setTargetType(ViewType)
-   * @see org.xtext.mydsl.fin.FinPackage#getView_TargetType()
+   * @return the value of the '<em>Range</em>' attribute.
+   * @see #setRange(int)
+   * @see org.xtext.mydsl.fin.FinPackage#getView_Range()
    * @model
    * @generated
    */
-  ViewType getTargetType();
+  int getRange();
 
   /**
-   * Sets the value of the '{@link org.xtext.mydsl.fin.View#getTargetType <em>Target Type</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.mydsl.fin.View#getRange <em>Range</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Target Type</em>' attribute.
-   * @see org.xtext.mydsl.fin.ViewType
-   * @see #getTargetType()
+   * @param value the new value of the '<em>Range</em>' attribute.
+   * @see #getRange()
    * @generated
    */
-  void setTargetType(ViewType value);
+  void setRange(int value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Unit</b></em>' attribute.
+   * The literals are from the enumeration {@link org.xtext.mydsl.fin.TimeUnit}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.xtext.mydsl.fin.FinPackage#getView_Name()
+   * @return the value of the '<em>Unit</em>' attribute.
+   * @see org.xtext.mydsl.fin.TimeUnit
+   * @see #setUnit(TimeUnit)
+   * @see org.xtext.mydsl.fin.FinPackage#getView_Unit()
    * @model
    * @generated
    */
-  String getName();
+  TimeUnit getUnit();
 
   /**
-   * Sets the value of the '{@link org.xtext.mydsl.fin.View#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.mydsl.fin.View#getUnit <em>Unit</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Unit</em>' attribute.
+   * @see org.xtext.mydsl.fin.TimeUnit
+   * @see #getUnit()
    * @generated
    */
-  void setName(String value);
+  void setUnit(TimeUnit value);
 
 } // View

@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.mydsl.fin.FinPackage;
+import org.xtext.mydsl.fin.TimeUnit;
 import org.xtext.mydsl.fin.View;
-import org.xtext.mydsl.fin.ViewType;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,8 +21,8 @@ import org.xtext.mydsl.fin.ViewType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mydsl.fin.impl.ViewImpl#getTargetType <em>Target Type</em>}</li>
- *   <li>{@link org.xtext.mydsl.fin.impl.ViewImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.impl.ViewImpl#getRange <em>Range</em>}</li>
+ *   <li>{@link org.xtext.mydsl.fin.impl.ViewImpl#getUnit <em>Unit</em>}</li>
  * </ul>
  *
  * @generated
@@ -30,44 +30,44 @@ import org.xtext.mydsl.fin.ViewType;
 public class ViewImpl extends ActionImpl implements View
 {
   /**
-   * The default value of the '{@link #getTargetType() <em>Target Type</em>}' attribute.
+   * The default value of the '{@link #getRange() <em>Range</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetType()
+   * @see #getRange()
    * @generated
    * @ordered
    */
-  protected static final ViewType TARGET_TYPE_EDEFAULT = ViewType.PORTFOLIO;
+  protected static final int RANGE_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getTargetType() <em>Target Type</em>}' attribute.
+   * The cached value of the '{@link #getRange() <em>Range</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetType()
+   * @see #getRange()
    * @generated
    * @ordered
    */
-  protected ViewType targetType = TARGET_TYPE_EDEFAULT;
+  protected int range = RANGE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getUnit() <em>Unit</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getUnit()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final TimeUnit UNIT_EDEFAULT = TimeUnit.DAY;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getUnit() <em>Unit</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getUnit()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected TimeUnit unit = UNIT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -96,9 +96,9 @@ public class ViewImpl extends ActionImpl implements View
    * @generated
    */
   @Override
-  public ViewType getTargetType()
+  public int getRange()
   {
-    return targetType;
+    return range;
   }
 
   /**
@@ -107,12 +107,12 @@ public class ViewImpl extends ActionImpl implements View
    * @generated
    */
   @Override
-  public void setTargetType(ViewType newTargetType)
+  public void setRange(int newRange)
   {
-    ViewType oldTargetType = targetType;
-    targetType = newTargetType == null ? TARGET_TYPE_EDEFAULT : newTargetType;
+    int oldRange = range;
+    range = newRange;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.VIEW__TARGET_TYPE, oldTargetType, targetType));
+      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.VIEW__RANGE, oldRange, range));
   }
 
   /**
@@ -121,9 +121,9 @@ public class ViewImpl extends ActionImpl implements View
    * @generated
    */
   @Override
-  public String getName()
+  public TimeUnit getUnit()
   {
-    return name;
+    return unit;
   }
 
   /**
@@ -132,12 +132,12 @@ public class ViewImpl extends ActionImpl implements View
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public void setUnit(TimeUnit newUnit)
   {
-    String oldName = name;
-    name = newName;
+    TimeUnit oldUnit = unit;
+    unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.VIEW__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.VIEW__UNIT, oldUnit, unit));
   }
 
   /**
@@ -150,10 +150,10 @@ public class ViewImpl extends ActionImpl implements View
   {
     switch (featureID)
     {
-      case FinPackage.VIEW__TARGET_TYPE:
-        return getTargetType();
-      case FinPackage.VIEW__NAME:
-        return getName();
+      case FinPackage.VIEW__RANGE:
+        return getRange();
+      case FinPackage.VIEW__UNIT:
+        return getUnit();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -168,11 +168,11 @@ public class ViewImpl extends ActionImpl implements View
   {
     switch (featureID)
     {
-      case FinPackage.VIEW__TARGET_TYPE:
-        setTargetType((ViewType)newValue);
+      case FinPackage.VIEW__RANGE:
+        setRange((Integer)newValue);
         return;
-      case FinPackage.VIEW__NAME:
-        setName((String)newValue);
+      case FinPackage.VIEW__UNIT:
+        setUnit((TimeUnit)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -188,11 +188,11 @@ public class ViewImpl extends ActionImpl implements View
   {
     switch (featureID)
     {
-      case FinPackage.VIEW__TARGET_TYPE:
-        setTargetType(TARGET_TYPE_EDEFAULT);
+      case FinPackage.VIEW__RANGE:
+        setRange(RANGE_EDEFAULT);
         return;
-      case FinPackage.VIEW__NAME:
-        setName(NAME_EDEFAULT);
+      case FinPackage.VIEW__UNIT:
+        setUnit(UNIT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -208,10 +208,10 @@ public class ViewImpl extends ActionImpl implements View
   {
     switch (featureID)
     {
-      case FinPackage.VIEW__TARGET_TYPE:
-        return targetType != TARGET_TYPE_EDEFAULT;
-      case FinPackage.VIEW__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case FinPackage.VIEW__RANGE:
+        return range != RANGE_EDEFAULT;
+      case FinPackage.VIEW__UNIT:
+        return unit != UNIT_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -227,10 +227,10 @@ public class ViewImpl extends ActionImpl implements View
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (targetType: ");
-    result.append(targetType);
-    result.append(", name: ");
-    result.append(name);
+    result.append(" (range: ");
+    result.append(range);
+    result.append(", unit: ");
+    result.append(unit);
     result.append(')');
     return result.toString();
   }
