@@ -1,12 +1,12 @@
 portfolio myPort1 {
-	bond myBond1 {
+	bond myBondA {
 		faceValue 1000.0
 		couponRate 0.05
 		maturity 10
 		yieldRate 0.04
 	}
 	
-	option myOption1 {
+	option myOptionA {
 		type Call
 		underlyingPrice 100.50
 		strikePrice 95.25
@@ -22,19 +22,31 @@ portfolio myPort1 {
 
 }
 
+
 buy {
 	portfolio myPort1
-	bond myBond2 {
+	bond myBondB {
 		faceValue 1000.0
 		couponRate 0.05
 		maturity 10
 		yieldRate 0.04
 	}
+	option myOptionB {
+		type Call
+		underlyingPrice 100.50
+		strikePrice 95.25
+		timeToExpiration 20.0
+		riskFreeRate 0.01
+		volatility 0.06
+		dividendYield 0.03
+	}
 }
 
 sell {
 	portfolio myPort1
-	asset myBond2
+	// Current problem, cannot ref to bond or option from portfolio entity, eg: myBondA, myOptionA
+	bond myBondB
+	option myOptionB
 }
 
 deposit {
@@ -55,3 +67,5 @@ view {
 delete {
 	portfolio myPort1
 }
+
+

@@ -461,14 +461,14 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//Buy:
 		//    'buy' '{'
 		//        'portfolio' portfolio=[Portfolio]
-		//        (bond=Bond | option=Option)
+		//        (bond+=Bond | option+=Option)+
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'buy' '{'
 		//    'portfolio' portfolio=[Portfolio]
-		//    (bond=Bond | option=Option)
+		//    (bond+=Bond | option+=Option)+
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -490,16 +490,16 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//ID
 		public RuleCall getPortfolioPortfolioIDTerminalRuleCall_3_0_1() { return cPortfolioPortfolioIDTerminalRuleCall_3_0_1; }
 		
-		//(bond=Bond | option=Option)
+		//(bond+=Bond | option+=Option)+
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 		
-		//bond=Bond
+		//bond+=Bond
 		public Assignment getBondAssignment_4_0() { return cBondAssignment_4_0; }
 		
 		//Bond
 		public RuleCall getBondBondParserRuleCall_4_0_0() { return cBondBondParserRuleCall_4_0_0; }
 		
-		//option=Option
+		//option+=Option
 		public Assignment getOptionAssignment_4_1() { return cOptionAssignment_4_1; }
 		
 		//Option
@@ -510,102 +510,91 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	public class SellElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.Sell");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cSellKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Keyword cPortfolioKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Assignment cPortfolioAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
-		private final CrossReference cPortfolioPortfolioCrossReference_0_3_0 = (CrossReference)cPortfolioAssignment_0_3.eContents().get(0);
-		private final RuleCall cPortfolioPortfolioIDTerminalRuleCall_0_3_0_1 = (RuleCall)cPortfolioPortfolioCrossReference_0_3_0.eContents().get(1);
-		private final Keyword cAssetKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
-		private final Assignment cBondAssignment_0_5 = (Assignment)cGroup_0.eContents().get(5);
-		private final CrossReference cBondBondCrossReference_0_5_0 = (CrossReference)cBondAssignment_0_5.eContents().get(0);
-		private final RuleCall cBondBondIDTerminalRuleCall_0_5_0_1 = (RuleCall)cBondBondCrossReference_0_5_0.eContents().get(1);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Assignment cOptionAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final CrossReference cOptionOptionCrossReference_1_0_0 = (CrossReference)cOptionAssignment_1_0.eContents().get(0);
-		private final RuleCall cOptionOptionIDTerminalRuleCall_1_0_0_1 = (RuleCall)cOptionOptionCrossReference_1_0_0.eContents().get(1);
-		private final Keyword cAmountKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cAmountAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cAmountFLOATParserRuleCall_1_2_0 = (RuleCall)cAmountAssignment_1_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSellKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cPortfolioKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cPortfolioAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cPortfolioPortfolioCrossReference_3_0 = (CrossReference)cPortfolioAssignment_3.eContents().get(0);
+		private final RuleCall cPortfolioPortfolioIDTerminalRuleCall_3_0_1 = (RuleCall)cPortfolioPortfolioCrossReference_3_0.eContents().get(1);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cBondKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cBondAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final CrossReference cBondBondCrossReference_4_1_0 = (CrossReference)cBondAssignment_4_1.eContents().get(0);
+		private final RuleCall cBondBondIDTerminalRuleCall_4_1_0_1 = (RuleCall)cBondBondCrossReference_4_1_0.eContents().get(1);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cOptionKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cOptionAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final CrossReference cOptionOptionCrossReference_5_1_0 = (CrossReference)cOptionAssignment_5_1.eContents().get(0);
+		private final RuleCall cOptionOptionIDTerminalRuleCall_5_1_0_1 = (RuleCall)cOptionOptionCrossReference_5_1_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Sell:
 		//    'sell' '{'
 		//        'portfolio' portfolio=[Portfolio]
-		//        'asset' bond=[Bond] | option=[Option]
-		//        'amount' amount=FLOAT
-		//    '}';
+		//        ('bond' bond=[Bond])*
+		//        ('option' option=[Option])*
+		//    '}'
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'sell' '{'
 		//    'portfolio' portfolio=[Portfolio]
-		//    'asset' bond=[Bond] | option=[Option]
-		//    'amount' amount=FLOAT
+		//    ('bond' bond=[Bond])*
+		//    ('option' option=[Option])*
 		//'}'
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//'sell' '{'
-		//    'portfolio' portfolio=[Portfolio]
-		//    'asset' bond=[Bond]
-		public Group getGroup_0() { return cGroup_0; }
+		public Group getGroup() { return cGroup; }
 		
 		//'sell'
-		public Keyword getSellKeyword_0_0() { return cSellKeyword_0_0; }
+		public Keyword getSellKeyword_0() { return cSellKeyword_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_0_1() { return cLeftCurlyBracketKeyword_0_1; }
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
 		//'portfolio'
-		public Keyword getPortfolioKeyword_0_2() { return cPortfolioKeyword_0_2; }
+		public Keyword getPortfolioKeyword_2() { return cPortfolioKeyword_2; }
 		
 		//portfolio=[Portfolio]
-		public Assignment getPortfolioAssignment_0_3() { return cPortfolioAssignment_0_3; }
+		public Assignment getPortfolioAssignment_3() { return cPortfolioAssignment_3; }
 		
 		//[Portfolio]
-		public CrossReference getPortfolioPortfolioCrossReference_0_3_0() { return cPortfolioPortfolioCrossReference_0_3_0; }
+		public CrossReference getPortfolioPortfolioCrossReference_3_0() { return cPortfolioPortfolioCrossReference_3_0; }
 		
 		//ID
-		public RuleCall getPortfolioPortfolioIDTerminalRuleCall_0_3_0_1() { return cPortfolioPortfolioIDTerminalRuleCall_0_3_0_1; }
+		public RuleCall getPortfolioPortfolioIDTerminalRuleCall_3_0_1() { return cPortfolioPortfolioIDTerminalRuleCall_3_0_1; }
 		
-		//'asset'
-		public Keyword getAssetKeyword_0_4() { return cAssetKeyword_0_4; }
+		//('bond' bond=[Bond])*
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'bond'
+		public Keyword getBondKeyword_4_0() { return cBondKeyword_4_0; }
 		
 		//bond=[Bond]
-		public Assignment getBondAssignment_0_5() { return cBondAssignment_0_5; }
+		public Assignment getBondAssignment_4_1() { return cBondAssignment_4_1; }
 		
 		//[Bond]
-		public CrossReference getBondBondCrossReference_0_5_0() { return cBondBondCrossReference_0_5_0; }
+		public CrossReference getBondBondCrossReference_4_1_0() { return cBondBondCrossReference_4_1_0; }
 		
 		//ID
-		public RuleCall getBondBondIDTerminalRuleCall_0_5_0_1() { return cBondBondIDTerminalRuleCall_0_5_0_1; }
+		public RuleCall getBondBondIDTerminalRuleCall_4_1_0_1() { return cBondBondIDTerminalRuleCall_4_1_0_1; }
+		
+		//('option' option=[Option])*
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'option'
+		public Keyword getOptionKeyword_5_0() { return cOptionKeyword_5_0; }
 		
 		//option=[Option]
-		//       'amount' amount=FLOAT
-		//   '}'
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//option=[Option]
-		public Assignment getOptionAssignment_1_0() { return cOptionAssignment_1_0; }
+		public Assignment getOptionAssignment_5_1() { return cOptionAssignment_5_1; }
 		
 		//[Option]
-		public CrossReference getOptionOptionCrossReference_1_0_0() { return cOptionOptionCrossReference_1_0_0; }
+		public CrossReference getOptionOptionCrossReference_5_1_0() { return cOptionOptionCrossReference_5_1_0; }
 		
 		//ID
-		public RuleCall getOptionOptionIDTerminalRuleCall_1_0_0_1() { return cOptionOptionIDTerminalRuleCall_1_0_0_1; }
-		
-		//'amount'
-		public Keyword getAmountKeyword_1_1() { return cAmountKeyword_1_1; }
-		
-		//amount=FLOAT
-		public Assignment getAmountAssignment_1_2() { return cAmountAssignment_1_2; }
-		
-		//FLOAT
-		public RuleCall getAmountFLOATParserRuleCall_1_2_0() { return cAmountFLOATParserRuleCall_1_2_0; }
+		public RuleCall getOptionOptionIDTerminalRuleCall_5_1_0_1() { return cOptionOptionIDTerminalRuleCall_5_1_0_1; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_1_3() { return cRightCurlyBracketKeyword_1_3; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 	public class DepositElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mydsl.Fin.Deposit");
@@ -1111,7 +1100,7 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	//Buy:
 	//    'buy' '{'
 	//        'portfolio' portfolio=[Portfolio]
-	//        (bond=Bond | option=Option)
+	//        (bond+=Bond | option+=Option)+
 	//    '}'
 	//;
 	public BuyElements getBuyAccess() {
@@ -1125,9 +1114,10 @@ public class FinGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	//Sell:
 	//    'sell' '{'
 	//        'portfolio' portfolio=[Portfolio]
-	//        'asset' bond=[Bond] | option=[Option]
-	//        'amount' amount=FLOAT
-	//    '}';
+	//        ('bond' bond=[Bond])*
+	//        ('option' option=[Option])*
+	//    '}'
+	//;
 	public SellElements getSellAccess() {
 		return pSell;
 	}

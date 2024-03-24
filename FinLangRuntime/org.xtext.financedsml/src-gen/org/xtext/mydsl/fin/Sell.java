@@ -15,7 +15,6 @@ package org.xtext.mydsl.fin;
  * <ul>
  *   <li>{@link org.xtext.mydsl.fin.Sell#getBond <em>Bond</em>}</li>
  *   <li>{@link org.xtext.mydsl.fin.Sell#getOption <em>Option</em>}</li>
- *   <li>{@link org.xtext.mydsl.fin.Sell#getAmount <em>Amount</em>}</li>
  * </ul>
  *
  * @see org.xtext.mydsl.fin.FinPackage#getSell()
@@ -67,27 +66,5 @@ public interface Sell extends Transaction
    * @generated
    */
   void setOption(Option value);
-
-  /**
-   * Returns the value of the '<em><b>Amount</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Amount</em>' attribute.
-   * @see #setAmount(float)
-   * @see org.xtext.mydsl.fin.FinPackage#getSell_Amount()
-   * @model
-   * @generated
-   */
-  float getAmount();
-
-  /**
-   * Sets the value of the '{@link org.xtext.mydsl.fin.Sell#getAmount <em>Amount</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Amount</em>' attribute.
-   * @see #getAmount()
-   * @generated
-   */
-  void setAmount(float value);
 
 } // Sell

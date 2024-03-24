@@ -39,14 +39,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Buy" eSuperTypes="#//Transaction">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="bond" eType="#//Bond" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="option" eType="#//Option"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bond" upperBound="-1" eType="#//Bond"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="option" upperBound="-1"
+        eType="#//Option" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sell" eSuperTypes="#//Transaction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="bond" eType="#//Bond"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="option" eType="#//Option"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deposit" eSuperTypes="#//Transaction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>

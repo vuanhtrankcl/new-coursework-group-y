@@ -25,7 +25,6 @@ import org.xtext.mydsl.fin.Sell;
  * <ul>
  *   <li>{@link org.xtext.mydsl.fin.impl.SellImpl#getBond <em>Bond</em>}</li>
  *   <li>{@link org.xtext.mydsl.fin.impl.SellImpl#getOption <em>Option</em>}</li>
- *   <li>{@link org.xtext.mydsl.fin.impl.SellImpl#getAmount <em>Amount</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,26 +50,6 @@ public class SellImpl extends TransactionImpl implements Sell
    * @ordered
    */
   protected Option option;
-
-  /**
-   * The default value of the '{@link #getAmount() <em>Amount</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAmount()
-   * @generated
-   * @ordered
-   */
-  protected static final float AMOUNT_EDEFAULT = 0.0F;
-
-  /**
-   * The cached value of the '{@link #getAmount() <em>Amount</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAmount()
-   * @generated
-   * @ordered
-   */
-  protected float amount = AMOUNT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -189,31 +168,6 @@ public class SellImpl extends TransactionImpl implements Sell
    * @generated
    */
   @Override
-  public float getAmount()
-  {
-    return amount;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setAmount(float newAmount)
-  {
-    float oldAmount = amount;
-    amount = newAmount;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.SELL__AMOUNT, oldAmount, amount));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -224,8 +178,6 @@ public class SellImpl extends TransactionImpl implements Sell
       case FinPackage.SELL__OPTION:
         if (resolve) return getOption();
         return basicGetOption();
-      case FinPackage.SELL__AMOUNT:
-        return getAmount();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -245,9 +197,6 @@ public class SellImpl extends TransactionImpl implements Sell
         return;
       case FinPackage.SELL__OPTION:
         setOption((Option)newValue);
-        return;
-      case FinPackage.SELL__AMOUNT:
-        setAmount((Float)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -269,9 +218,6 @@ public class SellImpl extends TransactionImpl implements Sell
       case FinPackage.SELL__OPTION:
         setOption((Option)null);
         return;
-      case FinPackage.SELL__AMOUNT:
-        setAmount(AMOUNT_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -290,27 +236,8 @@ public class SellImpl extends TransactionImpl implements Sell
         return bond != null;
       case FinPackage.SELL__OPTION:
         return option != null;
-      case FinPackage.SELL__AMOUNT:
-        return amount != AMOUNT_EDEFAULT;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (amount: ");
-    result.append(amount);
-    result.append(')');
-    return result.toString();
   }
 
 } //SellImpl

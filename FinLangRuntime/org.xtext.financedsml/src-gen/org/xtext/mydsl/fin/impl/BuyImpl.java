@@ -3,13 +3,17 @@
  */
 package org.xtext.mydsl.fin.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.mydsl.fin.Bond;
 import org.xtext.mydsl.fin.Buy;
@@ -33,24 +37,24 @@ import org.xtext.mydsl.fin.Option;
 public class BuyImpl extends TransactionImpl implements Buy
 {
   /**
-   * The cached value of the '{@link #getBond() <em>Bond</em>}' containment reference.
+   * The cached value of the '{@link #getBond() <em>Bond</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getBond()
    * @generated
    * @ordered
    */
-  protected Bond bond;
+  protected EList<Bond> bond;
 
   /**
-   * The cached value of the '{@link #getOption() <em>Option</em>}' containment reference.
+   * The cached value of the '{@link #getOption() <em>Option</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getOption()
    * @generated
    * @ordered
    */
-  protected Option option;
+  protected EList<Option> option;
 
   /**
    * <!-- begin-user-doc -->
@@ -79,8 +83,12 @@ public class BuyImpl extends TransactionImpl implements Buy
    * @generated
    */
   @Override
-  public Bond getBond()
+  public EList<Bond> getBond()
   {
+    if (bond == null)
+    {
+      bond = new EObjectContainmentEList<Bond>(Bond.class, this, FinPackage.BUY__BOND);
+    }
     return bond;
   }
 
@@ -89,88 +97,14 @@ public class BuyImpl extends TransactionImpl implements Buy
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetBond(Bond newBond, NotificationChain msgs)
-  {
-    Bond oldBond = bond;
-    bond = newBond;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FinPackage.BUY__BOND, oldBond, newBond);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
-  public void setBond(Bond newBond)
+  public EList<Option> getOption()
   {
-    if (newBond != bond)
+    if (option == null)
     {
-      NotificationChain msgs = null;
-      if (bond != null)
-        msgs = ((InternalEObject)bond).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FinPackage.BUY__BOND, null, msgs);
-      if (newBond != null)
-        msgs = ((InternalEObject)newBond).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FinPackage.BUY__BOND, null, msgs);
-      msgs = basicSetBond(newBond, msgs);
-      if (msgs != null) msgs.dispatch();
+      option = new EObjectContainmentEList<Option>(Option.class, this, FinPackage.BUY__OPTION);
     }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.BUY__BOND, newBond, newBond));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Option getOption()
-  {
     return option;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetOption(Option newOption, NotificationChain msgs)
-  {
-    Option oldOption = option;
-    option = newOption;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FinPackage.BUY__OPTION, oldOption, newOption);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setOption(Option newOption)
-  {
-    if (newOption != option)
-    {
-      NotificationChain msgs = null;
-      if (option != null)
-        msgs = ((InternalEObject)option).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FinPackage.BUY__OPTION, null, msgs);
-      if (newOption != null)
-        msgs = ((InternalEObject)newOption).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FinPackage.BUY__OPTION, null, msgs);
-      msgs = basicSetOption(newOption, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FinPackage.BUY__OPTION, newOption, newOption));
   }
 
   /**
@@ -184,9 +118,9 @@ public class BuyImpl extends TransactionImpl implements Buy
     switch (featureID)
     {
       case FinPackage.BUY__BOND:
-        return basicSetBond(null, msgs);
+        return ((InternalEList<?>)getBond()).basicRemove(otherEnd, msgs);
       case FinPackage.BUY__OPTION:
-        return basicSetOption(null, msgs);
+        return ((InternalEList<?>)getOption()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -214,16 +148,19 @@ public class BuyImpl extends TransactionImpl implements Buy
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case FinPackage.BUY__BOND:
-        setBond((Bond)newValue);
+        getBond().clear();
+        getBond().addAll((Collection<? extends Bond>)newValue);
         return;
       case FinPackage.BUY__OPTION:
-        setOption((Option)newValue);
+        getOption().clear();
+        getOption().addAll((Collection<? extends Option>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -240,10 +177,10 @@ public class BuyImpl extends TransactionImpl implements Buy
     switch (featureID)
     {
       case FinPackage.BUY__BOND:
-        setBond((Bond)null);
+        getBond().clear();
         return;
       case FinPackage.BUY__OPTION:
-        setOption((Option)null);
+        getOption().clear();
         return;
     }
     super.eUnset(featureID);
@@ -260,9 +197,9 @@ public class BuyImpl extends TransactionImpl implements Buy
     switch (featureID)
     {
       case FinPackage.BUY__BOND:
-        return bond != null;
+        return bond != null && !bond.isEmpty();
       case FinPackage.BUY__OPTION:
-        return option != null;
+        return option != null && !option.isEmpty();
     }
     return super.eIsSet(featureID);
   }

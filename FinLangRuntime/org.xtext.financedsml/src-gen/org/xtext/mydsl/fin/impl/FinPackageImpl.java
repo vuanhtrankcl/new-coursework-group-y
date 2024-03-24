@@ -600,17 +600,6 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
    * @generated
    */
   @Override
-  public EAttribute getSell_Amount()
-  {
-    return (EAttribute)sellEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getDeposit()
   {
     return depositEClass;
@@ -790,7 +779,6 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     sellEClass = createEClass(SELL);
     createEReference(sellEClass, SELL__BOND);
     createEReference(sellEClass, SELL__OPTION);
-    createEAttribute(sellEClass, SELL__AMOUNT);
 
     depositEClass = createEClass(DEPOSIT);
     createEAttribute(depositEClass, DEPOSIT__AMOUNT);
@@ -890,13 +878,12 @@ public class FinPackageImpl extends EPackageImpl implements FinPackage
     initEAttribute(getCash_Amount(), ecorePackage.getEFloat(), "amount", null, 0, 1, Cash.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(buyEClass, Buy.class, "Buy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBuy_Bond(), this.getBond(), null, "bond", null, 0, 1, Buy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBuy_Option(), this.getOption(), null, "option", null, 0, 1, Buy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBuy_Bond(), this.getBond(), null, "bond", null, 0, -1, Buy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBuy_Option(), this.getOption(), null, "option", null, 0, -1, Buy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sellEClass, Sell.class, "Sell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSell_Bond(), this.getBond(), null, "bond", null, 0, 1, Sell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSell_Option(), this.getOption(), null, "option", null, 0, 1, Sell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSell_Amount(), ecorePackage.getEFloat(), "amount", null, 0, 1, Sell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(depositEClass, Deposit.class, "Deposit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDeposit_Amount(), ecorePackage.getEFloat(), "amount", null, 0, 1, Deposit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

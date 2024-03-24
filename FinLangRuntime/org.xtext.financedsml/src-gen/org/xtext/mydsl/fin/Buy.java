@@ -3,6 +3,7 @@
  */
 package org.xtext.mydsl.fin;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,47 +25,27 @@ package org.xtext.mydsl.fin;
 public interface Buy extends Transaction
 {
   /**
-   * Returns the value of the '<em><b>Bond</b></em>' containment reference.
+   * Returns the value of the '<em><b>Bond</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.mydsl.fin.Bond}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Bond</em>' containment reference.
-   * @see #setBond(Bond)
+   * @return the value of the '<em>Bond</em>' containment reference list.
    * @see org.xtext.mydsl.fin.FinPackage#getBuy_Bond()
    * @model containment="true"
    * @generated
    */
-  Bond getBond();
+  EList<Bond> getBond();
 
   /**
-   * Sets the value of the '{@link org.xtext.mydsl.fin.Buy#getBond <em>Bond</em>}' containment reference.
+   * Returns the value of the '<em><b>Option</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.mydsl.fin.Option}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Bond</em>' containment reference.
-   * @see #getBond()
-   * @generated
-   */
-  void setBond(Bond value);
-
-  /**
-   * Returns the value of the '<em><b>Option</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Option</em>' containment reference.
-   * @see #setOption(Option)
+   * @return the value of the '<em>Option</em>' containment reference list.
    * @see org.xtext.mydsl.fin.FinPackage#getBuy_Option()
    * @model containment="true"
    * @generated
    */
-  Option getOption();
-
-  /**
-   * Sets the value of the '{@link org.xtext.mydsl.fin.Buy#getOption <em>Option</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Option</em>' containment reference.
-   * @see #getOption()
-   * @generated
-   */
-  void setOption(Option value);
+  EList<Option> getOption();
 
 } // Buy

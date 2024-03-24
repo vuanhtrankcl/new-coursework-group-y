@@ -801,7 +801,7 @@ ruleBuy returns [EObject current=null]
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBuyRule());
 						}
-						set(
+						add(
 							$current,
 							"bond",
 							lv_bond_4_0,
@@ -821,7 +821,7 @@ ruleBuy returns [EObject current=null]
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBuyRule());
 						}
-						set(
+						add(
 							$current,
 							"option",
 							lv_option_5_0,
@@ -830,7 +830,7 @@ ruleBuy returns [EObject current=null]
 					}
 				)
 			)
-		)
+		)+
 		otherlv_6='}'
 		{
 			newLeafNode(otherlv_6, grammarAccess.getBuyAccess().getRightCurlyBracketKeyword_5());
@@ -854,35 +854,35 @@ ruleSell returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='sell'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getSellAccess().getSellKeyword_0());
+		}
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getSellAccess().getLeftCurlyBracketKeyword_1());
+		}
+		otherlv_2='portfolio'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getSellAccess().getPortfolioKeyword_2());
+		}
 		(
-			otherlv_0='sell'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getSellAccess().getSellKeyword_0_0());
-			}
-			otherlv_1='{'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getSellAccess().getLeftCurlyBracketKeyword_0_1());
-			}
-			otherlv_2='portfolio'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getSellAccess().getPortfolioKeyword_0_2());
-			}
 			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getSellRule());
-						}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSellRule());
 					}
-					otherlv_3=RULE_ID
-					{
-						newLeafNode(otherlv_3, grammarAccess.getSellAccess().getPortfolioPortfolioCrossReference_0_3_0());
-					}
-				)
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getSellAccess().getPortfolioPortfolioCrossReference_3_0());
+				}
 			)
-			otherlv_4='asset'
+		)
+		(
+			otherlv_4='bond'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getSellAccess().getAssetKeyword_0_4());
+				newLeafNode(otherlv_4, grammarAccess.getSellAccess().getBondKeyword_4_0());
 			}
 			(
 				(
@@ -893,13 +893,16 @@ ruleSell returns [EObject current=null]
 					}
 					otherlv_5=RULE_ID
 					{
-						newLeafNode(otherlv_5, grammarAccess.getSellAccess().getBondBondCrossReference_0_5_0());
+						newLeafNode(otherlv_5, grammarAccess.getSellAccess().getBondBondCrossReference_4_1_0());
 					}
 				)
 			)
-		)
-		    |
+		)*
 		(
+			otherlv_6='option'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getSellAccess().getOptionKeyword_5_0());
+			}
 			(
 				(
 					{
@@ -907,40 +910,17 @@ ruleSell returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getSellRule());
 						}
 					}
-					otherlv_6=RULE_ID
+					otherlv_7=RULE_ID
 					{
-						newLeafNode(otherlv_6, grammarAccess.getSellAccess().getOptionOptionCrossReference_1_0_0());
+						newLeafNode(otherlv_7, grammarAccess.getSellAccess().getOptionOptionCrossReference_5_1_0());
 					}
 				)
 			)
-			otherlv_7='amount'
-			{
-				newLeafNode(otherlv_7, grammarAccess.getSellAccess().getAmountKeyword_1_1());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getSellAccess().getAmountFLOATParserRuleCall_1_2_0());
-					}
-					lv_amount_8_0=ruleFLOAT
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getSellRule());
-						}
-						set(
-							$current,
-							"amount",
-							lv_amount_8_0,
-							"org.xtext.mydsl.Fin.FLOAT");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_9='}'
-			{
-				newLeafNode(otherlv_9, grammarAccess.getSellAccess().getRightCurlyBracketKeyword_1_3());
-			}
-		)
+		)*
+		otherlv_8='}'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getSellAccess().getRightCurlyBracketKeyword_6());
+		}
 	)
 ;
 

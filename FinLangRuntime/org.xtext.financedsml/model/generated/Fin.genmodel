@@ -57,7 +57,6 @@
     <genClasses ecoreClass="Fin.ecore#//Sell">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Fin.ecore#//Sell/bond"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Fin.ecore#//Sell/option"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//Sell/amount"/>
     </genClasses>
     <genClasses ecoreClass="Fin.ecore#//Deposit">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fin.ecore#//Deposit/amount"/>

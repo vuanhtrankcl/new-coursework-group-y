@@ -315,9 +315,9 @@ ruleSell
 	}
 	:
 	(
-		{ before(grammarAccess.getSellAccess().getAlternatives()); }
-		(rule__Sell__Alternatives)
-		{ after(grammarAccess.getSellAccess().getAlternatives()); }
+		{ before(grammarAccess.getSellAccess().getGroup()); }
+		(rule__Sell__Group__0)
+		{ after(grammarAccess.getSellAccess().getGroup()); }
 	)
 ;
 finally {
@@ -612,27 +612,6 @@ rule__Buy__Alternatives_4
 		{ before(grammarAccess.getBuyAccess().getOptionAssignment_4_1()); }
 		(rule__Buy__OptionAssignment_4_1)
 		{ after(grammarAccess.getBuyAccess().getOptionAssignment_4_1()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Sell__Alternatives
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getSellAccess().getGroup_0()); }
-		(rule__Sell__Group_0__0)
-		{ after(grammarAccess.getSellAccess().getGroup_0()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getSellAccess().getGroup_1()); }
-		(rule__Sell__Group_1__0)
-		{ after(grammarAccess.getSellAccess().getGroup_1()); }
 	)
 ;
 finally {
@@ -1900,9 +1879,16 @@ rule__Buy__Group__4__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBuyAccess().getAlternatives_4()); }
-	(rule__Buy__Alternatives_4)
-	{ after(grammarAccess.getBuyAccess().getAlternatives_4()); }
+	(
+		{ before(grammarAccess.getBuyAccess().getAlternatives_4()); }
+		(rule__Buy__Alternatives_4)
+		{ after(grammarAccess.getBuyAccess().getAlternatives_4()); }
+	)
+	(
+		{ before(grammarAccess.getBuyAccess().getAlternatives_4()); }
+		(rule__Buy__Alternatives_4)*
+		{ after(grammarAccess.getBuyAccess().getAlternatives_4()); }
+	)
 )
 ;
 finally {
@@ -1936,269 +1922,296 @@ finally {
 }
 
 
-rule__Sell__Group_0__0
+rule__Sell__Group__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Sell__Group_0__0__Impl
-	rule__Sell__Group_0__1
+	rule__Sell__Group__0__Impl
+	rule__Sell__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__0__Impl
+rule__Sell__Group__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getSellAccess().getSellKeyword_0_0()); }
+	{ before(grammarAccess.getSellAccess().getSellKeyword_0()); }
 	'sell'
-	{ after(grammarAccess.getSellAccess().getSellKeyword_0_0()); }
+	{ after(grammarAccess.getSellAccess().getSellKeyword_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__1
+rule__Sell__Group__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Sell__Group_0__1__Impl
-	rule__Sell__Group_0__2
+	rule__Sell__Group__1__Impl
+	rule__Sell__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__1__Impl
+rule__Sell__Group__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getSellAccess().getLeftCurlyBracketKeyword_0_1()); }
+	{ before(grammarAccess.getSellAccess().getLeftCurlyBracketKeyword_1()); }
 	'{'
-	{ after(grammarAccess.getSellAccess().getLeftCurlyBracketKeyword_0_1()); }
+	{ after(grammarAccess.getSellAccess().getLeftCurlyBracketKeyword_1()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__2
+rule__Sell__Group__2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Sell__Group_0__2__Impl
-	rule__Sell__Group_0__3
+	rule__Sell__Group__2__Impl
+	rule__Sell__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__2__Impl
+rule__Sell__Group__2__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getSellAccess().getPortfolioKeyword_0_2()); }
+	{ before(grammarAccess.getSellAccess().getPortfolioKeyword_2()); }
 	'portfolio'
-	{ after(grammarAccess.getSellAccess().getPortfolioKeyword_0_2()); }
+	{ after(grammarAccess.getSellAccess().getPortfolioKeyword_2()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__3
+rule__Sell__Group__3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Sell__Group_0__3__Impl
-	rule__Sell__Group_0__4
+	rule__Sell__Group__3__Impl
+	rule__Sell__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__3__Impl
+rule__Sell__Group__3__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getSellAccess().getPortfolioAssignment_0_3()); }
-	(rule__Sell__PortfolioAssignment_0_3)
-	{ after(grammarAccess.getSellAccess().getPortfolioAssignment_0_3()); }
+	{ before(grammarAccess.getSellAccess().getPortfolioAssignment_3()); }
+	(rule__Sell__PortfolioAssignment_3)
+	{ after(grammarAccess.getSellAccess().getPortfolioAssignment_3()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__4
+rule__Sell__Group__4
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Sell__Group_0__4__Impl
-	rule__Sell__Group_0__5
+	rule__Sell__Group__4__Impl
+	rule__Sell__Group__5
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__4__Impl
+rule__Sell__Group__4__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getSellAccess().getAssetKeyword_0_4()); }
-	'asset'
-	{ after(grammarAccess.getSellAccess().getAssetKeyword_0_4()); }
+	{ before(grammarAccess.getSellAccess().getGroup_4()); }
+	(rule__Sell__Group_4__0)*
+	{ after(grammarAccess.getSellAccess().getGroup_4()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__5
+rule__Sell__Group__5
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Sell__Group_0__5__Impl
+	rule__Sell__Group__5__Impl
+	rule__Sell__Group__6
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_0__5__Impl
+rule__Sell__Group__5__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getSellAccess().getBondAssignment_0_5()); }
-	(rule__Sell__BondAssignment_0_5)
-	{ after(grammarAccess.getSellAccess().getBondAssignment_0_5()); }
+	{ before(grammarAccess.getSellAccess().getGroup_5()); }
+	(rule__Sell__Group_5__0)*
+	{ after(grammarAccess.getSellAccess().getGroup_5()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-
-rule__Sell__Group_1__0
+rule__Sell__Group__6
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Sell__Group_1__0__Impl
-	rule__Sell__Group_1__1
+	rule__Sell__Group__6__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__Group_1__0__Impl
+rule__Sell__Group__6__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getSellAccess().getOptionAssignment_1_0()); }
-	(rule__Sell__OptionAssignment_1_0)
-	{ after(grammarAccess.getSellAccess().getOptionAssignment_1_0()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Sell__Group_1__1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__Sell__Group_1__1__Impl
-	rule__Sell__Group_1__2
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Sell__Group_1__1__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getSellAccess().getAmountKeyword_1_1()); }
-	'amount'
-	{ after(grammarAccess.getSellAccess().getAmountKeyword_1_1()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Sell__Group_1__2
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__Sell__Group_1__2__Impl
-	rule__Sell__Group_1__3
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Sell__Group_1__2__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getSellAccess().getAmountAssignment_1_2()); }
-	(rule__Sell__AmountAssignment_1_2)
-	{ after(grammarAccess.getSellAccess().getAmountAssignment_1_2()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Sell__Group_1__3
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__Sell__Group_1__3__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Sell__Group_1__3__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getSellAccess().getRightCurlyBracketKeyword_1_3()); }
+	{ before(grammarAccess.getSellAccess().getRightCurlyBracketKeyword_6()); }
 	'}'
-	{ after(grammarAccess.getSellAccess().getRightCurlyBracketKeyword_1_3()); }
+	{ after(grammarAccess.getSellAccess().getRightCurlyBracketKeyword_6()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Sell__Group_4__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Sell__Group_4__0__Impl
+	rule__Sell__Group_4__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Sell__Group_4__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getSellAccess().getBondKeyword_4_0()); }
+	'bond'
+	{ after(grammarAccess.getSellAccess().getBondKeyword_4_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Sell__Group_4__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Sell__Group_4__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Sell__Group_4__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getSellAccess().getBondAssignment_4_1()); }
+	(rule__Sell__BondAssignment_4_1)
+	{ after(grammarAccess.getSellAccess().getBondAssignment_4_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Sell__Group_5__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Sell__Group_5__0__Impl
+	rule__Sell__Group_5__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Sell__Group_5__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getSellAccess().getOptionKeyword_5_0()); }
+	'option'
+	{ after(grammarAccess.getSellAccess().getOptionKeyword_5_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Sell__Group_5__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Sell__Group_5__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Sell__Group_5__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getSellAccess().getOptionAssignment_5_1()); }
+	(rule__Sell__OptionAssignment_5_1)
+	{ after(grammarAccess.getSellAccess().getOptionAssignment_5_1()); }
 )
 ;
 finally {
@@ -3320,72 +3333,57 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__PortfolioAssignment_0_3
+rule__Sell__PortfolioAssignment_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getSellAccess().getPortfolioPortfolioCrossReference_0_3_0()); }
+		{ before(grammarAccess.getSellAccess().getPortfolioPortfolioCrossReference_3_0()); }
 		(
-			{ before(grammarAccess.getSellAccess().getPortfolioPortfolioIDTerminalRuleCall_0_3_0_1()); }
+			{ before(grammarAccess.getSellAccess().getPortfolioPortfolioIDTerminalRuleCall_3_0_1()); }
 			RULE_ID
-			{ after(grammarAccess.getSellAccess().getPortfolioPortfolioIDTerminalRuleCall_0_3_0_1()); }
+			{ after(grammarAccess.getSellAccess().getPortfolioPortfolioIDTerminalRuleCall_3_0_1()); }
 		)
-		{ after(grammarAccess.getSellAccess().getPortfolioPortfolioCrossReference_0_3_0()); }
+		{ after(grammarAccess.getSellAccess().getPortfolioPortfolioCrossReference_3_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__BondAssignment_0_5
+rule__Sell__BondAssignment_4_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getSellAccess().getBondBondCrossReference_0_5_0()); }
+		{ before(grammarAccess.getSellAccess().getBondBondCrossReference_4_1_0()); }
 		(
-			{ before(grammarAccess.getSellAccess().getBondBondIDTerminalRuleCall_0_5_0_1()); }
+			{ before(grammarAccess.getSellAccess().getBondBondIDTerminalRuleCall_4_1_0_1()); }
 			RULE_ID
-			{ after(grammarAccess.getSellAccess().getBondBondIDTerminalRuleCall_0_5_0_1()); }
+			{ after(grammarAccess.getSellAccess().getBondBondIDTerminalRuleCall_4_1_0_1()); }
 		)
-		{ after(grammarAccess.getSellAccess().getBondBondCrossReference_0_5_0()); }
+		{ after(grammarAccess.getSellAccess().getBondBondCrossReference_4_1_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sell__OptionAssignment_1_0
+rule__Sell__OptionAssignment_5_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getSellAccess().getOptionOptionCrossReference_1_0_0()); }
+		{ before(grammarAccess.getSellAccess().getOptionOptionCrossReference_5_1_0()); }
 		(
-			{ before(grammarAccess.getSellAccess().getOptionOptionIDTerminalRuleCall_1_0_0_1()); }
+			{ before(grammarAccess.getSellAccess().getOptionOptionIDTerminalRuleCall_5_1_0_1()); }
 			RULE_ID
-			{ after(grammarAccess.getSellAccess().getOptionOptionIDTerminalRuleCall_1_0_0_1()); }
+			{ after(grammarAccess.getSellAccess().getOptionOptionIDTerminalRuleCall_5_1_0_1()); }
 		)
-		{ after(grammarAccess.getSellAccess().getOptionOptionCrossReference_1_0_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Sell__AmountAssignment_1_2
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getSellAccess().getAmountFLOATParserRuleCall_1_2_0()); }
-		ruleFLOAT
-		{ after(grammarAccess.getSellAccess().getAmountFLOATParserRuleCall_1_2_0()); }
+		{ after(grammarAccess.getSellAccess().getOptionOptionCrossReference_5_1_0()); }
 	)
 ;
 finally {

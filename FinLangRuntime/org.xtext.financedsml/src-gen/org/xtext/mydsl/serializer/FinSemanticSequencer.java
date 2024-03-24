@@ -121,7 +121,7 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Buy returns Buy
 	 *
 	 * Constraint:
-	 *     (portfolio=[Portfolio|ID] (bond=Bond | option=Option))
+	 *     (portfolio=[Portfolio|ID] (bond+=Bond | option+=Option)+)
 	 * </pre>
 	 */
 	protected void sequence_Buy(ISerializationContext context, Buy semanticObject) {
@@ -285,7 +285,7 @@ public class FinSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Sell returns Sell
 	 *
 	 * Constraint:
-	 *     ((portfolio=[Portfolio|ID] bond=[Bond|ID]) | (option=[Option|ID] amount=FLOAT))
+	 *     (portfolio=[Portfolio|ID] bond=[Bond|ID]* option=[Option|ID]*)
 	 * </pre>
 	 */
 	protected void sequence_Sell(ISerializationContext context, Sell semanticObject) {

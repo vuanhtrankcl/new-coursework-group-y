@@ -420,7 +420,7 @@ public interface FinPackage extends EPackage
   int BUY__PORTFOLIO = TRANSACTION__PORTFOLIO;
 
   /**
-   * The feature id for the '<em><b>Bond</b></em>' containment reference.
+   * The feature id for the '<em><b>Bond</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -429,7 +429,7 @@ public interface FinPackage extends EPackage
   int BUY__BOND = TRANSACTION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Option</b></em>' containment reference.
+   * The feature id for the '<em><b>Option</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -484,22 +484,13 @@ public interface FinPackage extends EPackage
   int SELL__OPTION = TRANSACTION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Amount</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELL__AMOUNT = TRANSACTION_FEATURE_COUNT + 2;
-
-  /**
    * The number of structural features of the '<em>Sell</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SELL_FEATURE_COUNT = TRANSACTION_FEATURE_COUNT + 3;
+  int SELL_FEATURE_COUNT = TRANSACTION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.mydsl.fin.impl.DepositImpl <em>Deposit</em>}' class.
@@ -980,10 +971,10 @@ public interface FinPackage extends EPackage
   EClass getBuy();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.fin.Buy#getBond <em>Bond</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.mydsl.fin.Buy#getBond <em>Bond</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Bond</em>'.
+   * @return the meta object for the containment reference list '<em>Bond</em>'.
    * @see org.xtext.mydsl.fin.Buy#getBond()
    * @see #getBuy()
    * @generated
@@ -991,10 +982,10 @@ public interface FinPackage extends EPackage
   EReference getBuy_Bond();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.mydsl.fin.Buy#getOption <em>Option</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.mydsl.fin.Buy#getOption <em>Option</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Option</em>'.
+   * @return the meta object for the containment reference list '<em>Option</em>'.
    * @see org.xtext.mydsl.fin.Buy#getOption()
    * @see #getBuy()
    * @generated
@@ -1032,17 +1023,6 @@ public interface FinPackage extends EPackage
    * @generated
    */
   EReference getSell_Option();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.mydsl.fin.Sell#getAmount <em>Amount</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Amount</em>'.
-   * @see org.xtext.mydsl.fin.Sell#getAmount()
-   * @see #getSell()
-   * @generated
-   */
-  EAttribute getSell_Amount();
 
   /**
    * Returns the meta object for class '{@link org.xtext.mydsl.fin.Deposit <em>Deposit</em>}'.
@@ -1424,7 +1404,7 @@ public interface FinPackage extends EPackage
     EClass BUY = eINSTANCE.getBuy();
 
     /**
-     * The meta object literal for the '<em><b>Bond</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Bond</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1432,7 +1412,7 @@ public interface FinPackage extends EPackage
     EReference BUY__BOND = eINSTANCE.getBuy_Bond();
 
     /**
-     * The meta object literal for the '<em><b>Option</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Option</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1464,14 +1444,6 @@ public interface FinPackage extends EPackage
      * @generated
      */
     EReference SELL__OPTION = eINSTANCE.getSell_Option();
-
-    /**
-     * The meta object literal for the '<em><b>Amount</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SELL__AMOUNT = eINSTANCE.getSell_Amount();
 
     /**
      * The meta object literal for the '{@link org.xtext.mydsl.fin.impl.DepositImpl <em>Deposit</em>}' class.

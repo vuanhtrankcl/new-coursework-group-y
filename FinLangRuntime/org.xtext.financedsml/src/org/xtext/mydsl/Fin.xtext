@@ -59,16 +59,17 @@ Cash:
 Buy:
     'buy' '{'
     	'portfolio' portfolio=[Portfolio]
-        (bond=Bond | option=Option)
+        (bond+=Bond | option+=Option)+
     '}'
 ;
 
 Sell:
     'sell' '{'
     	'portfolio' portfolio=[Portfolio]
-        'asset' bond=[Bond] | option=[Option]
-        'amount' amount=FLOAT
-    '}';
+    	('bond' bond=[Bond])*
+    	('option' option=[Option])*       	
+    '}'
+;
 
 Deposit:
 	'deposit' '{'
@@ -96,6 +97,7 @@ Delete:
 		'portfolio' portfolio=[Portfolio]
 	'}'
 ;
+
 
 enum TimeUnit:
 	day | month | year
