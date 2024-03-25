@@ -1,0 +1,113 @@
+grammar org.xtext.mydsl.Fin with org.eclipse.xtext.common.Terminals
+
+generate fin "http://www.xtext.org/mydsl/Fin"
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+Model:
+	(element+=Element)*;
+	
+Element:
+	Portfolio | Transaction | Action
+;
+
+Asset:
+	Bond | Option | Cash
+;
+
+Transaction:
+	Buy | Sell | Deposit | Withdrawal
+;
+
+Action: 
+	View | Delete
+;
+
+Portfolio:
+	'portfolio' name=ID '{'
+		(asset+=Asset)+
+	'}'
+;
+
+Bond:
+	'bond' name=ID '{'
+		'faceValue' faceValue=FLOAT
+		'couponRate' couponRate=FLOAT
+		'maturity' maturity=INT
+		'yieldRate' yieldRate=FLOAT
+	'}'
+;
+
+Option:
+	'option' name=ID '{'
+		'type' type=OptionType
+		'underlyingPrice' underlyingPrice=FLOAT
+		'strikePrice' strikePrice=FLOAT
+		'timeToExpiration' timeToExpiration=FLOAT
+		'riskFreeRate' riskFreeRate=FLOAT
+		'volatility' volatility=FLOAT
+		'dividendYield' dividendYield=FLOAT
+	'}'
+;
+
+Cash:
+    'cash' '{'
+    	'amount' amount=FLOAT
+    '}'
+;
+
+
+Buy:
+    'buy' '{'
+    	'portfolio' portfolio=[Portfolio]
+        (bond+=Bond | option+=Option)+
+    '}'
+;
+
+Sell:
+    'sell' '{'
+    	'portfolio' portfolio=[Portfolio]
+    	('bond' bond=[Bond])*
+    	('option' option=[Option])*       	
+    '}'
+;
+
+Deposit:
+	'deposit' '{'
+    	'portfolio' portfolio=[Portfolio]
+		'amount' amount=FLOAT
+	'}'
+;
+
+Withdrawal:
+	'withdrawal' '{'
+	    'portfolio' portfolio=[Portfolio]
+		'amount' amount=FLOAT
+	'}'
+;
+
+View:
+	'view' '{'
+		'portfolio' portfolio=[Portfolio]
+		'time' range=INT unit=TimeUnit
+	'}'
+;
+
+Delete: 
+	'delete' '{'
+		'portfolio' portfolio=[Portfolio]
+	'}'
+;
+
+
+enum TimeUnit:
+	day | month | year
+;
+
+enum OptionType:
+	Call | Put
+;
+
+FLOAT returns ecore::EFloat hidden():
+	INT? "." INT
+;
+

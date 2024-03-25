@@ -3,14 +3,14 @@
 
 // Xpect test for parsing a Portfolio with a Bond and an Option
 // XPECT noerrors -->
-Portfolio myPort {
-	Bond bond1 {
+portfolio myPort {
+	bond bond1 {
 		faceValue 1000.0
 		couponRate 0.05
 		maturity 10
 		yieldRate 0.04
 	}
-	Option option1 {
+	option option1 {
 		type Put
 		underlyingPrice .75
 		strikePrice 1.50
@@ -20,3 +20,33 @@ Portfolio myPort {
 		dividendYield 0.02
 	}
 }
+
+// Xpect test for a complex scenario involving multiple transactions and actions on a portfolio
+// XPECT noerrors -->
+portfolio complexPort {
+	// XPECT scope at complexPort --> myPort, !tttt
+	bond bondX {
+		faceValue 500.0
+		couponRate 0.04
+		maturity 5
+		yieldRate 0.035
+	}
+	option optionX {
+		type Call
+		underlyingPrice 1.0
+		strikePrice 1.2
+		timeToExpiration 0.5
+		riskFreeRate 0.005
+		volatility 0.1
+		dividendYield 0.015
+	}
+}
+
+
+view {
+	// XPECT scope at complexPort --> complexPort, myPort, ...
+	portfolio complexPort
+	time 1 month
+}
+
+

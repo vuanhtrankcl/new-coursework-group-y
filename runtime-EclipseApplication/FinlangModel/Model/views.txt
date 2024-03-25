@@ -3,3 +3,7 @@ Portfolio: mp
     Bond: myBond, Face Value: 1000.0, Coupon Rate: 0.05%, Maturity: 10 years, Yield Rate: 0.04%, Estimated Value: 675.5641688257987
     Option: myOption, Type: CALL, Underlying Price: 100.5, Strike Price: 95.25, Time to Expiration: 20.0 years, Risk Free Rate: 0.01%, Volatility: 0.06%, Dividend Yield: 0.03%, Estimated Value: 24.69764789268737
 
+Portfolio: myPort1
+    Bond: myBondA, Face Value: 1000.0, Coupon Rate: 0.05%, Maturity: 10 years, Yield Rate: 0.04%, Estimated Value: 675.5641688257987
+    Option: myOptionA, Type: CALL, Underlying Price: 100.5, Strike Price: 95.25, Time to Expiration: 20.0 years, Risk Free Rate: 0.01%, Volatility: 0.06%, Dividend Yield: 0.03%, Estimated Value: 24.69764789268737
+

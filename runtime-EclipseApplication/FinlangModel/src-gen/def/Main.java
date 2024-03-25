@@ -25,7 +25,7 @@ public class Main {
         myPort1.addBond(myBondA);
 
         // Generate code for Options within this Portfolio
-        Option myOptionA = new Option("myOptionA", OptionType.CALL, 100.5, 95.25, 20.0, 0.01, 0.06, 0.03);
+        Option myOptionA = new Option("myOptionA", OptionType.Call, 100.5, 95.25, 20.0, 0.01, 0.06, 0.03);
         myPort1.addOption(myOptionA);
 
 
