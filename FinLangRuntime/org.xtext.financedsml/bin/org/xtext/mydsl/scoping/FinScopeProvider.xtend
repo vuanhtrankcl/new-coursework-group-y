@@ -4,12 +4,12 @@
 package org.xtext.mydsl.scoping;
 
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import org.xtext.mydsl.fin.Bond
 import org.xtext.mydsl.fin.Sell
-
 import org.xtext.mydsl.fin.Option
 
 /**
@@ -18,22 +18,19 @@ import org.xtext.mydsl.fin.Option
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#scoping
  * on how and when to use it.
  */
-class FinScopeProvider extends AbstractDeclarativeScopeProvider {    
-	def IScope scope_Sell_bond(Sell sell, EReference reference) {
-        // Scope for Bond within the Portfolio referenced in Sell
-        val portfolio = sell.portfolio
-        if (portfolio !== null) {
-            return Scopes.scopeFor(portfolio.asset.filter(Bond))
-        }
-        return IScope.NULLSCOPE
+class FinScopeProvider extends AbstractDeclarativeScopeProvider {
+	
+    
+    def IScope scope_Sell_bond(Sell sell, EReference reference) {
+        val root = EcoreUtil2.getRootContainer(sell)
+        val allBonds = EcoreUtil2.getAllContentsOfType(root, Bond)
+        return Scopes.scopeFor(allBonds)
     }
     
     def IScope scope_Sell_option(Sell sell, EReference reference) {
-        // Scope for Bond within the Portfolio referenced in Sell
-        val portfolio = sell.portfolio
-        if (portfolio !== null) {
-            return Scopes.scopeFor(portfolio.asset.filter(Option))
-        }
-        return IScope.NULLSCOPE
+        val root = EcoreUtil2.getRootContainer(sell)
+        val allOptions = EcoreUtil2.getAllContentsOfType(root, Option)
+        return Scopes.scopeFor(allOptions)
     }
+     
 }

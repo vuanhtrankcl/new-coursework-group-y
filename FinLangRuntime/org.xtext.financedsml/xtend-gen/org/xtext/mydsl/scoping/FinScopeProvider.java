@@ -3,14 +3,15 @@
  */
 package org.xtext.mydsl.scoping;
 
-import com.google.common.collect.Iterables;
+import java.util.List;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.xtext.mydsl.fin.Bond;
 import org.xtext.mydsl.fin.Option;
-import org.xtext.mydsl.fin.Portfolio;
 import org.xtext.mydsl.fin.Sell;
 
 /**
@@ -22,18 +23,14 @@ import org.xtext.mydsl.fin.Sell;
 @SuppressWarnings("all")
 public class FinScopeProvider extends AbstractDeclarativeScopeProvider {
   public IScope scope_Sell_bond(final Sell sell, final EReference reference) {
-    final Portfolio portfolio = sell.getPortfolio();
-    if ((portfolio != null)) {
-      return Scopes.scopeFor(Iterables.<Bond>filter(portfolio.getAsset(), Bond.class));
-    }
-    return IScope.NULLSCOPE;
+    final EObject root = EcoreUtil2.getRootContainer(sell);
+    final List<Bond> allBonds = EcoreUtil2.<Bond>getAllContentsOfType(root, Bond.class);
+    return Scopes.scopeFor(allBonds);
   }
 
   public IScope scope_Sell_option(final Sell sell, final EReference reference) {
-    final Portfolio portfolio = sell.getPortfolio();
-    if ((portfolio != null)) {
-      return Scopes.scopeFor(Iterables.<Option>filter(portfolio.getAsset(), Option.class));
-    }
-    return IScope.NULLSCOPE;
+    final EObject root = EcoreUtil2.getRootContainer(sell);
+    final List<Option> allOptions = EcoreUtil2.<Option>getAllContentsOfType(root, Option.class);
+    return Scopes.scopeFor(allOptions);
   }
 }
