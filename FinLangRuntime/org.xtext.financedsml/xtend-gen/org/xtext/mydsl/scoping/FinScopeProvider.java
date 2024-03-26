@@ -3,10 +3,15 @@
  */
 package org.xtext.mydsl.scoping;
 
+import com.google.common.collect.Iterables;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
-import org.xtext.mydsl.fin.Buy;
+import org.xtext.mydsl.fin.Bond;
+import org.xtext.mydsl.fin.Option;
+import org.xtext.mydsl.fin.Portfolio;
+import org.xtext.mydsl.fin.Sell;
 
 /**
  * This class contains custom scoping description.
@@ -16,7 +21,19 @@ import org.xtext.mydsl.fin.Buy;
  */
 @SuppressWarnings("all")
 public class FinScopeProvider extends AbstractDeclarativeScopeProvider {
-  public IScope scope_Buy_var(final Buy context, final EReference ref) {
-    return null;
+  public IScope scope_Sell_bond(final Sell sell, final EReference reference) {
+    final Portfolio portfolio = sell.getPortfolio();
+    if ((portfolio != null)) {
+      return Scopes.scopeFor(Iterables.<Bond>filter(portfolio.getAsset(), Bond.class));
+    }
+    return IScope.NULLSCOPE;
+  }
+
+  public IScope scope_Sell_option(final Sell sell, final EReference reference) {
+    final Portfolio portfolio = sell.getPortfolio();
+    if ((portfolio != null)) {
+      return Scopes.scopeFor(Iterables.<Option>filter(portfolio.getAsset(), Option.class));
+    }
+    return IScope.NULLSCOPE;
   }
 }

@@ -3,12 +3,14 @@
  */
 package org.xtext.mydsl.scoping;
 
-import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
-import org.xtext.mydsl.fin.Buy
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.scoping.IScope
+import org.eclipse.xtext.scoping.Scopes
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
+import org.xtext.mydsl.fin.Bond
+import org.xtext.mydsl.fin.Sell
 
-import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.xtext.mydsl.fin.Option
 
 /**
  * This class contains custom scoping description.
@@ -16,8 +18,22 @@ import static extension org.eclipse.xtext.EcoreUtil2.*
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#scoping
  * on how and when to use it.
  */
-class FinScopeProvider extends AbstractDeclarativeScopeProvider {
-	def IScope scope_Buy_var (Buy context, EReference ref) {
-		
-	}
+class FinScopeProvider extends AbstractDeclarativeScopeProvider {    
+	def IScope scope_Sell_bond(Sell sell, EReference reference) {
+        // Scope for Bond within the Portfolio referenced in Sell
+        val portfolio = sell.portfolio
+        if (portfolio !== null) {
+            return Scopes.scopeFor(portfolio.asset.filter(Bond))
+        }
+        return IScope.NULLSCOPE
+    }
+    
+    def IScope scope_Sell_option(Sell sell, EReference reference) {
+        // Scope for Bond within the Portfolio referenced in Sell
+        val portfolio = sell.portfolio
+        if (portfolio !== null) {
+            return Scopes.scopeFor(portfolio.asset.filter(Option))
+        }
+        return IScope.NULLSCOPE
+    }
 }

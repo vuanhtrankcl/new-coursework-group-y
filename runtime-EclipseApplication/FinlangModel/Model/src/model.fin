@@ -1,3 +1,13 @@
+buy {
+	portfolio myPort1
+	bond myBondC {
+		faceValue 1000.0
+		couponRate 0.05
+		maturity 10
+		yieldRate 0.04
+	} 
+}
+
 portfolio myPort1 {
 	bond myBondA {
 		faceValue 1000.0
@@ -7,6 +17,30 @@ portfolio myPort1 {
 	}
 	
 	option myOptionA {
+		type Call
+		underlyingPrice 100.50
+		strikePrice 95.25
+		timeToExpiration 20.0
+		riskFreeRate 0.01
+		volatility 0.06
+		dividendYield 0.03
+	}
+	
+	cash {
+		amount 1000.0
+	}
+
+}
+
+portfolio myPort3 {
+	bond myBond3A {
+		faceValue 1000.0
+		couponRate 0.05
+		maturity 10
+		yieldRate 0.04
+	}
+	
+	option myOption3A {
 		type Call
 		underlyingPrice 100.50
 		strikePrice 95.25
@@ -43,9 +77,9 @@ buy {
 }
 
 sell {
-	portfolio myPort1
+	portfolio myPort3
 	// Current problem, cannot ref to bond or option from portfolio entity, eg: myBondA, myOptionA
-	bond myBondB
+	bond myBond3A
 	option myOptionB
 }
 
@@ -66,6 +100,11 @@ view {
 
 delete {
 	portfolio myPort1
+}
+
+sell {
+	portfolio myPort2
+	bond myBondA
 }
 
 
